@@ -7,28 +7,79 @@
     android:layout_height="match_parent"
     tools:context=".Activity.HomeActivity">
 
-
-    <FrameLayout
-        android:id="@+id/newsLayout"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/menuLayout"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorAccent">
-        <TextView
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="25dp"
-            android:text="Phần màu đỏ này là phần tin tức"/>
-    </FrameLayout>
+            android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/cardServiceLayout"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/newsLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/serviceCardBackgroubd">
-    </FrameLayout>
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/ic_menu_black_24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Home Title"
+                    android:textSize="25dp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <FrameLayout
+                        android:id="@+id/newsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/colorAccent">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:gravity="center"
+                            android:textColor="@color/white"
+                            android:textSize="25dp"
+                            android:text="Phần màu đỏ này là phần tin tức"/>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:id="@+id/cardServiceLayout"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/newsLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/serviceCardBackgroubd">
+                    </FrameLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            app:headerLayout="@layout/menu_header"
+            app:menu="@menu/menu_item" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
 </RelativeLayout>

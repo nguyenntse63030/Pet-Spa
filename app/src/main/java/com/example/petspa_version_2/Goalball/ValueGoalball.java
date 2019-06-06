@@ -9,5 +9,5 @@ public class ValueGoalball {
     public static String CARD_VIEW_1 = "Service 1";
     public static String CARD_VIEW_2 = "Service 2";
     public static String CARD_VIEW_3 = "News";
-    public static String CARD_VIEW_4 = "Profile";
+    public static String CARD_VIEW_4 = "Service 4";
 }

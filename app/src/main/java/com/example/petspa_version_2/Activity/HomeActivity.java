@@ -2,9 +2,13 @@ package com.example.petspa_version_2.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -18,7 +22,8 @@ import com.example.petspa_version_2.R;
  * @author LongDong(04/06/2019)
  * */
 public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener {
-
+    DrawerLayout menuLayout;
+    Button btnMenu;
     ServiceCardViewFragment serviceCardViewFragment;
 
     @Override
@@ -26,8 +31,22 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        menuLayout = findViewById(R.id.menuLayout);
+        btnMenu = findViewById(R.id.btnMenu);
+
         serviceCardViewFragment = new ServiceCardViewFragment();
         loadFragment(serviceCardViewFragment);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        btnMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                menuLayout.openDrawer(Gravity.RIGHT);
+            }
+        });
     }
 
     @Override
