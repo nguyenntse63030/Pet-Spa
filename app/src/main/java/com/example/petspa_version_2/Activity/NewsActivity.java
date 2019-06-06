@@ -1,6 +1,5 @@
 package com.example.petspa_version_2.Activity;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -8,27 +7,21 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 
-import com.example.petspa_version_2.Fragment.ListServicePetFragment;
+import com.example.petspa_version_2.Fragment.ListNewsFragment;
 import com.example.petspa_version_2.R;
 /**
- * @author LongDong(04/06/2019)
+ * @author LongDong(06/06/2019)
  * */
-public class ListServicePetActivity extends AppCompatActivity {
-    ListServicePetFragment listServicePetFragment;
+public class NewsActivity extends AppCompatActivity {
+    ListNewsFragment listNewsFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_service_pet);
+        setContentView(R.layout.activity_news);
 
-        listServicePetFragment = new ListServicePetFragment();
-        loadFragment(listServicePetFragment);
-    }
-
-    @Override
-    public void onAttachFragment(@NonNull Fragment fragment) {
-        super.onAttachFragment(fragment);
-
+        listNewsFragment = new ListNewsFragment();
+        loadFragment(listNewsFragment);
     }
 
     @Override
@@ -39,8 +32,8 @@ public class ListServicePetActivity extends AppCompatActivity {
 
     private void loadFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =fm.beginTransaction();
-        fragmentTransaction.replace(R.id.listServicePetLayout, fragment);
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.listNewsLayout, fragment);
         fragmentTransaction.commit();
     }
 }

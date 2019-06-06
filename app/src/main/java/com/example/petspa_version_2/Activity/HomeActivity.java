@@ -9,10 +9,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.petspa_version_2.Fragment.ListNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
+import com.example.petspa_version_2.Goalball.ValueGoalball;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.R;
-
+/**
+ * @author LongDong(04/06/2019)
+ * */
 public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener {
 
     ServiceCardViewFragment serviceCardViewFragment;
@@ -37,8 +41,14 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
 
     @Override
     public void openServicePetList(String cardServiceName) {
-        Intent intent = new Intent(this, ListServicePetActivity.class);
-        startActivity(intent);
+
+        if(cardServiceName.equals(ValueGoalball.CARD_VIEW_3)){
+            Intent intent = new Intent(this, NewsActivity.class);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this, ListServicePetActivity.class);
+            startActivity(intent);
+        }
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 

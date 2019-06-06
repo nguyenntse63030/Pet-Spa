@@ -14,7 +14,9 @@ import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 
 import java.util.List;
-
+/**
+ * @author LongDong(04/06/2019)
+ * */
 public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServicePetFragmentAdapter.MyViewHolder> {
     private List<ServicePet> listServicePet;
     private Context context;

@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.petspa_version_2.Adapter.ServiceCardViewFragmentAdapter;
+import com.example.petspa_version_2.Goalball.ValueGoalball;
 import com.example.petspa_version_2.Listener.Card_View_Listener;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.Model.ServiceCardView;
@@ -20,7 +21,9 @@ import com.example.petspa_version_2.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author LongDong(04/06/2019)
+ * */
 public class ServiceCardViewFragment extends Fragment implements Card_View_Listener {
     private RecyclerView recyclerView;
     private ServiceCardViewFragmentAdapter fragmentAdapter;
@@ -34,10 +37,10 @@ public class ServiceCardViewFragment extends Fragment implements Card_View_Liste
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listServiceCard.add(new ServiceCardView("Service 1", R.drawable.album1));
-        listServiceCard.add(new ServiceCardView("Service 2", R.drawable.album2));
-        listServiceCard.add(new ServiceCardView("Service 3", R.drawable.album3));
-        listServiceCard.add(new ServiceCardView("Service 4", R.drawable.album4));
+        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_1, R.drawable.album1));
+        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_2, R.drawable.album2));
+        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_3, R.drawable.album3));
+        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_4, R.drawable.album4));
     }
 
     @Override

@@ -17,7 +17,9 @@ import com.example.petspa_version_2.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * @author LongDong(04/06/2019)
+ * */
 public class ListServicePetFragment extends Fragment {
     List<ServicePet> listServicePet = new ArrayList<>();
     ListServicePetFragmentAdapter adapter;
