@@ -3,6 +3,7 @@ package com.example.petspa_version_2.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -13,16 +14,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.petspa_version_2.Fragment.ListNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
-import com.example.petspa_version_2.Goalball.ValueGoalball;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.R;
+import com.google.android.material.navigation.NavigationView;
+
 /**
  * @author LongDong(04/06/2019)
  * */
 public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener {
-    DrawerLayout menuLayout;
+    DrawerLayout menuLayoutDrawer;
+    NavigationView menuHome;
     Button btnMenu;
     ServiceCardViewFragment serviceCardViewFragment;
 
@@ -31,9 +33,9 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        menuLayout = findViewById(R.id.menuLayout);
+        menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
         btnMenu = findViewById(R.id.btnMenu);
-
+        menuHome = findViewById(R.id.menuHome);
         serviceCardViewFragment = new ServiceCardViewFragment();
         loadFragment(serviceCardViewFragment);
     }
@@ -44,7 +46,22 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuLayout.openDrawer(Gravity.RIGHT);
+                menuLayoutDrawer.openDrawer(Gravity.RIGHT);
+            }
+        });
+
+        menuHome.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if(item.getItemId() == R.id.item_news){
+                    Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                }
+
+                menuLayoutDrawer.closeDrawers();
+                return true;
             }
         });
     }
@@ -61,13 +78,9 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
     @Override
     public void openServicePetList(String cardServiceName) {
 
-        if(cardServiceName.equals(ValueGoalball.CARD_VIEW_3)){
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-        }else {
-            Intent intent = new Intent(this, ListServicePetActivity.class);
-            startActivity(intent);
-        }
+        Intent intent = new Intent(this, ListServicePetActivity.class);
+        startActivity(intent);
+
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 

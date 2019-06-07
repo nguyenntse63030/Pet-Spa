@@ -18,7 +18,7 @@ import com.example.petspa_version_2.R;
  * @author LongDong(04/06/2019)
  * */
 public class ListServicePetActivity extends AppCompatActivity {
-    DrawerLayout menuLayout;
+    DrawerLayout menuLayoutDrawer;
     Button btnMenu;
     ListServicePetFragment listServicePetFragment;
 
@@ -27,7 +27,7 @@ public class ListServicePetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_service_pet);
 
-        menuLayout = findViewById(R.id.menuLayout);
+        menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
         btnMenu = findViewById(R.id.btnMenu);
 
         listServicePetFragment = new ListServicePetFragment();
@@ -40,7 +40,7 @@ public class ListServicePetActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuLayout.openDrawer(Gravity.RIGHT);
+                menuLayoutDrawer.openDrawer(Gravity.RIGHT);
             }
         });
     }

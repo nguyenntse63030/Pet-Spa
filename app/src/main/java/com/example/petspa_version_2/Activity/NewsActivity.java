@@ -1,23 +1,29 @@
 package com.example.petspa_version_2.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.petspa_version_2.Fragment.ListNewsFragment;
 import com.example.petspa_version_2.R;
+import com.google.android.material.navigation.NavigationView;
+
 /**
  * @author LongDong(06/06/2019)
  * */
 public class NewsActivity extends AppCompatActivity {
-    DrawerLayout menuLayout;
+    DrawerLayout menuLayoutDrawer;
+    NavigationView menuNews;
     Button btnMenu;
     ListNewsFragment listNewsFragment;
 
@@ -26,8 +32,9 @@ public class NewsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
 
-        menuLayout = findViewById(R.id.menuLayout);
+        menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
         btnMenu = findViewById(R.id.btnMenu);
+        menuNews = findViewById(R.id.menuNews);
 
         listNewsFragment = new ListNewsFragment();
         loadFragment(listNewsFragment);
@@ -39,7 +46,22 @@ public class NewsActivity extends AppCompatActivity {
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                menuLayout.openDrawer(Gravity.RIGHT);
+                menuLayoutDrawer.openDrawer(Gravity.RIGHT);
+            }
+        });
+
+        menuNews.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                if(item.getItemId() == R.id.item_home){
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
+                menuLayoutDrawer.closeDrawers();
+                return true;
             }
         });
     }
