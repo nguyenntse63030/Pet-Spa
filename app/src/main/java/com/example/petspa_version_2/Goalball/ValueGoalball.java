@@ -10,4 +10,10 @@ public class ValueGoalball {
     public static String CARD_VIEW_2 = "Service 2";
     public static String CARD_VIEW_3 = "News";
     public static String CARD_VIEW_4 = "Service 4";
+
+    /**
+     * Request code for change activity
+     * */
+    public static int REQUEST_CODE = 25;
+    public static int RESULT_CODE_BACK_HOME = 26;
 }

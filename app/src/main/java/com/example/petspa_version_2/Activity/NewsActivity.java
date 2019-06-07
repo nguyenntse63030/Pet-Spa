@@ -1,6 +1,7 @@
 package com.example.petspa_version_2.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.petspa_version_2.Fragment.ListNewsFragment;
+import com.example.petspa_version_2.Goalball.ValueGoalball;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
@@ -24,7 +26,7 @@ import com.google.android.material.navigation.NavigationView;
 public class NewsActivity extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer;
     NavigationView menuNews;
-    Button btnMenu;
+    Button btnMenu, btnBack;
     ListNewsFragment listNewsFragment;
 
     @Override
@@ -36,6 +38,8 @@ public class NewsActivity extends AppCompatActivity {
         btnMenu = findViewById(R.id.btnMenu);
         menuNews = findViewById(R.id.menuNews);
 
+        btnBack = findViewById(R.id.btnBack);
+
         listNewsFragment = new ListNewsFragment();
         loadFragment(listNewsFragment);
     }
@@ -43,6 +47,13 @@ public class NewsActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,16 +65,37 @@ public class NewsActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
+                /**
+                 * event click Home item
+                 * */
                 if(item.getItemId() == R.id.item_home){
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
+                    Intent intent = NewsActivity.this.getIntent();
+                    NewsActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
                     finish();
+                }
+
+                if(item.getItemId() == R.id.item_user_profile){
+                    Intent intent = new Intent(getApplicationContext(), ListServicePetActivity.class);
+                    startActivityForResult(intent, ValueGoalball.REQUEST_CODE);
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
 
                 menuLayoutDrawer.closeDrawers();
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == ValueGoalball.REQUEST_CODE){
+            if(resultCode == ValueGoalball.RESULT_CODE_BACK_HOME){
+                Intent intent = NewsActivity.this.getIntent();
+                NewsActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
+                finish();
+            }
+        }
     }
 
     @Override
