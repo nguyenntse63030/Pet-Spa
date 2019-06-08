@@ -44,34 +44,34 @@ public class ListNewsFragment extends Fragment {
     private void inputData(){
         listNews.add(new News("Bảo Long",
                 "Không phải vết thương nào chảy máu cũng đều đau",
-                R.drawable.album11));
+                R.drawable.album11, "08/06/2019"));
 
         listNews.add(new News("Trung Nguyên",
                 "Có đôi khi vết thương không nhìn thấy máu mới thật sự là vết thương đau nhất.",
-                R.drawable.album10));
+                R.drawable.album10, "07/06/2019"));
 
         listNews.add(new News("Hữu Lễ",
                 "Đừng lập gia đình sớm, dù bất cứ lý do nào đừng vội khi chưa sẵn sàng, chưa từng trải chưa hiểu được chung sống là một thử thách to lớn thế nào.",
-                R.drawable.album9));
+                R.drawable.album9, "06/06/2019"));
 
         listNews.add(new News("Hoàng Nhân",
                 "Không ai có quyền phán xét bạn vì họ không biết bạn đã trải qua những gì.",
-                R.drawable.album8));
+                R.drawable.album8, "05/06/2019"));
 
         listNews.add(new News("Duy Thắng",
                 "Hãy tự biết cách gây áp lực cho chính bản thân để vươn lên và tỏa sáng. Bởi vì không ai sẽ làm điều đó thay cho bạn.",
-                R.drawable.album7));
+                R.drawable.album7, "04/06/2019"));
 
         listNews.add(new News("Bình Minh",
                 "Đừng mơ trong cuộc sống mà hãy sống trong giấc mơ.",
-                R.drawable.album6));
+                R.drawable.album6, "03/06/2019"));
 
         listNews.add(new News("Đức Toàn",
                 "Dù bạn có vấp ngã hàng trăm lần thì cũng đừng bỏ cuộc. Hãy đứng dậy.",
-                R.drawable.album5));
+                R.drawable.album5, "02/06/2019"));
 
         listNews.add(new News("Bá Nam",
                 "Đôi khi nếu bạn chờ đợi quá nhiều thứ cùng lúc, rất có thể bạn sẽ ra về trắng tay.",
-                R.drawable.album4));
+                R.drawable.album4, "01/06/2019"));
     }
 }

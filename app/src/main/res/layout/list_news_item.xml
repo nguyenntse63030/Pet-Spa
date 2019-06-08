@@ -23,8 +23,8 @@
 
             <ImageView
                 android:id="@+id/imageNews"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/album1"
                 android:layout_marginStart="10dp"
                 android:layout_gravity="center"/>
@@ -47,9 +47,19 @@
                 <TextView
                     android:id="@+id/txtNewsContent"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="80dp"
                     android:textSize="15dp"
                     android:text="News Content"/>
+
+                <TextView
+                    android:id="@+id/txtDateOfNews"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="25/06/2019"
+                    android:textSize="14dp"
+                    android:layout_marginEnd="7dp"
+                    android:textStyle="italic"/>
 
             </LinearLayout>
 

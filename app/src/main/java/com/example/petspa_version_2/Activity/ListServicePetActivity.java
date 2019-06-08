@@ -70,9 +70,8 @@ public class ListServicePetActivity extends AppCompatActivity {
                  * */
                 if(item.getItemId() == R.id.item_home){
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }
 
                 if(item.getItemId() == R.id.item_news){

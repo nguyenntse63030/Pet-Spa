@@ -39,6 +39,7 @@ public class ListNewsFragmentAdapter extends RecyclerView.Adapter<ListNewsFragme
         holder.imageNews.setImageResource(listNews.get(position).getNewsImage());
         holder.txtNewsTitle.setText(listNews.get(position).getNewsTitle());
         holder.txtNewsContent.setText(listNews.get(position).getNewsContent());
+        holder.txtDateOfNews.setText(listNews.get(position).getDateOfNews());
     }
 
     @Override
@@ -48,13 +49,14 @@ public class ListNewsFragmentAdapter extends RecyclerView.Adapter<ListNewsFragme
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView imageNews;
-        TextView txtNewsTitle, txtNewsContent;
+        TextView txtNewsTitle, txtNewsContent, txtDateOfNews;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             imageNews = itemView.findViewById(R.id.imageNews);
             txtNewsTitle = itemView.findViewById(R.id.txtNewsTitle);
             txtNewsContent = itemView.findViewById(R.id.txtNewsContent);
+            txtDateOfNews = itemView.findViewById(R.id.txtDateOfNews);
         }
     }
 }
