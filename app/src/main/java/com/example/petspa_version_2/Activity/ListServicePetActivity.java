@@ -51,7 +51,7 @@ public class ListServicePetActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                onBackPressed();
             }
         });
 
@@ -69,14 +69,16 @@ public class ListServicePetActivity extends AppCompatActivity {
                  * event click Home item
                  * */
                 if(item.getItemId() == R.id.item_home){
-                    Intent intent = ListServicePetActivity.this.getIntent();
-                    ListServicePetActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 }
 
                 if(item.getItemId() == R.id.item_news){
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-                    startActivityForResult(intent, ValueGoalball.REQUEST_CODE);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
                     overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
 
@@ -84,18 +86,6 @@ public class ListServicePetActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == ValueGoalball.REQUEST_CODE){
-            if(resultCode == ValueGoalball.RESULT_CODE_BACK_HOME){
-                Intent intent = ListServicePetActivity.this.getIntent();
-                ListServicePetActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
-                finish();
-            }
-        }
     }
 
     @Override

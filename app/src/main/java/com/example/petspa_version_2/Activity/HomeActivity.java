@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -16,7 +15,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
-import com.example.petspa_version_2.Goalball.ValueGoalball;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
@@ -58,13 +56,14 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
 
                 if(item.getItemId() == R.id.item_news){
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
-                    intent.putExtra("Test", "Mr.Long");
-                    startActivityForResult(intent, ValueGoalball.REQUEST_CODE);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
                 }
 
                 if(item.getItemId() == R.id.item_user_profile){
                     Intent intent = new Intent(getApplicationContext(), ListServicePetActivity.class);
-                    startActivityForResult(intent, ValueGoalball.REQUEST_CODE);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
                 }
 
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -73,11 +72,6 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                 return true;
             }
         });
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
@@ -93,6 +87,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
     public void openServicePetList(String cardServiceName) {
 
         Intent intent = new Intent(this, ListServicePetActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);
 
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
@@ -100,7 +95,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
 
     private void loadFragment(Fragment fragment){
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =fm.beginTransaction();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.cardServiceLayout, fragment);
         fragmentTransaction.commit();
     }
