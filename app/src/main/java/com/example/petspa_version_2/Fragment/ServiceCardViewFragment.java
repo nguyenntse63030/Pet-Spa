@@ -52,6 +52,7 @@ public class ServiceCardViewFragment extends Fragment implements Card_View_Liste
        fragmentAdapter = new ServiceCardViewFragmentAdapter(listServiceCard, getContext(), this);
        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
        recyclerView.setAdapter(fragmentAdapter);
+       recyclerView.setOverScrollMode(View.OVER_SCROLL_NEVER);
 
        return view;
     }
