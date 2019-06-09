@@ -1,7 +1,6 @@
 package com.example.petspa_version_2.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -14,17 +13,17 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.petspa_version_2.Fragment.ListNewsFragment;
-import com.example.petspa_version_2.Goalball.ValueGoalball;
+import com.example.petspa_version_2.Listener.List_News_Listener;
+import com.example.petspa_version_2.Model.News;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
 /**
  * @author LongDong(06/06/2019)
  * */
-public class NewsActivity extends AppCompatActivity {
+public class NewsActivity extends AppCompatActivity implements List_News_Listener {
     DrawerLayout menuLayoutDrawer;
     NavigationView menuNews;
     Button btnMenu, btnBack;
@@ -91,6 +90,33 @@ public class NewsActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    @Override
+    public void onAttachFragment(@NonNull Fragment fragment) {
+        super.onAttachFragment(fragment);
+        if(fragment instanceof ListNewsFragment){
+            ListNewsFragment listNewsFragment = (ListNewsFragment) fragment;
+            listNewsFragment.setmCallBack((List_News_Listener) this);
+        }
+    }
+
+    @Override
+    public void onClickItemNews(News news) {
+        Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
+
+        String newsTitle = news.getNewsTitle();
+        String newsContentDetail = news.getNewsContentDetail();
+        int imageNews = news.getNewsImage();
+        String dateOfNews = news.getDateOfNews();
+
+        intent.putExtra("newsTitle", newsTitle);
+        intent.putExtra("newsContentDetail", newsContentDetail);
+        intent.putExtra("imageNews", imageNews);
+        intent.putExtra("dateOfNews", dateOfNews);
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     private void loadFragment(Fragment fragment){

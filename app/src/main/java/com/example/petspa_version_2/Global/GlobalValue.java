@@ -1,8 +1,8 @@
-package com.example.petspa_version_2.Goalball;
+package com.example.petspa_version_2.Global;
 /**
  * @author LongDong(06/06/2019)
  * */
-public class ValueGoalball {
+public class GlobalValue {
     /**
      * Name of Card in home activity
      * */

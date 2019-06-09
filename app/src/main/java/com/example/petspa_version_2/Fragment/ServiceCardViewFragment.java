@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.petspa_version_2.Adapter.ServiceCardViewFragmentAdapter;
-import com.example.petspa_version_2.Goalball.ValueGoalball;
+import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Listener.Card_View_Listener;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.Model.ServiceCardView;
@@ -37,10 +37,10 @@ public class ServiceCardViewFragment extends Fragment implements Card_View_Liste
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_1, R.drawable.album1));
-        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_2, R.drawable.album2));
-        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_3, R.drawable.album3));
-        listServiceCard.add(new ServiceCardView(ValueGoalball.CARD_VIEW_4, R.drawable.album4));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_1, R.drawable.album1));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_2, R.drawable.album2));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_3, R.drawable.album3));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_4, R.drawable.album4));
     }
 
     @Override
