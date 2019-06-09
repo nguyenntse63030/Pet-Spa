@@ -22,8 +22,8 @@ import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
 /**
- * @author LongDong(04/06/2019)
- * */
+ * @author LongDong(04 / 06 / 2019)
+ */
 public class ListServicePetActivity extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer;
     NavigationView listServicePetMenu;
@@ -68,13 +68,13 @@ public class ListServicePetActivity extends AppCompatActivity {
                 /**
                  * event click Home item
                  * */
-                if(item.getItemId() == R.id.item_home){
+                if (item.getItemId() == R.id.item_home) {
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(intent);
                 }
 
-                if(item.getItemId() == R.id.item_news){
+                if (item.getItemId() == R.id.item_news) {
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
@@ -85,6 +85,18 @@ public class ListServicePetActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == ValueGoalball.REQUEST_CODE) {
+            if (resultCode == ValueGoalball.RESULT_CODE_BACK_HOME) {
+                Intent intent = ListServicePetActivity.this.getIntent();
+                ListServicePetActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
+                finish();
+            }
+        }
     }
 
     @Override
@@ -99,9 +111,9 @@ public class ListServicePetActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    private void loadFragment(Fragment fragment){
+    private void loadFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction =fm.beginTransaction();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.listServicePetLayout, fragment);
         fragmentTransaction.commit();
     }

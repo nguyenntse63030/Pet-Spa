@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.petspa_version_2.Fragment.ListTopNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.R;
@@ -27,6 +28,8 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
     NavigationView menuHome;
     Button btnMenu;
     ServiceCardViewFragment serviceCardViewFragment;
+    ListTopNewsFragment listTopNewsFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         menuHome = findViewById(R.id.menuHome);
         serviceCardViewFragment = new ServiceCardViewFragment();
         loadFragment(serviceCardViewFragment);
+        listTopNewsFragment = new ListTopNewsFragment();
+        loadFragmentForListTopNews(listTopNewsFragment);
     }
 
     @Override
@@ -97,6 +102,12 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fm.beginTransaction();
         fragmentTransaction.replace(R.id.cardServiceLayout, fragment);
+        fragmentTransaction.commit();
+    }
+    private void loadFragmentForListTopNews(Fragment fragment){
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction =fm.beginTransaction();
+        fragmentTransaction.replace(R.id.newsLayout, fragment);
         fragmentTransaction.commit();
     }
 }

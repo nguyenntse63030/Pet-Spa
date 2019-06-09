@@ -47,16 +47,7 @@
                     <FrameLayout
                         android:id="@+id/newsLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:background="@color/colorAccent">
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:gravity="center"
-                            android:textColor="@color/white"
-                            android:textSize="25dp"
-                            android:text="Phần màu đỏ này là phần tin tức"/>
+                        android:layout_height="200dp">
                     </FrameLayout>
 
                     <FrameLayout

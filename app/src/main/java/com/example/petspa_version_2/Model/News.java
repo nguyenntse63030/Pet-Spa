@@ -15,6 +15,11 @@ public class News {
         this.dateOfNews = dateOfNews;
     }
 
+    public News(String newsTitle, int newsImage) {
+        this.newsTitle = newsTitle;
+        this.newsImage = newsImage;
+    }
+
     public String getNewsTitle() {
         return newsTitle;
     }
