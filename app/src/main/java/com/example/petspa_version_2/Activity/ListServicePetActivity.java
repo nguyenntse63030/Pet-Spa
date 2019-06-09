@@ -90,13 +90,13 @@ public class ListServicePetActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == ValueGoalball.REQUEST_CODE){
-            if(resultCode == ValueGoalball.RESULT_CODE_BACK_HOME){
-                Intent intent = ListServicePetActivity.this.getIntent();
-                ListServicePetActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
-                finish();
-            }
+        if(resultCode == ValueGoalball.RESULT_CODE_BACK_HOME){
+            Intent intent = ListServicePetActivity.this.getIntent();
+            ListServicePetActivity.this.setResult(ValueGoalball.RESULT_CODE_BACK_HOME, intent);
+            finish();
         }
     }
+}
 
     @Override
     public void onAttachFragment(@NonNull Fragment fragment) {

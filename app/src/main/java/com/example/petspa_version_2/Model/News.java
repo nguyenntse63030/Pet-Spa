@@ -13,6 +13,11 @@ public class News {
         this.newsImage = newsImage;
     }
 
+    public News(String newsTitle, int newsImage) {
+        this.newsTitle = newsTitle;
+        this.newsImage = newsImage;
+    }
+
     public String getNewsTitle() {
         return newsTitle;
     }
