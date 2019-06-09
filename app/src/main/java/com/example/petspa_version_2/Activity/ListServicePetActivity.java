@@ -78,7 +78,6 @@ public class ListServicePetActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 }
 
                 menuLayoutDrawer.closeDrawers();
