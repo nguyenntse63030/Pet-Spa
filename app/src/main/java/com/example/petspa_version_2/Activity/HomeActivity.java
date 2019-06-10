@@ -17,13 +17,15 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.petspa_version_2.Fragment.ListTopNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
+import com.example.petspa_version_2.Listener.Top_News_Listener;
+import com.example.petspa_version_2.Model.News;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
 /**
  * @author LongDong(04/06/2019)
  * */
-public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener {
+public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener, Top_News_Listener {
     DrawerLayout menuLayoutDrawer;
     NavigationView menuHome;
     Button btnMenu;
@@ -84,6 +86,29 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
             ServiceCardViewFragment serviceCardViewFragment = (ServiceCardViewFragment) fragment;
             serviceCardViewFragment.setmCallback((Service_Card_View_Fragment_Listener) this);
         }
+
+        if(fragment instanceof ListTopNewsFragment){
+            ListTopNewsFragment listTopNewsFragment = (ListTopNewsFragment) fragment;
+            listTopNewsFragment.setmCallBack((Top_News_Listener) this);
+        }
+    }
+
+    @Override
+    public void openTopNewsItem(News news) {
+        Intent intent = new Intent(HomeActivity.this, NewsDetailActivity.class);
+
+        String newsTitle = news.getNewsTitle();
+        String newsContentDetail = news.getNewsContentDetail();
+        int imageNews = news.getNewsImage();
+        String dateOfNews = news.getDateOfNews();
+
+        intent.putExtra("newsTitle", newsTitle);
+        intent.putExtra("newsContentDetail", newsContentDetail);
+        intent.putExtra("imageNews", imageNews);
+        intent.putExtra("dateOfNews", dateOfNews);
+
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 
     @Override
