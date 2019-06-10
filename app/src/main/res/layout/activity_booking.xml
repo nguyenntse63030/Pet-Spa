@@ -1,12 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/mainLayout"
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
     tools:context=".Activity.BookingActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/box_shadow"
+        android:elevation="0dp"
+        app:layout_heightPercent="30%"
+        app:layout_marginTopPercent="8%"
+        app:layout_widthPercent="90%">
+        <com.makeramen.roundedimageview.RoundedImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView1"
+            android:scaleType="fitXY"
+            android:src="@drawable/dog_bath"
+            app:riv_border_color="#333333"
+            app:riv_corner_radius="30dp"
+            app:riv_mutate_background="true" />
+    </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/box_shadow"
+        android:elevation="1dp"
+        app:layout_heightPercent="20%"
+        app:layout_marginTopPercent="30%"
+        app:layout_widthPercent="90%"></RelativeLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="70mm"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        app:layout_heightPercent="60%"></RelativeLayout>
+</androidx.percentlayout.widget.PercentRelativeLayout>
