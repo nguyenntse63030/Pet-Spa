@@ -1,5 +1,6 @@
 package com.example.petspa_version_2.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +12,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petspa_version_2.Activity.BookingActivity;
 import com.example.petspa_version_2.Adapter.ListServicePetFragmentAdapter;
+import com.example.petspa_version_2.Listener.List_Service_Item_Listener;
 import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 
@@ -20,7 +23,7 @@ import java.util.List;
 /**
  * @author LongDong(04/06/2019)
  * */
-public class ListServicePetFragment extends Fragment {
+public class ListServicePetFragment extends Fragment implements List_Service_Item_Listener {
     List<ServicePet> listServicePet = new ArrayList<>();
     ListServicePetFragmentAdapter adapter;
     RecyclerView recyclerView;
@@ -65,9 +68,15 @@ public class ListServicePetFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_service_pet, container, false);
 
         recyclerView = view.findViewById(R.id.recyclerListServicePet);
-        adapter = new ListServicePetFragmentAdapter(listServicePet, getContext());
+        adapter = new ListServicePetFragmentAdapter(listServicePet, getContext(), this);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
         recyclerView.setAdapter(adapter);
         return view;
+    }
+
+    @Override
+    public void openBookingScreen() {
+        Intent intent = new Intent(getContext(), BookingActivity.class);
+        startActivity(intent);
     }
 }
