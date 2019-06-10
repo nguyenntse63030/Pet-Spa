@@ -88,7 +88,9 @@ public class NewsDetailActivity extends AppCompatActivity {
                 }
 
                 if(item.getItemId() == R.id.item_news){
-                    finish();
+                    Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
                 }
                 menuLayoutDrawer.closeDrawers();
                 return true;
