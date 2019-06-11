@@ -109,7 +109,7 @@ public class NewsActivity extends AppCompatActivity implements List_News_Listene
         String newsContentDetail = news.getNewsContentDetail();
         int imageNews = news.getNewsImage();
         String dateOfNews = news.getDateOfNews();
-
+        
         intent.putExtra("newsTitle", newsTitle);
         intent.putExtra("newsContentDetail", newsContentDetail);
         intent.putExtra("imageNews", imageNews);

@@ -68,7 +68,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                 }
 
                 if(item.getItemId() == R.id.item_user_profile){
-                    Intent intent = new Intent(getApplicationContext(), ListServicePetActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                 }
