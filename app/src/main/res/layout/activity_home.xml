@@ -43,7 +43,7 @@
                     android:gravity="center"
                     android:textStyle="bold"/>
 
-                <RelativeLayout
+                <androidx.percentlayout.widget.PercentRelativeLayout
                     android:id="@+id/contentLayout"
                     android:layout_below="@+id/titleText"
                     android:layout_width="match_parent"
@@ -52,7 +52,8 @@
                     <FrameLayout
                         android:id="@+id/newsLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="200dp">
+                        android:layout_height="200dp"
+                        app:layout_heightPercent="33%">
                     </FrameLayout>
 
                     <FrameLayout
@@ -61,10 +62,12 @@
                         android:layout_below="@+id/newsLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/serviceCardBackgroubd">
+                        android:background="@color/serviceCardBackgroubd"
+                        app:layout_heightPercent="67%">
+
                     </FrameLayout>
 
-                </RelativeLayout>
+                </androidx.percentlayout.widget.PercentRelativeLayout>
 
             </RelativeLayout>
 
