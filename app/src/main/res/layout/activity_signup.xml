@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/loadingbackgound"
+    tools:context=".Activity.SignupActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/petlogo"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="50%"
+        app:layout_marginTopPercent="10%"
+        app:layout_marginLeftPercent="28%"
+        />
+
+    <TextView
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Pet Spa"
+        android:textSize="150px"
+        android:textColor="#fff"
+        app:layout_marginTopPercent="30%"
+        app:layout_marginLeftPercent="33%"
+        android:fontFamily="@font/cac_champagne"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_marginTopPercent="50%"
+        app:layout_marginLeftPercent="40%">
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="10%"
+        app:layout_widthPercent="70%"
+        android:layout_alignParentEnd="true"
+        app:layout_marginTopPercent="40%"
+        app:layout_marginLeftPercent="0%"
+        app:layout_marginRightPercent="10%"
+        android:text=""
+        android:textColor="@color/colorAccent"
+        android:textSize="17dp"/>
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="60%"
+        app:layout_marginTopPercent="47%"
+        app:layout_marginLeftPercent="28%"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_action_account"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/edtfullname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="60%"
+        app:layout_marginTopPercent="54%"
+        app:layout_marginLeftPercent="28%"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_action_account"
+        android:ems="10"
+        android:hint="Full name"
+        android:inputType="textPersonName"
+        android:textSize="16dp" />
+
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="60%"
+        app:layout_marginTopPercent="61%"
+        app:layout_marginLeftPercent="28%"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPersonName"
+        android:textSize="16dp" />
+
+    <EditText
+        android:id="@+id/edtrePassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="60%"
+        app:layout_marginTopPercent="68%"
+        app:layout_marginLeftPercent="28%"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:background="#11000000"
+        android:drawableLeft="@drawable/ic_action_password"
+        android:ems="10"
+        android:hint="Re-Password"
+        android:inputType="textPersonName"
+        android:textSize="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:layout_marginBottomPercent="10%"
+        app:layout_marginLeftPercent="27%"
+        android:onClick="clickToGoLogin"
+        android:text="Click here to go to Login!"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        app:layout_widthPercent="50%"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:layout_marginBottomPercent="17%"
+        android:background="@drawable/layout_text_price_service_pet"
+        android:onClick="clicktoSignUp"
+        android:text="Register" />
+</androidx.percentlayout.widget.PercentRelativeLayout>

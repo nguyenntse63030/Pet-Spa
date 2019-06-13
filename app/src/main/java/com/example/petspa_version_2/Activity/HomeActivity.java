@@ -1,6 +1,7 @@
 package com.example.petspa_version_2.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -45,6 +46,8 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         loadFragment(serviceCardViewFragment);
         listTopNewsFragment = new ListTopNewsFragment();
         loadFragmentForListTopNews(listTopNewsFragment);
+
+        //getActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     @Override
@@ -70,6 +73,19 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                 if(item.getItemId() == R.id.item_user_profile){
                     Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.item_user_logout){
+                    //Clear authentication key in SharedPreferences
+                    SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
+                    editor.putString("Email", " ");
+                    editor.apply();
+
+                    //Back to login page
+                    Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                    //Remove back button
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
 
