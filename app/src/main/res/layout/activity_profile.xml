@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mainLayout"
@@ -8,192 +9,255 @@
     android:background="@drawable/gradient_background"
     tools:context=".Activity.BookingActivity">
 
-    <RelativeLayout
-        android:id="@+id/avatarLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/box_shadow"
-        app:layout_heightPercent="20%"
-        app:layout_marginTopPercent="10%"
-        app:layout_widthPercent="45%"
-        android:elevation="2dp">
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/imageView1"
-            android:scaleType="centerCrop"
-            android:src="@drawable/album1"
-            app:riv_border_color="#333333"
-            app:riv_corner_radius="30dp"
-            app:riv_mutate_background="true" />
-    </RelativeLayout>
 
-
-    <RelativeLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/menuLayoutDrawer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:layout_heightPercent="80%">
-        <androidx.percentlayout.widget.PercentRelativeLayout
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <androidx.percentlayout.widget.PercentRelativeLayout
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/ic_arrow_back_white_24dp" />
+
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:background="@drawable/ic_menu_white_24dp" />
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_widthPercent="100%"
-                app:layout_heightPercent="78%"
-                android:layout_above="@+id/emailLayout"
-                android:elevation="1dp">
+                android:orientation="vertical">
                 <TextView
-                    android:id="@+id/lbFullname"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Full name:"
-                    android:layout_margin="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    app:layout_widthPercent="50%"
-                    />
-                <TextView
-                    android:id="@+id/txtFullname"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Bao Long"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/lbFullname"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/lbPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Phone:"
-                    android:layout_margin="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/txtFullname"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/txtPhone"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="0965923447"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/lbPhone"
-                    app:layout_widthPercent="50%"/>
+                    android:layout_marginBottom="5dp"
+                    android:text="Profile"
+                    android:textSize="25dp"
+                    android:background="@color/backGroundTitleActivity"
+                    android:textColor="@color/white"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
 
-                <TextView
-                    android:id="@+id/lbEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Email:"
-                    android:layout_margin="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/txtPhone"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/txtEmail"
+                <androidx.percentlayout.widget.PercentRelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="ledocon@gmail.com"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/lbEmail"/>
-                <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Edit"
-                    android:layout_below="@id/txtEmail"
-                    android:layout_alignParentRight="true"/>
-                <!--the right site-->
-                <TextView
-                    android:id="@+id/lbBirthDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Birth day:"
-                    android:layout_margin="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_alignParentRight="true"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/txtBirthDay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="90/5/21"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/lbBirthDay"
-                    android:layout_alignParentRight="true"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/lbGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="Gender:"
-                    android:layout_margin="5dp"
-                    android:paddingTop="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/txtBirthDay"
-                    android:layout_alignParentRight="true"
-                    app:layout_widthPercent="50%"/>
-                <TextView
-                    android:id="@+id/txtGender"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:textStyle="bold"
-                    android:text="0965923447"
-                    android:layout_margin="5dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="10dp"
-                    android:layout_below="@+id/lbGender"
-                    android:layout_alignParentRight="true"
-                    app:layout_widthPercent="50%"/>
-            </androidx.percentlayout.widget.PercentRelativeLayout>
+                    android:layout_height="match_parent">
 
-            <RelativeLayout
-                android:id="@+id/emailLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:layout_heightPercent="10%"
-                android:layout_alignParentBottom="true"
-                android:elevation="0dp"
-                >
+                    <RelativeLayout
+                        android:id="@+id/avatarLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/box_shadow"
+                        app:layout_heightPercent="20%"
+                        app:layout_marginTopPercent="10%"
+                        app:layout_widthPercent="45%"
+                        android:elevation="2dp">
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            xmlns:app="http://schemas.android.com/apk/res-auto"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/imageView1"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/album1"
+                            app:riv_border_color="#333333"
+                            app:riv_corner_radius="30dp"
+                            app:riv_mutate_background="true" />
+                    </RelativeLayout>
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Change password"
-                    android:layout_alignParentBottom="true"/>
-            </RelativeLayout>
-        </androidx.percentlayout.widget.PercentRelativeLayout>
-    </RelativeLayout>
-</androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentBottom="true"
+                        android:background="@color/white"
+                        app:layout_heightPercent="80%">
+                        <androidx.percentlayout.widget.PercentRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                            <androidx.percentlayout.widget.PercentRelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_widthPercent="100%"
+                                app:layout_heightPercent="78%"
+                                android:layout_above="@+id/emailLayout"
+                                android:elevation="1dp">
+                                <TextView
+                                    android:id="@+id/lbFullname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Full name:"
+                                    android:layout_margin="5dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    app:layout_widthPercent="50%"
+                                    />
+                                <TextView
+                                    android:id="@+id/txtFullname"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Bao Long"
+                                    android:layout_margin="5dp"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/lbFullname"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/lbPhone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Phone:"
+                                    android:layout_margin="5dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/txtFullname"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/txtPhone"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="0965923447"
+                                    android:layout_margin="5dp"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/lbPhone"
+                                    app:layout_widthPercent="50%"/>
+
+                                <TextView
+                                    android:id="@+id/lbEmail"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Email:"
+                                    android:layout_margin="5dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/txtPhone"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/txtEmail"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="ledocon@gmail.com"
+                                    android:layout_margin="5dp"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/lbEmail"/>
+                                <Button
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Edit"
+                                    android:layout_below="@id/txtEmail"
+                                    android:layout_alignParentRight="true"/>
+                                <!--the right site-->
+                                <TextView
+                                    android:id="@+id/lbBirthDay"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Birth day:"
+                                    android:layout_margin="5dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_alignParentRight="true"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/txtBirthDay"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="90/5/21"
+                                    android:layout_margin="5dp"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/lbBirthDay"
+                                    android:layout_alignParentRight="true"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/lbGender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="Gender:"
+                                    android:layout_margin="5dp"
+                                    android:paddingTop="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/txtBirthDay"
+                                    android:layout_alignParentRight="true"
+                                    app:layout_widthPercent="50%"/>
+                                <TextView
+                                    android:id="@+id/txtGender"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="20dp"
+                                    android:textStyle="bold"
+                                    android:text="0965923447"
+                                    android:layout_margin="5dp"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="10dp"
+                                    android:layout_below="@+id/lbGender"
+                                    android:layout_alignParentRight="true"
+                                    app:layout_widthPercent="50%"/>
+                            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/emailLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                app:layout_heightPercent="10%"
+                                android:layout_alignParentBottom="true"
+                                android:elevation="0dp"
+                                >
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Change password"
+                                    android:layout_alignParentBottom="true"/>
+                            </RelativeLayout>
+                        </androidx.percentlayout.widget.PercentRelativeLayout>
+                    </RelativeLayout>
+
+                </androidx.percentlayout.widget.PercentRelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/menuProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            app:headerLayout="@layout/menu_header"
+            app:menu="@menu/menu_item" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+</RelativeLayout>
