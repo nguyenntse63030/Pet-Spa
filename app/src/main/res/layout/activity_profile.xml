@@ -63,7 +63,7 @@
                         android:layout_centerHorizontal="true"
                         android:background="@drawable/box_shadow"
                         app:layout_heightPercent="20%"
-                        app:layout_marginTopPercent="10%"
+                        app:layout_marginTopPercent="5%"
                         app:layout_widthPercent="45%"
                         android:elevation="2dp">
                         <com.makeramen.roundedimageview.RoundedImageView
@@ -84,7 +84,7 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentBottom="true"
                         android:background="@color/white"
-                        app:layout_heightPercent="80%">
+                        app:layout_heightPercent="85%">
                         <androidx.percentlayout.widget.PercentRelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent">
@@ -171,6 +171,8 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Edit"
+                                    android:layout_margin="10dp"
+                                    android:background="@drawable/border_radius_button"
                                     android:layout_below="@id/txtEmail"
                                     android:layout_alignParentRight="true"/>
                                 <!--the right site-->
@@ -239,7 +241,9 @@
                                 <Button
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:background="@drawable/border_radius_button"
                                     android:text="Change password"
+                                    android:layout_margin="10dp"
                                     android:layout_alignParentBottom="true"/>
                             </RelativeLayout>
                         </androidx.percentlayout.widget.PercentRelativeLayout>
