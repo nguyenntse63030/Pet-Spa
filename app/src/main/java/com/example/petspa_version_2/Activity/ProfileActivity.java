@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -61,6 +62,19 @@ public class ProfileActivity extends AppCompatActivity {
                 if (item.getItemId() == R.id.item_news) {
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.item_user_logout){
+                    //Clear authentication key in SharedPreferences
+                    SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
+                    editor.putString("Email", " ");
+                    editor.apply();
+
+                    //Back to login page
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    //Remove back button
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
 

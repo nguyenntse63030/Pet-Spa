@@ -56,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
         }else{
             //login fail
-            txtMessage.setText("Your password doesn't belong to this email!");
+            txtMessage.setText("Your password or email invalid!");
         }
         //end login
     }
