@@ -118,7 +118,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         app:layout_marginBottomPercent="27%"
-        android:background="@drawable/layout_text_price_service_pet"
+        android:background="@drawable/back_ground_button_login"
         android:onClick="clickToLogin"
         android:text="Login" />
 </androidx.percentlayout.widget.PercentRelativeLayout>

@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -75,8 +76,21 @@ public class NewsActivity extends AppCompatActivity implements List_News_Listene
                 }
 
                 if(item.getItemId() == R.id.item_user_profile){
-                    Intent intent = new Intent(getApplicationContext(), ListServicePetActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.item_user_logout){
+                    //Clear authentication key in SharedPreferences
+                    SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
+                    editor.putString("Email", " ");
+                    editor.apply();
+
+                    //Back to login page
+                    Intent intent = new Intent(NewsActivity.this, LoginActivity.class);
+                    //Remove back button
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
 

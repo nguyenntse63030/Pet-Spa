@@ -115,6 +115,19 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if(item.getItemId() == R.id.item_user_logout){
+                    //Clear authentication key in SharedPreferences
+                    SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
+                    editor.putString("Email", " ");
+                    editor.apply();
+
+                    //Back to login page
+                    Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+                    //Remove back button
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+
                 menuLayoutDrawer.closeDrawers();
                 return true;
             }
