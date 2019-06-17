@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Set ProgressBar color
-        ProgressBar spinner = findViewById(R.id.spinner);
+        ProgressBar spinner = findViewById(R.id.pbSpinner);
         spinner.getIndeterminateDrawable().setColorFilter(Color.parseColor("#FFFFFF"),android.graphics.PorterDuff.Mode.MULTIPLY);
 
         //Loading time

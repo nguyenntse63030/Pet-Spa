@@ -8,4 +8,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style parent="@android:style/Widget.Spinner" name="SpinnerwithNoArrow">
+        <item name="android:background">@android:drawable/edit_text</item>
+        <item name="android:maxHeight">100dp</item>
+    </style>
+
+
 </resources>

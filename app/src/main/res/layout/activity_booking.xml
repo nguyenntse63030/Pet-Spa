@@ -1,48 +1,292 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient_background"
     tools:context=".Activity.BookingActivity">
 
-    <RelativeLayout
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/menuLayoutDrawer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/box_shadow"
-        android:elevation="0dp"
-        app:layout_heightPercent="30%"
-        app:layout_marginTopPercent="8%"
-        app:layout_widthPercent="90%">
-        <com.makeramen.roundedimageview.RoundedImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:onClick="clickGoToListService"
+                android:background="@drawable/ic_keyboard_arrow_left_white_24dp" />
+
+            <Button
+                android:id="@+id/btnMenu"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginEnd="3dp"
+                android:onClick="openMenu"
+                android:background="@drawable/ic_menu_white_24dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/backGroundTitleActivity"
+                    android:gravity="center"
+                    android:text="Booking"
+                    android:textColor="@color/white"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.percentlayout.widget.PercentRelativeLayout
+                        android:id="@+id/mainLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/box_shadow"
+                            android:elevation="0dp"
+                            app:layout_heightPercent="30%"
+                            app:layout_marginTopPercent="1%"
+                            app:layout_widthPercent="90%">
+
+                            <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/imageView1"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="fitXY"
+                                android:src="@drawable/dog_bath"
+                                app:riv_border_color="#333333"
+                                app:riv_corner_radius="30dp"
+                                app:riv_mutate_background="true" />
+                        </RelativeLayout>
+
+                        <androidx.percentlayout.widget.PercentRelativeLayout
+                            android:id="@+id/centerCard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:background="@drawable/box_shadow"
+                            android:elevation="1dp"
+                            android:padding="10dp"
+                            app:layout_heightPercent="20%"
+                            app:layout_marginTopPercent="20%"
+                            app:layout_widthPercent="90%">
+
+                            <TextView
+                                android:id="@+id/txtTitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="20dp"
+                                android:text="Combo Vệ Sinh 1"
+                                android:textColor="#049af7"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                app:layout_widthPercent="50%" />
+
+                            <TextView
+                                android:id="@+id/txtDescription"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/txtTitle"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginRight="20dp"
+                                android:text="Vệ sinh hoạt động cho chó mèo cúng hello đặng hữu lễ, lê bảo long"
+                                android:textColor="#878a8e"
+                                android:textSize="15dp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignRight="@+id/txtTitle"
+                                android:layout_alignParentEnd="true"
+                                android:text="120,000 VND"
+                                android:textAlignment="center"
+                                android:textColor="#049af7"
+                                android:textSize="20dp"
+                                app:layout_widthPercent="50%" />
+                        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                        <androidx.percentlayout.widget.PercentRelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:background="@color/white"
+                            app:layout_heightPercent="70%">
+
+                            <androidx.percentlayout.widget.PercentRelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                app:layout_heightPercent="85%">
+
+                                <ScrollView
+                                    android:id="@+id/scrollView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    app:layout_heightPercent="88%">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginBottom="10dp"
+                                        android:orientation="vertical"
+                                        android:padding="10dp">
+
+                                        <TextView
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="5dp"
+                                            android:text="Quá trình thảo luận, trong số gần 20 người đăng đàn về nội dung trên, chỉ có đại biểu Cầm Thị Mẫn đồng tình.
+
+Bà Mẫn nói, việc nghỉ lễ vào 27/7 hàng năm là hợp lý để người lao động có thêm một ngày nghỉ nhằm thực hiện các hoạt động tri ân những người có công với đất nước, giáo dục đạo lý truyền thống uống nước nhớ nguồn của dân tộc.
+
+Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó trưởng đoàn đại biểu tỉnh Phú Thọ cho rằng, việc tri ân các anh hùng, liệt sĩ và người có công đã được Việt Nam thực hiện thường xuyên trong nhiều năm."
+                                            android:textSize="15dp" />
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="-10dp"
+                                            android:text="Thời gian:"
+                                            android:textColor="#049af7"
+                                            android:textSize="20dp" />
+
+                                        <RelativeLayout
+                                            android:layout_width="250dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center">
+
+                                            <Spinner
+                                                android:id="@+id/spinnerTopLeft"
+                                                style="@style/SpinnerwithNoArrow"
+                                                android:layout_width="100dp"
+                                                android:layout_height="100dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_marginTop="15dp"></Spinner>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentTop="true"
+                                                android:layout_centerInParent="true"
+                                                android:gravity="center"
+                                                android:text=":"
+                                                android:textColor="#049af7"
+                                                android:textSize="80dp" />
+
+                                            <Spinner
+                                                android:id="@+id/spinnerTopRight"
+                                                style="@style/SpinnerwithNoArrow"
+                                                android:layout_width="100dp"
+                                                android:layout_height="100dp"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_marginTop="15dp"
+
+                                                ></Spinner>
+
+                                        </RelativeLayout>
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="-10dp"
+                                            android:text="Ngày đặt lịch:"
+                                            android:textColor="#049af7"
+                                            android:textSize="20dp" />
+
+                                        <RelativeLayout
+                                            android:layout_width="250dp"
+                                            android:layout_height="match_parent"
+                                            android:layout_gravity="center">
+
+                                            <Spinner
+                                                android:id="@+id/spinnerBottomLeft"
+                                                style="@style/SpinnerwithNoArrow"
+                                                android:layout_width="100dp"
+                                                android:layout_height="100dp"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_marginTop="15dp"></Spinner>
+
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_alignParentTop="true"
+                                                android:layout_centerInParent="true"
+                                                android:gravity="center"
+                                                android:text="-"
+                                                android:textColor="#049af7"
+                                                android:textSize="80dp" />
+
+                                            <Spinner
+                                                android:id="@+id/spinnerBottomRight"
+                                                style="@style/SpinnerwithNoArrow"
+                                                android:layout_width="100dp"
+                                                android:layout_height="100dp"
+                                                android:layout_alignParentRight="true"
+                                                android:layout_marginTop="15dp"
+                                                android:dropDownWidth="100dp"></Spinner>
+
+                                        </RelativeLayout>
+
+                                    </LinearLayout>
+                                </ScrollView>
+
+                                <Button
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    app:layout_widthPercent="99%"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginBottom="5dp"
+                                    android:background="@drawable/border_radius_button"
+                                    android:text="Book"
+                                    android:textColor="@color/white"
+                                    android:textSize="25dp" />
+
+                            </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                        </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                    </androidx.percentlayout.widget.PercentRelativeLayout>
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/bookingMenu"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:id="@+id/imageView1"
-            android:scaleType="fitXY"
-            android:src="@drawable/dog_bath"
-            app:riv_border_color="#333333"
-            app:riv_corner_radius="30dp"
-            app:riv_mutate_background="true" />
-    </RelativeLayout>
+            android:layout_gravity="end"
+            app:headerLayout="@layout/menu_header"
+            app:menu="@menu/menu_item" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/box_shadow"
-        android:elevation="1dp"
-        app:layout_heightPercent="20%"
-        app:layout_marginTopPercent="30%"
-        app:layout_widthPercent="90%"></RelativeLayout>
+    </androidx.drawerlayout.widget.DrawerLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="70mm"
-        android:layout_alignParentBottom="true"
-        android:background="@color/white"
-        app:layout_heightPercent="60%"></RelativeLayout>
-</androidx.percentlayout.widget.PercentRelativeLayout>
+</RelativeLayout>

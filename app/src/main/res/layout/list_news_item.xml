@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="5dp"
     android:layout_marginEnd="5dp"
     android:layout_marginTop="7dp">
@@ -16,23 +18,25 @@
         cardview:cardElevation="20dp"
         cardview:cardCornerRadius="20dp">
 
-        <LinearLayout
+        <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:orientation="horizontal">
+            android:layout_height="150dp">
 
             <ImageView
                 android:id="@+id/imageNews"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:src="@drawable/album1"
-                android:layout_gravity="center"/>
+                android:scaleType="centerCrop"
+                app:layout_widthPercent="35%"/>
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:orientation="vertical"
-                android:layout_marginStart="10dp">
+                android:layout_marginStart="10dp"
+                android:layout_alignParentEnd="true"
+                app:layout_widthPercent="62%">
 
                 <TextView
                     android:id="@+id/txtNewsTitle"
@@ -47,6 +51,7 @@
                     android:id="@+id/txtNewsContent"
                     android:layout_width="match_parent"
                     android:layout_height="80dp"
+                    android:layout_below="@id/txtNewsTitle"
                     android:textSize="15dp"
                     android:text="News Content"/>
 
@@ -57,12 +62,13 @@
                     android:gravity="end"
                     android:text="25/06/2019"
                     android:textSize="14dp"
+                    android:layout_below="@id/txtNewsContent"
                     android:layout_marginEnd="7dp"
                     android:textStyle="italic"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
-        </LinearLayout>
+        </androidx.percentlayout.widget.PercentRelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
