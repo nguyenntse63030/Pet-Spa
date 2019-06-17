@@ -6,28 +6,37 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.RelativeLayout;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
+import com.example.petspa_version_2.Model.Booking;
+import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class BookingActivity extends AppCompatActivity {
-
+    private ServicePet servicePet;
     DrawerLayout drawerLayout = null;
     NavigationView navigationView = null;
+
+    private  Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice;
+    ImageView imageService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,24 +45,49 @@ public class BookingActivity extends AppCompatActivity {
         drawerLayout = findViewById(R.id.menuLayoutDrawer);
         navigationView = findViewById(R.id.bookingMenu);
 
-        Spinner spinnerTopLeft = findViewById(R.id.spinnerTopLeft);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtTitle = findViewById(R.id.txtTitle);
+        txtServicePetContent = findViewById(R.id.txtServicePetContent);
+        txtPrice = findViewById(R.id.txtPrice);
+        imageService = findViewById(R.id.imageService);
 
-        Spinner spinnerTopRight = findViewById(R.id.spinnerTopRight);
+        Intent intent = BookingActivity.this.getIntent();
+        servicePet = (ServicePet) intent.getSerializableExtra("service");
 
-        Spinner spinnerBottomLeft = findViewById(R.id.spinnerBottomLeft);
+        txtPrice.setText(servicePet.getServicePrice() + " VND");
+        txtTitle.setText(servicePet.getServiceTitle());
+        txtDescription.setText(servicePet.getServiceDescription());
+        txtServicePetContent.setText(servicePet.getServiceContent());
+        imageService.setImageResource(servicePet.getServiceImage());
 
-        Spinner spinnerBottomRight = findViewById(R.id.spinnerBottomRight);
+        spinnerTopLeft = findViewById(R.id.spinnerTopLeft);
 
+        spinnerTopRight = findViewById(R.id.spinnerTopRight);
+
+        spinnerBottomLeft = findViewById(R.id.spinnerBottomLeft);
+
+        spinnerBottomRight = findViewById(R.id.spinnerBottomRight);
+
+        spinnerBottomRight.setEnabled(false);
 
         String[] stlItems = new String[]{"08", "09", "10", "11", "13", "14", "15", "16", "17"};
         String[] strItems = new String[]{"00", "30"};
 
         String[] sbrItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "11", "10", "12"};
-        String[] sblItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "11", "10", "12",
-                "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24",
-                "25", "26", "27", "28", "29", "30", "31"};
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
+        Date date = new Date();
+        int currentDate = date.getDate();
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(date); // Now use today date.
+
+        ArrayList<String> sblItems = new ArrayList<>();
+        for (int i = 1; i <= 7; i++) {
+            sblItems.add("" + c.getTime().getDate());
+            c.add(Calendar.DATE, 1); // Adding 5 days
+        }
+
+            ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
         spinnerTopLeft.setAdapter(adapter1);
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.spinner_item, strItems);
@@ -72,7 +106,7 @@ public class BookingActivity extends AppCompatActivity {
         Date currentDate = new Date();
         int day = currentDate.getDate();
         int month = currentDate.getMonth();
-        spinnerDay.setSelection(day - 1);
+        //spinnerDay.setSelection(day - 1);
         spinnerMonth.setSelection(month);
     }
 
@@ -124,11 +158,64 @@ public class BookingActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+
     }
 
     @Override
     public void finish() {
         super.finish();
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
+    public void clickToBook(View view) {
+        Intent intent = BookingActivity.this.getIntent();
+        servicePet = (ServicePet) intent.getSerializableExtra("service");
+
+        String hour = spinnerTopLeft.getSelectedItem().toString();
+        String minute = spinnerTopRight.getSelectedItem().toString();
+
+        String day = spinnerBottomLeft.getSelectedItem().toString();
+        String month = spinnerBottomRight.getSelectedItem().toString();
+
+        String dateBook  = Calendar.getInstance().getTime().getDay()
+                + "/" + Calendar.getInstance().getTime().getMonth()
+                + "/" + Calendar.getInstance().getTime().getYear();
+
+        String service = txtTitle.getText().toString();
+        String price = txtPrice.getText().toString();
+        int imageServiceBooking = servicePet.getServiceImage();
+
+        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+
+        Gson gson = new Gson();
+        String json = pref.getString("DATA_BOOKING", "");
+        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+
+        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
+
+        if(listBooking == null){
+            listBooking = new ArrayList<>();
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking));
+
+            Gson gson2 = new Gson();
+            String json2 = gson2.toJson(listBooking);
+            editor.putString("DATA_BOOKING", json2);
+            editor.commit();
+
+        }else {
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking));
+
+            Gson gson2 = new Gson();
+            String json2 = gson2.toJson(listBooking);
+            editor.putString("DATA_BOOKING", json2);
+            editor.commit();
+        }
+
+        Intent intent1 = new Intent(this, ListServicePetActivity.class);
+        intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent1);
     }
 }

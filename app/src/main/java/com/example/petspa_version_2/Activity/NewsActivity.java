@@ -21,6 +21,8 @@ import com.example.petspa_version_2.Model.News;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.Serializable;
+
 /**
  * @author LongDong(06/06/2019)
  * */
@@ -118,17 +120,7 @@ public class NewsActivity extends AppCompatActivity implements List_News_Listene
     @Override
     public void onClickItemNews(News news) {
         Intent intent = new Intent(NewsActivity.this, NewsDetailActivity.class);
-
-        String newsTitle = news.getNewsTitle();
-        String newsContentDetail = news.getNewsContentDetail();
-        int imageNews = news.getNewsImage();
-        String dateOfNews = news.getDateOfNews();
-        
-        intent.putExtra("newsTitle", newsTitle);
-        intent.putExtra("newsContentDetail", newsContentDetail);
-        intent.putExtra("imageNews", imageNews);
-        intent.putExtra("dateOfNews", dateOfNews);
-
+        intent.putExtra("news", (Serializable) news);
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }

@@ -1,8 +1,11 @@
 package com.example.petspa_version_2.Model;
+
+import java.io.Serializable;
+
 /**
  * @author LongDong(06/06/2019)
  * */
-public class News {
+public class News implements Serializable {
     String newsTitle;
     String newsContent;
     int newsImage;
