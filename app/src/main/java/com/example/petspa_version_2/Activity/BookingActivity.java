@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.petspa_version_2.Model.Booking;
 import com.example.petspa_version_2.Model.ServicePet;
@@ -23,11 +24,15 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.zip.DataFormatException;
 
 public class BookingActivity extends AppCompatActivity {
     private ServicePet servicePet;
@@ -76,15 +81,13 @@ public class BookingActivity extends AppCompatActivity {
         String[] sbrItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "11", "10", "12"};
 
         Date date = new Date();
-        int currentDate = date.getDate();
-
         Calendar c = Calendar.getInstance();
         c.setTime(date); // Now use today date.
 
         ArrayList<String> sblItems = new ArrayList<>();
         for (int i = 1; i <= 7; i++) {
+            c.add(Calendar.DATE, 1);
             sblItems.add("" + c.getTime().getDate());
-            c.add(Calendar.DATE, 1); // Adding 5 days
         }
 
             ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
@@ -141,6 +144,12 @@ public class BookingActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if(item.getItemId() == R.id.item_booking_list){
+                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
                 if (item.getItemId() == R.id.item_user_logout) {
                     //Clear authentication key in SharedPreferences
                     SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
@@ -178,9 +187,13 @@ public class BookingActivity extends AppCompatActivity {
         String day = spinnerBottomLeft.getSelectedItem().toString();
         String month = spinnerBottomRight.getSelectedItem().toString();
 
-        String dateBook  = Calendar.getInstance().getTime().getDay()
-                + "/" + Calendar.getInstance().getTime().getMonth()
-                + "/" + Calendar.getInstance().getTime().getYear();
+        String dateBook = "";
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            dateBook = df.format(new Date()).toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
         String service = txtTitle.getText().toString();
         String price = txtPrice.getText().toString();
