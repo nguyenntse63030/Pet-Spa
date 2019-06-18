@@ -37,10 +37,10 @@ public class ServiceCardViewFragment extends Fragment implements Card_View_Liste
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_1, R.drawable.album1));
-        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_2, R.drawable.album2));
-        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_3, R.drawable.album3));
-        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_4, R.drawable.album4));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_1, R.drawable.pet3));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_2, R.drawable.pet4));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_3, R.drawable.pet5));
+        listServiceCard.add(new ServiceCardView(GlobalValue.CARD_VIEW_4, R.drawable.pet6));
     }
 
     @Override

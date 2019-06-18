@@ -98,6 +98,12 @@ public class NewsDetailActivity extends AppCompatActivity {
                     //Clear authentication key in SharedPreferences
                     SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
                     editor.putString("Email", " ");
+                    editor.remove("username");
+                    editor.remove("gender");
+                    editor.remove("mail");
+                    editor.remove("phone");
+                    editor.remove("birthDay");
+                    editor.remove("password");
                     editor.apply();
 
                     //Back to login page

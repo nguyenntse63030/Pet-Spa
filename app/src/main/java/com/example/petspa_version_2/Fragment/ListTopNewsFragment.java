@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 
 import com.example.petspa_version_2.Adapter.ListTopNewsFragmentAdapter;
 import com.example.petspa_version_2.Listener.Top_News_Listener;
@@ -20,6 +21,8 @@ import com.example.petspa_version_2.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -28,6 +31,11 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
     private ListTopNewsFragmentAdapter adapter;
     private RecyclerView recyclerView;
     private Top_News_Listener mCallBack;
+    private HorizontalScrollView horizontalScrollView;
+    boolean check=true;
+    int start=0;
+    int end=0;
+    Thread thread;
 
     public void setmCallBack(Top_News_Listener mCallBack) {
         this.mCallBack = mCallBack;
@@ -44,11 +52,12 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_top_news, container, false);
-
+        horizontalScrollView = view.findViewById(R.id.horizontalView);
         recyclerView = view.findViewById(R.id.recyclerListTopNews);
         adapter = new ListTopNewsFragmentAdapter(getContext(), listNews, this);
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), listNews.size()));
         recyclerView.setAdapter(adapter);
+
         return view;
     }
 
@@ -92,16 +101,52 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
                 "Đừng mơ trong cuộc sống mà hãy sống trong giấc mơ.",
                 R.drawable.album6, "03/06/2019", "aaaaa"));
 
-        listNews.add(new News("Đức Toàn",
-                "Lời nói của bạn có sức mạnh làm tan vỡ trái tim, hàn gắn mối quan hệ, khai sáng.......",
-                R.drawable.album5, "02/06/2019",
-                "Lời nói của bạn có sức mạnh làm tan vỡ trái tim, hàn gắn mối quan hệ, khai sáng con người và thay đổi thế giới." +
-                        " Hãy nói có trách nhiệm và đừng quên trách nhiệm với lời nói của bạn."));
+//        listNews.add(new News("Đức Toàn",
+//                "Lời nói của bạn có sức mạnh làm tan vỡ trái tim, hàn gắn mối quan hệ, khai sáng.......",
+//                R.drawable.album5, "02/06/2019",
+//                "Lời nói của bạn có sức mạnh làm tan vỡ trái tim, hàn gắn mối quan hệ, khai sáng con người và thay đổi thế giới." +
+//                        " Hãy nói có trách nhiệm và đừng quên trách nhiệm với lời nói của bạn."));
+//
+//        listNews.add(new News("Bá Nam",
+//                "Còn gì đẹp bằng một trái tim đang tan vỡ vẫn có thể tiếp tục tin vào tình yêu. Còn gì cao cả bằng một con người đang trải.....",
+//                R.drawable.album4, "01/06/2019",
+//                "Còn gì đẹp bằng một trái tim đang tan vỡ vẫn có thể tiếp tục tin vào tình yêu. Còn gì cao cả bằng một con người đang trải" +
+//                        " qua bão tố cuộc đời mình vẫn tiếp tục có thể nâng đỡ những người khác."));
+    }
 
-        listNews.add(new News("Bá Nam",
-                "Còn gì đẹp bằng một trái tim đang tan vỡ vẫn có thể tiếp tục tin vào tình yêu. Còn gì cao cả bằng một con người đang trải.....",
-                R.drawable.album4, "01/06/2019",
-                "Còn gì đẹp bằng một trái tim đang tan vỡ vẫn có thể tiếp tục tin vào tình yêu. Còn gì cao cả bằng một con người đang trải" +
-                        " qua bão tố cuộc đời mình vẫn tiếp tục có thể nâng đỡ những người khác."));
+    @Override
+    public void onStart() {
+        super.onStart();
+
+         thread= new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while(check){
+                    try {
+                        Thread.sleep(3000);
+                        end += horizontalScrollView.getWidth();
+                        horizontalScrollView.smoothScrollTo(end,0);
+                        if (end >= (horizontalScrollView.getWidth()*5)){
+                            end = 0 - horizontalScrollView.getWidth();
+                        }
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+        thread.start();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 }

@@ -53,6 +53,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
     @Override
     protected void onStart() {
         super.onStart();
+
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,6 +86,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                     editor.remove("mail");
                     editor.remove("phone");
                     editor.remove("birthDay");
+                    editor.remove("password");
                     editor.apply();
 
                     //Back to login page
