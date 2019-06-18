@@ -1,11 +1,13 @@
 package com.example.petspa_version_2.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -48,5 +50,21 @@ public class ListBookingActivity extends AppCompatActivity {
 
     public void clickToOpenMenu(View view) {
         menuLayoutDrawer.openDrawer(Gravity.RIGHT);
+    }
+
+    private void dialogMessEmptyListBooking(){
+        AlertDialog.Builder mess = new AlertDialog.Builder(this);
+        mess.setTitle("No list Booking!");
+
+        mess.setMessage("Please book service first")
+                .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog showMess = mess.create();
+        showMess.show();
     }
 }

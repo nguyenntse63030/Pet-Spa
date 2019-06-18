@@ -1,5 +1,7 @@
 package com.example.petspa_version_2.Activity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -19,11 +22,17 @@ import com.example.petspa_version_2.Fragment.ListTopNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.Listener.Top_News_Listener;
+import com.example.petspa_version_2.Model.Booking;
 import com.example.petspa_version_2.Model.News;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.Serializable;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author LongDong(04/06/2019)
@@ -79,9 +88,26 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                 }
 
                 if(item.getItemId() == R.id.item_booking_list){
-                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
+
+                    List<Booking> listBooking = new ArrayList<>();
+                    SharedPreferences pref = getSharedPreferences("listBooking", Context.MODE_PRIVATE);
+
+                    Gson gson = new Gson();
+                    String json = pref.getString("DATA_BOOKING", "");
+                    Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+
+                    listBooking = gson.fromJson(json, type);
+
+                    if(listBooking == null){
+                        dialogMessEmptyListBooking();
+                    }
+                    else if(listBooking.isEmpty()){
+                            dialogMessEmptyListBooking();
+                    }else {
+                        Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
                 }
 
                 if(item.getItemId() == R.id.item_user_logout){
@@ -152,5 +178,21 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         FragmentTransaction fragmentTransaction =fm.beginTransaction();
         fragmentTransaction.replace(R.id.newsLayout, fragment);
         fragmentTransaction.commit();
+    }
+
+    private void dialogMessEmptyListBooking(){
+        AlertDialog.Builder mess = new AlertDialog.Builder(this);
+        mess.setTitle("No list Booking!");
+
+        mess.setMessage("Please book service first")
+                .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog showMess = mess.create();
+        showMess.show();
     }
 }

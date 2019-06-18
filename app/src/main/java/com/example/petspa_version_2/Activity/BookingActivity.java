@@ -1,9 +1,12 @@
 package com.example.petspa_version_2.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -31,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.zip.DataFormatException;
 
@@ -139,9 +143,25 @@ public class BookingActivity extends AppCompatActivity {
                 }
 
                 if (item.getItemId() == R.id.item_user_profile) {
-                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
+                    List<Booking> listBooking = new ArrayList<>();
+                    SharedPreferences pref = getSharedPreferences("listBooking", Context.MODE_PRIVATE);
+
+                    Gson gson = new Gson();
+                    String json = pref.getString("DATA_BOOKING", "");
+                    Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+
+                    listBooking = gson.fromJson(json, type);
+
+                    if(listBooking == null){
+                        dialogMessEmptyListBooking();
+                    }
+                    else if(listBooking.isEmpty()){
+                        dialogMessEmptyListBooking();
+                    }else {
+                        Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
                 }
 
                 if(item.getItemId() == R.id.item_booking_list){
@@ -230,5 +250,21 @@ public class BookingActivity extends AppCompatActivity {
         Intent intent1 = new Intent(this, ListServicePetActivity.class);
         intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent1);
+    }
+
+    private void dialogMessEmptyListBooking(){
+        AlertDialog.Builder mess = new AlertDialog.Builder(this);
+        mess.setTitle("No list Booking!");
+
+        mess.setMessage("Please book service first")
+                .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog showMess = mess.create();
+        showMess.show();
     }
 }
