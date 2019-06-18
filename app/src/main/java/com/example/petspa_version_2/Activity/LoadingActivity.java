@@ -16,7 +16,8 @@ public class LoadingActivity extends AppCompatActivity {
 
         Intent home = new Intent(LoadingActivity.this, LoginActivity.class);
         //remove back button
-        home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        //home.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(home);
+        finish();
     }
 }

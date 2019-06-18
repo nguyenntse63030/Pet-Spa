@@ -32,8 +32,9 @@ public class LoginActivity extends AppCompatActivity {
             //user logged - goto home
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
             //remove back button
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            finish();
         }
         //else go to login page
     }

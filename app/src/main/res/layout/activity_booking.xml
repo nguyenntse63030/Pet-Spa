@@ -72,7 +72,7 @@
                             app:layout_widthPercent="90%">
 
                             <com.makeramen.roundedimageview.RoundedImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:id="@+id/imageView1"
+                                android:id="@+id/imageService"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:scaleType="fitXY"
@@ -119,6 +119,7 @@
                                 android:textStyle="bold" />
 
                             <TextView
+                                android:id="@+id/txtPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignRight="@+id/txtTitle"
@@ -157,6 +158,7 @@
                                         android:padding="10dp">
 
                                         <TextView
+                                            android:id="@+id/txtServicePetContent"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginBottom="5dp"
@@ -229,7 +231,7 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                                 android:layout_width="100dp"
                                                 android:layout_height="100dp"
                                                 android:layout_alignParentLeft="true"
-                                                android:layout_marginTop="15dp"></Spinner>
+                                                android:layout_marginTop="15dp"/>
 
                                             <TextView
                                                 android:layout_width="wrap_content"
@@ -265,7 +267,8 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                     android:background="@drawable/border_radius_button"
                                     android:text="Book"
                                     android:textColor="@color/white"
-                                    android:textSize="25dp" />
+                                    android:textSize="25dp"
+                                    android:onClick="clickToBook"/>
 
                             </androidx.percentlayout.widget.PercentRelativeLayout>
 

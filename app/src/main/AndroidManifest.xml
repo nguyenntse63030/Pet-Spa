@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activity.ChangePasswordActivity"></activity>
+        <activity android:name=".Activity.ListBookingActivity"></activity>
         <activity android:name=".Activity.EditActivity" />
         <activity android:name=".Activity.ForgotPasswordActivity" />
         <activity android:name=".Activity.SignupActivity" />

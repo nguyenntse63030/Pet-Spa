@@ -25,7 +25,6 @@ public class NewsDetailActivity extends AppCompatActivity {
 
     TextView txtDateOfNews, txtNewsDetailContent, txtNewsDetailTitle;
     ImageView imageNewsDetail;
-//    private News newsDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,15 +48,12 @@ public class NewsDetailActivity extends AppCompatActivity {
 
         Intent intent = NewsDetailActivity.this.getIntent();
 
-        String newsTitle = intent.getStringExtra("newsTitle");
-        String newsContentDetail = intent.getStringExtra("newsContentDetail");
-        int imageNews = intent.getIntExtra("imageNews", 0);
-        String dateOfNews = intent.getStringExtra("dateOfNews");
+        News news = (News) intent.getSerializableExtra("news");
 
-        txtDateOfNews.setText(dateOfNews);
-        txtNewsDetailContent.setText(newsContentDetail);
-        imageNewsDetail.setImageResource(imageNews);
-        txtNewsDetailTitle.setText(newsTitle);
+        txtNewsDetailTitle.setText(news.getNewsTitle());
+        txtNewsDetailContent.setText(news.getNewsContentDetail());
+        txtDateOfNews.setText(news.getDateOfNews());
+        imageNewsDetail.setImageResource(news.getNewsImage());
 
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -91,6 +87,12 @@ public class NewsDetailActivity extends AppCompatActivity {
                 if(item.getItemId() == R.id.item_news){
                     Intent intent = new Intent(getApplicationContext(), NewsActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.item_booking_list){
+                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
                 }
 

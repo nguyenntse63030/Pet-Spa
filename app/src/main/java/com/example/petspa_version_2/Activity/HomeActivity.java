@@ -23,6 +23,8 @@ import com.example.petspa_version_2.Model.News;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
+import java.io.Serializable;
+
 /**
  * @author LongDong(04/06/2019)
  * */
@@ -77,6 +79,12 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
                     startActivity(intent);
                 }
 
+                if(item.getItemId() == R.id.item_booking_list){
+                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
                 if(item.getItemId() == R.id.item_user_logout){
                     //Clear authentication key in SharedPreferences
                     SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
@@ -119,16 +127,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
     @Override
     public void openTopNewsItem(News news) {
         Intent intent = new Intent(HomeActivity.this, NewsDetailActivity.class);
-
-        String newsTitle = news.getNewsTitle();
-        String newsContentDetail = news.getNewsContentDetail();
-        int imageNews = news.getNewsImage();
-        String dateOfNews = news.getDateOfNews();
-
-        intent.putExtra("newsTitle", newsTitle);
-        intent.putExtra("newsContentDetail", newsContentDetail);
-        intent.putExtra("imageNews", imageNews);
-        intent.putExtra("dateOfNews", dateOfNews);
+        intent.putExtra("news", (Serializable) news);
 
         startActivity(intent);
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

@@ -38,15 +38,24 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.imageServicePet.setImageResource(listServicePet.get(position).getServiceImage());
         holder.txtServicePetTitle.setText(listServicePet.get(position).getServiceTitle());
-        holder.txtServicePetContent.setText(listServicePet.get(position).getServiceContent());
-        holder.txtServicePetPrice.setText("$" + listServicePet.get(position).getServicePrice());
+        holder.txtServicePetDescription.setText(listServicePet.get(position).getServiceDescription());
+        holder.txtServicePetPrice.setText(listServicePet.get(position).getServicePrice() + " VND");
+
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list_service_item_listener.openBookingScreen();
+                String serviceTitle = listServicePet.get(position).getServiceTitle();
+                String serviceDescription = listServicePet.get(position).getServiceDescription();
+                String serviceContent = listServicePet.get(position).getServiceContent();
+                int serviceImage = listServicePet.get(position).getServiceImage();
+                int servicePrice = listServicePet.get(position).getServicePrice();
+
+                ServicePet service = new ServicePet(serviceTitle, serviceDescription, serviceContent, serviceImage, servicePrice);
+
+                list_service_item_listener.openBookingScreen(service);
             }
         });
     }
@@ -59,14 +68,14 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         ImageView imageServicePet;
         TextView txtServicePetTitle;
-        TextView txtServicePetContent;
+        TextView txtServicePetDescription;
         TextView txtServicePetPrice;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             imageServicePet = itemView.findViewById(R.id.imageServicePet);
-            txtServicePetContent = itemView.findViewById(R.id.txtServicePetContent);
+            txtServicePetDescription = itemView.findViewById(R.id.txtServicePetDescription);
             txtServicePetPrice = itemView.findViewById(R.id.txtServicePetPrice);
             txtServicePetTitle = itemView.findViewById(R.id.txtServicePetTitle);
         }
