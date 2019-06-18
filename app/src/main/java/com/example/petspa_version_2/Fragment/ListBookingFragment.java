@@ -40,10 +40,13 @@ public class ListBookingFragment extends Fragment implements Booking_list_listen
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_list_booking, container, false);
         recyclerView = view.findViewById(R.id.listBookingRecyclerView);
-
-        adapter = new ListBookingFragmentAdapter(listBooking, this);
-        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
-        recyclerView.setAdapter(adapter);
+        if(listBooking != null){
+            if(!listBooking.isEmpty()){
+                adapter = new ListBookingFragmentAdapter(listBooking, this);
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 1));
+                recyclerView.setAdapter(adapter);
+            }
+        }
         return view;
     }
 
@@ -56,7 +59,11 @@ public class ListBookingFragment extends Fragment implements Booking_list_listen
 
         listBooking = gson.fromJson(json, type);
 
-        listBooking = sortList((ArrayList<Booking>) listBooking);
+        if(listBooking != null){
+            if(!listBooking.isEmpty()){
+                listBooking = sortList((ArrayList<Booking>) listBooking);
+            }
+        }
     }
 
     private ArrayList<Booking> sortList(ArrayList<Booking> listBooking){
