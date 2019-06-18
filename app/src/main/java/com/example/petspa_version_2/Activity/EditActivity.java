@@ -1,10 +1,12 @@
 package com.example.petspa_version_2.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -15,8 +17,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.petspa_version_2.Global.GlobalValue;
+import com.example.petspa_version_2.Model.Booking;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EditActivity extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer;
@@ -110,7 +120,32 @@ public class EditActivity extends AppCompatActivity {
                     Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                     startActivity(intent);
-                }if(item.getItemId() == R.id.item_user_logout){
+                }
+
+                if(item.getItemId() == R.id.item_booking_list){
+
+                    List<Booking> listBooking = new ArrayList<>();
+                    SharedPreferences pref = getSharedPreferences("listBooking", Context.MODE_PRIVATE);
+
+                    Gson gson = new Gson();
+                    String json = pref.getString("DATA_BOOKING", "");
+                    Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+
+                    listBooking = gson.fromJson(json, type);
+
+                    if(listBooking == null){
+                        dialogMessEmptyListBooking();
+                    }
+                    else if(listBooking.isEmpty()){
+                        dialogMessEmptyListBooking();
+                    }else {
+                        Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                        startActivity(intent);
+                    }
+                }
+
+                if(item.getItemId() == R.id.item_user_logout){
                     //Clear authentication key in SharedPreferences
                     SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
                     editor.putString("Email", " ");
@@ -133,5 +168,21 @@ public class EditActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    private void dialogMessEmptyListBooking(){
+        AlertDialog.Builder mess = new AlertDialog.Builder(this);
+        mess.setTitle(GlobalValue.MESS_TITLE);
+
+        mess.setMessage(GlobalValue.MES_CONTENT)
+                .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog showMess = mess.create();
+        showMess.show();
     }
 }

@@ -10,9 +10,11 @@ public class ServicePet implements Serializable {
     String serviceDescription;
     String serviceContent;
     int serviceImage;
-    int servicePrice;
+    String servicePrice;
 
-    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, int servicePrice) {
+
+
+    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice) {
         this.serviceTitle = serviceTitle;
         this.serviceDescription = serviceDescription;
         this.serviceContent = serviceContent;
@@ -32,7 +34,8 @@ public class ServicePet implements Serializable {
         return serviceImage;
     }
 
-    public int getServicePrice() {
+
+    public String getServicePrice() {
         return servicePrice;
     }
 

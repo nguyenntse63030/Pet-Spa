@@ -51,7 +51,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
                 String serviceDescription = listServicePet.get(position).getServiceDescription();
                 String serviceContent = listServicePet.get(position).getServiceContent();
                 int serviceImage = listServicePet.get(position).getServiceImage();
-                int servicePrice = listServicePet.get(position).getServicePrice();
+                String servicePrice = listServicePet.get(position).getServicePrice();
 
                 ServicePet service = new ServicePet(serviceTitle, serviceDescription, serviceContent, serviceImage, servicePrice);
 
