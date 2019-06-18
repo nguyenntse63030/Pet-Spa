@@ -143,6 +143,12 @@ public class BookingActivity extends AppCompatActivity {
                 }
 
                 if (item.getItemId() == R.id.item_user_profile) {
+                    Intent intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+                }
+
+                if(item.getItemId() == R.id.item_booking_list){
                     List<Booking> listBooking = new ArrayList<>();
                     SharedPreferences pref = getSharedPreferences("listBooking", Context.MODE_PRIVATE);
 
@@ -162,12 +168,6 @@ public class BookingActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
                     }
-                }
-
-                if(item.getItemId() == R.id.item_booking_list){
-                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-                    startActivity(intent);
                 }
 
                 if (item.getItemId() == R.id.item_user_logout) {
