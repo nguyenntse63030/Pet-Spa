@@ -1,17 +1,22 @@
 package com.example.petspa_version_2.Fragment;
 
 
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
+import android.widget.Toast;
 
 import com.example.petspa_version_2.Adapter.ListTopNewsFragmentAdapter;
 import com.example.petspa_version_2.Listener.Top_News_Listener;
@@ -20,6 +25,8 @@ import com.example.petspa_version_2.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static java.lang.Thread.sleep;
 
@@ -32,10 +39,10 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
     private RecyclerView recyclerView;
     private Top_News_Listener mCallBack;
     private HorizontalScrollView horizontalScrollView;
-    boolean check=true;
-    int start=0;
     int end=0;
-    Thread thread;
+    Timer timer;
+    TimerTask timerTask;
+    final Handler handler = new Handler();
 
     public void setmCallBack(Top_News_Listener mCallBack) {
         this.mCallBack = mCallBack;
@@ -113,38 +120,66 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
 //                "Còn gì đẹp bằng một trái tim đang tan vỡ vẫn có thể tiếp tục tin vào tình yêu. Còn gì cao cả bằng một con người đang trải" +
 //                        " qua bão tố cuộc đời mình vẫn tiếp tục có thể nâng đỡ những người khác."));
     }
+    public void initializeTimerTask() {
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-         thread= new Thread(new Runnable() {
-            @Override
+        timerTask = new TimerTask() {
             public void run() {
-                while(check){
-                    try {
-                        Thread.sleep(3000);
+                //use a handler to run a toast that shows the current timestamp
+                handler.post(new Runnable() {
+                    public void run() {
+                        //get the current timeStamp
                         end += horizontalScrollView.getWidth();
                         horizontalScrollView.smoothScrollTo(end,0);
                         if (end >= (horizontalScrollView.getWidth()*5)){
                             end = 0 - horizontalScrollView.getWidth();
                         }
-
-                    }catch (Exception e){
-                        e.printStackTrace();
                     }
-
-                }
+                });
             }
-        });
-        thread.start();
+        };
     }
-
     @Override
     public void onPause() {
         super.onPause();
+        stoptimertask();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    @Override
+    public void onStart() {
+        super.onStart();
+        timer = new Timer();
+        initializeTimerTask();
+        timer.schedule(timerTask,3000,3000);
+
+        horizontalScrollView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                sleepTimer();
+                return false;
+            }
+        });
+
+    }
+    public void stoptimertask() {
+        //stop the timer, if it's not already null
+        if (timer != null) {
+            timer.cancel();
+            timer = null;
+        }
+    }
+    public void sleepTimer(){
+        if (timer != null) {
+            stoptimertask();
+            try {
+                timer = new Timer();
+                initializeTimerTask();
+                timer.schedule(timerTask, 5000,3000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();
