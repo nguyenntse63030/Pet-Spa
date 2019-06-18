@@ -58,11 +58,10 @@
 
                     <FrameLayout
                         android:id="@+id/cardServiceLayout"
-                        android:layout_marginTop="5dp"
                         android:layout_below="@+id/newsLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/serviceCardBackgroubd"
+                        android:background="@color/white"
                         app:layout_heightPercent="67%">
 
                     </FrameLayout>

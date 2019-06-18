@@ -18,22 +18,20 @@ import android.widget.Toast;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 
-public class EditActivity extends AppCompatActivity {
+public class ChangePasswordActivity extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer;
-    NavigationView editProfileMenu;
-    EditText editFullName,editPhone,editGender,editEmail,editBirthDay;
+    NavigationView changePasswordMenu;
+    EditText editPassword,editNewPassword,editRePassword;
     Button btnDone,btnBack,btnMenu;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_edit);
+        setContentView(R.layout.activity_change_password);
         menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
-        editProfileMenu = findViewById(R.id.editProfileMenu);
-        editFullName = findViewById(R.id.editFullname);
-        editPhone = findViewById(R.id.editPhone);
-        editGender = findViewById(R.id.editGender);
-        editEmail = findViewById(R.id.editEmail);
-        editBirthDay = findViewById(R.id.editBirthDay);
+        changePasswordMenu = findViewById(R.id.changePasswordMenu);
+        editPassword = findViewById(R.id.editPassword);
+        editNewPassword = findViewById(R.id.editNewPassword);
+        editRePassword = findViewById(R.id.editRePassword);
         btnDone = findViewById(R.id.btnDone);
         btnBack = findViewById(R.id.btnBack);
         btnMenu = findViewById(R.id.btnMenu);
@@ -42,37 +40,34 @@ public class EditActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        SharedPreferences sharedPreferences = getSharedPreferences("Email", Context.MODE_PRIVATE);
-        String email = sharedPreferences.getString("mail", "");
-        String fullName = sharedPreferences.getString("username", "");
-        String gender = sharedPreferences.getString("gender", "");
-        String phone = sharedPreferences.getString("phone", "");
-        String birthDay = sharedPreferences.getString("birthDay", "");
-        editFullName.setText(fullName);
-        editPhone.setText(phone);
-        editEmail.setText(email);
-        editGender.setText(gender);
-        editBirthDay.setText(birthDay);
+        editPassword.setText("");
+        editNewPassword.setText("");
+        editRePassword.setText("");
         btnDone.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String fullName = editFullName.getText().toString();
-                String phone = editPhone.getText().toString();
-                String gender = editGender.getText().toString();
-                String email = editEmail.getText().toString();
-                String birthDay = editBirthDay.getText().toString();
                 SharedPreferences sharedPreferences =  getSharedPreferences("Email", Context.MODE_PRIVATE);
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.putString("username", fullName);
-                editor.putString("gender", gender);
-                editor.putString("mail", email);
-                editor.putString("phone", phone);
-                editor.putString("birthDay", birthDay);
-                editor.apply();
-                Intent intent = new Intent(EditActivity.this, ProfileActivity.class);
-                Toast.makeText(EditActivity.this, "Edit Profile Successfully", Toast.LENGTH_SHORT).show();
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                String password=sharedPreferences.getString("password","").trim();
+                String txtPassword = editPassword.getText().toString().trim();
+                if(password.equals(txtPassword)){
+                    String newPassword = editNewPassword.getText().toString().trim();
+                    String rePassword = editRePassword.getText().toString().trim();
+                    if(newPassword.equals(rePassword)){
+                        SharedPreferences.Editor editor=sharedPreferences.edit();
+                        editor.putString("password",newPassword);
+                        editor.apply();
+                        Intent intent = new Intent(ChangePasswordActivity.this, ProfileActivity.class);
+                        Toast.makeText(ChangePasswordActivity.this, "Change Password Successfully", Toast.LENGTH_SHORT).show();
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }else{
+
+                    }
+
+                }else{
+
+                }
+
             }
         });
         btnBack.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +84,7 @@ public class EditActivity extends AppCompatActivity {
             }
         });
 
-        editProfileMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        changePasswordMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 /**
@@ -123,7 +118,7 @@ public class EditActivity extends AppCompatActivity {
                     editor.apply();
 
                     //Back to login page
-                    Intent intent = new Intent(EditActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(ChangePasswordActivity.this, LoginActivity.class);
                     //Remove back button
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

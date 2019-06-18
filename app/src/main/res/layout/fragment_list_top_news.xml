@@ -8,16 +8,17 @@
 
     <!-- TODO: Update blank fragment layout -->
     <HorizontalScrollView
-        android:id="@+id/horizontalNews"
+        android:id="@+id/horizontalView"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerListTopNews"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>
-
     </HorizontalScrollView>
+
 
 </androidx.percentlayout.widget.PercentRelativeLayout>

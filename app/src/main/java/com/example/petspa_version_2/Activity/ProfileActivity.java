@@ -75,6 +75,14 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        btnChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this,ChangePasswordActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                startActivity(intent);
+            }
+        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,6 +123,7 @@ public class ProfileActivity extends AppCompatActivity {
                     editor.remove("mail");
                     editor.remove("phone");
                     editor.remove("birthDay");
+                    editor.remove("password");
                     editor.apply();
 
                     //Back to login page

@@ -50,11 +50,12 @@ public class LoginActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences("Email", MODE_PRIVATE).edit();
             editor.putString("Email", authentication);
             //add profile user
-            editor.putString("username", "Đặng Hữu Lễ");
+            editor.putString("username", "Nguyen Van A");
             editor.putString("gender", "nam");
             editor.putString("mail", "ledocon@gmail.com");
             editor.putString("phone", "0965923447");
             editor.putString("birthDay", "11/7/1998");
+            editor.putString("password", "123");
             editor.apply();
             //Login success
             Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

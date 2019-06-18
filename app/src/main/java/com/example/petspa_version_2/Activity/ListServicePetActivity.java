@@ -125,6 +125,7 @@ public class ListServicePetActivity extends AppCompatActivity {
                     editor.remove("mail");
                     editor.remove("phone");
                     editor.remove("birthDay");
+                    editor.remove("password");
                     editor.apply();
 
                     //Back to login page

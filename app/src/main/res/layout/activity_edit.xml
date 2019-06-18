@@ -55,27 +55,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
-                        <RelativeLayout
-                            android:id="@+id/avatarLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:background="@drawable/box_shadow"
-                            app:layout_heightPercent="20%"
-                            app:layout_marginTopPercent="5%"
-                            app:layout_widthPercent="45%"
-                            android:elevation="2dp">
-                            <com.makeramen.roundedimageview.RoundedImageView
-                                xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:id="@+id/imageAvatar"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/album1"
-                                app:riv_border_color="#333333"
-                                app:riv_corner_radius="30dp"
-                                app:riv_mutate_background="true" />
-                        </RelativeLayout>
+
 
 
                         <RelativeLayout
@@ -83,7 +63,7 @@
                             android:layout_height="match_parent"
                             android:layout_alignParentBottom="true"
                             android:background="@color/white"
-                            app:layout_heightPercent="85%">
+                            app:layout_heightPercent="100%">
                             <androidx.percentlayout.widget.PercentRelativeLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent">
@@ -91,7 +71,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     app:layout_widthPercent="100%"
-                                    app:layout_heightPercent="78%"
+                                    app:layout_heightPercent="100%"
                                     android:layout_above="@+id/emailLayout"
                                     android:elevation="1dp">
                                     <TextView
@@ -104,7 +84,8 @@
                                         android:layout_margin="5dp"
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
-                                        app:layout_widthPercent="50%"
+                                        android:paddingBottom="10dp"
+                                        app:layout_widthPercent="28%"
                                         />
                                     <EditText
                                         android:id="@+id/editFullname"
@@ -115,12 +96,10 @@
                                         android:text="Bao Long"
                                         android:layout_margin="5dp"
                                         android:paddingBottom="10dp"
-                                        android:paddingLeft="10dp"
-                                        android:imeOptions="actionNext"
+                                        android:imeOptions="actionDone"
                                         android:singleLine="true"
-                                        android:layout_below="@+id/lbFullname"
-                                        android:ems="10"
-                                        app:layout_widthPercent="50%"/>
+                                        android:layout_toRightOf="@+id/lbFullname"
+                                        app:layout_widthPercent="70%"/>
                                     <TextView
                                         android:id="@+id/lbPhone"
                                         android:layout_width="match_parent"
@@ -131,7 +110,7 @@
                                         android:layout_margin="5dp"
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
-                                        android:layout_below="@+id/editFullname"
+                                        android:layout_below="@+id/editEmail"
                                         app:layout_widthPercent="50%"/>
                                     <EditText
                                         android:id="@+id/editPhone"
@@ -144,7 +123,7 @@
                                         android:paddingBottom="10dp"
                                         android:paddingLeft="10dp"
                                         android:ems="10"
-                                        android:imeOptions="actionNext"
+                                        android:imeOptions="actionDone"
                                         android:singleLine="true"
                                         android:layout_below="@+id/lbPhone"
                                         app:layout_widthPercent="50%"/>
@@ -159,8 +138,9 @@
                                         android:layout_margin="5dp"
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
-                                        android:layout_below="@+id/editPhone"
-                                        app:layout_widthPercent="50%"/>
+                                        android:paddingBottom="10dp"
+                                        android:layout_below="@+id/lbFullname"
+                                        app:layout_widthPercent="28%"/>
                                     <EditText
                                         android:id="@+id/editEmail"
                                         android:layout_width="match_parent"
@@ -173,8 +153,9 @@
                                         android:ems="10"
                                         android:imeOptions="actionDone"
                                         android:singleLine="true"
-                                        android:paddingLeft="10dp"
-                                        android:layout_below="@+id/lbEmail"/>
+                                        android:layout_below="@+id/editFullname"
+                                        android:layout_toRightOf="@+id/lbEmail"
+                                        app:layout_widthPercent="72%"/>
                                     <!--the right site-->
                                     <TextView
                                         android:id="@+id/lbBirthDay"
@@ -184,6 +165,7 @@
                                         android:textStyle="bold"
                                         android:text="Birth day:"
                                         android:layout_margin="5dp"
+                                        android:layout_below="@+id/editEmail"
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
                                         android:layout_alignParentRight="true"
@@ -199,7 +181,7 @@
                                         android:paddingBottom="10dp"
                                         android:ems="10"
                                         android:paddingLeft="10dp"
-                                        android:imeOptions="actionNext"
+                                        android:imeOptions="actionDone"
                                         android:singleLine="true"
                                         android:layout_below="@+id/lbBirthDay"
                                         android:layout_alignParentRight="true"
@@ -214,8 +196,7 @@
                                         android:layout_margin="5dp"
                                         android:paddingTop="10dp"
                                         android:paddingLeft="10dp"
-                                        android:layout_below="@+id/editBirthDay"
-                                        android:layout_alignParentRight="true"
+                                        android:layout_below="@+id/editPhone"
                                         app:layout_widthPercent="50%"/>
                                     <EditText
                                         android:id="@+id/editGender"
@@ -229,8 +210,7 @@
                                         android:ems="10"
                                         android:paddingLeft="10dp"
                                         android:layout_below="@+id/lbGender"
-                                        android:layout_alignParentRight="true"
-                                        android:imeOptions="actionNext"
+                                        android:imeOptions="actionDone"
                                         android:singleLine="true"
                                         app:layout_widthPercent="50%"/>
                                 </androidx.percentlayout.widget.PercentRelativeLayout>
