@@ -7,10 +7,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
-        android:layout_height="160dp"
+        android:layout_height="220dp"
         android:layout_margin="13dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
+        cardview:cardElevation="5dp"
         cardview:cardCornerRadius="20dp">
 
         <LinearLayout
@@ -21,7 +22,7 @@
             <ImageView
                 android:id="@+id/imageServiceCardView"
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="180dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/album1" />
 

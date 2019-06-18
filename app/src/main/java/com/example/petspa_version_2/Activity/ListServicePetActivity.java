@@ -17,6 +17,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.petspa_version_2.Fragment.ListServicePetFragment;
 import com.example.petspa_version_2.Model.Booking;
@@ -36,6 +37,7 @@ public class ListServicePetActivity extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer;
     NavigationView listServicePetMenu;
     Button btnMenu, btnBack;
+    TextView txtListServicePetTitle;
     ListServicePetFragment listServicePetFragment;
 
     @Override
@@ -48,6 +50,10 @@ public class ListServicePetActivity extends AppCompatActivity {
         listServicePetMenu = findViewById(R.id.listServicePetMenu);
 
         btnBack = findViewById(R.id.btnBack);
+        txtListServicePetTitle = findViewById(R.id.txtListServicePetTitle);
+
+        Intent intent = ListServicePetActivity.this.getIntent();
+        txtListServicePetTitle.setText(intent.getStringExtra("serviceType"));
 
         listServicePetFragment = new ListServicePetFragment();
         loadFragment(listServicePetFragment);

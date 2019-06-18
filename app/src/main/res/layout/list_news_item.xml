@@ -15,7 +15,7 @@
         android:orientation="vertical"
         android:foreground="?android:attr/selectableItemBackground"
         android:layout_margin="7dp"
-        cardview:cardElevation="20dp"
+        cardview:cardElevation="5dp"
         cardview:cardCornerRadius="20dp">
 
         <androidx.percentlayout.widget.PercentRelativeLayout

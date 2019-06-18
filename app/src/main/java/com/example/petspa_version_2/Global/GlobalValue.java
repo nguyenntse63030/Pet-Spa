@@ -6,8 +6,8 @@ public class GlobalValue {
     /**
      * Name of Card in home activity
      * */
-    public static final String CARD_VIEW_1 = "Service 1";
-    public static final String CARD_VIEW_2 = "Service 2";
-    public static final String CARD_VIEW_3 = "Service 3";
-    public static final String CARD_VIEW_4 = "Service 4";
+    public static final String CARD_VIEW_1 = "Vệ sinh thú cưng";
+    public static final String CARD_VIEW_2 = "Trị liệu spa";
+    public static final String CARD_VIEW_3 = "Chăm sóc thú cưng";
+    public static final String CARD_VIEW_4 = "Khuyến mãi";
 }
