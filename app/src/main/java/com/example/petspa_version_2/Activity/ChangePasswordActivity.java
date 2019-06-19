@@ -61,11 +61,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }else{
-
+                        Toast.makeText(ChangePasswordActivity.this, "Re-password not match!!!", Toast.LENGTH_SHORT).show();
                     }
 
                 }else{
-
+                    Toast.makeText(ChangePasswordActivity.this, "Old password not match!!!", Toast.LENGTH_SHORT).show();
                 }
 
             }
