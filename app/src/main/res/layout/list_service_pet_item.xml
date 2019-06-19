@@ -42,38 +42,39 @@
 
                     <TextView
                         android:id="@+id/txtServicePetTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:text="Service Pet Title"
-                        android:textSize="18dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:text="Tẩy lông và hồi phục màu lông
+                        (15' đến 20')"
+                        android:textSize="17dp"
                         android:gravity="center_vertical"
                         android:textStyle="bold"
                         app:layout_widthPercent="65%"
                         app:layout_heightPercent="30%"
+                        android:textColor="@color/blueTitleItem"
                         />
-
-
-
-                    <TextView
-                        android:id="@+id/txtServicePetPrice"
-                        android:layout_width="wrap_content"
-                        android:layout_height="40dp"
-                        android:layout_gravity="center"
-                        android:textSize="18dp"
-                        android:gravity="center"
-                        android:layout_marginStart="2dp"
-                        android:layout_alignParentRight="true"
-                        android:text="$1400"
-                        app:layout_widthPercent="35%"/>
-
 
                 <TextView
                     android:id="@+id/txtServicePetDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="15dp"
+                    android:layout_height="59dp"
                     android:layout_below="@+id/txtServicePetTitle"
-                    android:text="Service Pet Content"/>
+                    android:text="Service Pet Content"
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/txtServicePetPrice"
+                    android:textColor="@color/blueTitleItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:layout_marginStart="2dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="$1400"
+                    app:layout_widthPercent="35%"/>
             </RelativeLayout>
 
 

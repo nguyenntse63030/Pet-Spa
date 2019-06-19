@@ -19,6 +19,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Model.Booking;
 import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
@@ -247,16 +248,17 @@ public class BookingActivity extends AppCompatActivity {
             editor.commit();
         }
 
-        Intent intent1 = new Intent(this, ListServicePetActivity.class);
-        intent1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        Intent intent1 = new Intent(this, ListBookingActivity.class);
         startActivity(intent1);
+        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        finish();
     }
 
     private void dialogMessEmptyListBooking(){
         AlertDialog.Builder mess = new AlertDialog.Builder(this);
-        mess.setTitle("No list Booking!");
+        mess.setTitle(GlobalValue.MESS_TITLE);
 
-        mess.setMessage("Please book service first")
+        mess.setMessage(GlobalValue.MES_CONTENT)
                 .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

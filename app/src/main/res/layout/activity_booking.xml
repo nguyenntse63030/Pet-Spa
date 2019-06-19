@@ -100,7 +100,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:text="Combo Vệ Sinh 1"
-                                android:textColor="#049af7"
+                                android:textColor="@color/blueTitleItem"
                                 android:textSize="18dp"
                                 android:textStyle="bold"
                                 app:layout_widthPercent="50%" />
@@ -126,7 +126,7 @@
                                 android:layout_alignParentEnd="true"
                                 android:text="120,000 VND"
                                 android:textAlignment="center"
-                                android:textColor="#049af7"
+                                android:textColor="@color/blueTitleItem"
                                 android:textSize="20dp"
                                 app:layout_widthPercent="50%" />
                         </androidx.percentlayout.widget.PercentRelativeLayout>

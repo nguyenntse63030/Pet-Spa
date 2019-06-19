@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Model.Booking;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
@@ -176,9 +177,9 @@ public class ProfileActivity extends AppCompatActivity {
 
     private void dialogMessEmptyListBooking(){
         AlertDialog.Builder mess = new AlertDialog.Builder(this);
-        mess.setTitle("No list Booking!");
+        mess.setTitle(GlobalValue.MESS_TITLE);
 
-        mess.setMessage("Please book service first")
+        mess.setMessage(GlobalValue.MES_CONTENT)
                 .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

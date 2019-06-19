@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.petspa_version_2.Fragment.ListTopNewsFragment;
 import com.example.petspa_version_2.Fragment.ServiceCardViewFragment;
+import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Listener.Service_Card_View_Fragment_Listener;
 import com.example.petspa_version_2.Listener.Top_News_Listener;
 import com.example.petspa_version_2.Model.Booking;
@@ -185,9 +186,9 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
 
     private void dialogMessEmptyListBooking(){
         AlertDialog.Builder mess = new AlertDialog.Builder(this);
-        mess.setTitle("No list Booking!");
+        mess.setTitle(GlobalValue.MESS_TITLE);
 
-        mess.setMessage("Please book service first")
+        mess.setMessage(GlobalValue.MES_CONTENT)
                 .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
