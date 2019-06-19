@@ -13,11 +13,11 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Model.Booking;
@@ -29,15 +29,11 @@ import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.zip.DataFormatException;
 
 public class BookingActivity extends AppCompatActivity {
     private ServicePet servicePet;
@@ -46,6 +42,7 @@ public class BookingActivity extends AppCompatActivity {
 
     private  Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
     private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice;
+    private String year = "";
     ImageView imageService;
 
     @Override
@@ -107,14 +104,16 @@ public class BookingActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter4 = new ArrayAdapter<>(this, R.layout.spinner_item, sbrItems);
         spinnerBottomRight.setAdapter(adapter4);
-        setCurrentDate(spinnerBottomLeft, spinnerBottomRight);
+        setCurrentDate(spinnerBottomRight);
+
+        ////////
+
+
     }
 
-    private void setCurrentDate(Spinner spinnerDay, Spinner spinnerMonth) {
+    private void setCurrentDate(Spinner spinnerMonth) {
         Date currentDate = new Date();
-        int day = currentDate.getDate();
         int month = currentDate.getMonth();
-        //spinnerDay.setSelection(day - 1);
         spinnerMonth.setSelection(month);
     }
 
@@ -129,6 +128,47 @@ public class BookingActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
+    spinnerBottomLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            Date dateCheckSpiner = new Date();
+            Calendar calendarCheckSpiner = Calendar.getInstance();
+            calendarCheckSpiner.setTime(dateCheckSpiner);
+            calendarCheckSpiner.add(Calendar.DATE, 1);
+
+            int dateSelectCheck = Integer.parseInt(spinnerBottomLeft.getSelectedItem().toString());
+            String checkSpinerNow = calendarCheckSpiner.getTime().getDate() + "";
+            int dateConvertCheck = Integer.parseInt(checkSpinerNow);
+
+            if(dateSelectCheck < dateConvertCheck){
+                int monthCurrent = calendarCheckSpiner.getTime().getMonth();
+
+                calendarCheckSpiner.add(Calendar.MONTH, 1);
+
+                int month = calendarCheckSpiner.getTime().getMonth();
+
+                spinnerBottomRight.setSelection(month);
+
+                if(monthCurrent == 11){
+                    year = "" + (Calendar.getInstance().get(Calendar.YEAR) + 1);;
+                }
+
+
+            }else {
+                int month = calendarCheckSpiner.getTime().getMonth();
+                spinnerBottomRight.setSelection(month);
+
+                year = "" + Calendar.getInstance().get(Calendar.YEAR);;
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+
+        }
+    });
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -232,7 +272,7 @@ public class BookingActivity extends AppCompatActivity {
 
         if(listBooking == null){
             listBooking = new ArrayList<>();
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking));
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year));
 
             Gson gson2 = new Gson();
             String json2 = gson2.toJson(listBooking);
@@ -240,7 +280,7 @@ public class BookingActivity extends AppCompatActivity {
             editor.commit();
 
         }else {
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking));
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year));
 
             Gson gson2 = new Gson();
             String json2 = gson2.toJson(listBooking);

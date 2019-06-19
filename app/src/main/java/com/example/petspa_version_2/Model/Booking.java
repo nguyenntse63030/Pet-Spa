@@ -11,8 +11,9 @@ public class Booking implements Serializable {
     String service;
     String price;
     int imageServiceBooking;
+    String year;
 
-    public Booking( String dateBook, String day, String month, String hour, String minute, String service, String price, int imageServiceBooking) {
+    public Booking( String dateBook, String day, String month, String hour, String minute, String service, String price, int imageServiceBooking, String year) {
         this.dateBook = dateBook;
         this.day = day;
         this.month = month;
@@ -21,6 +22,7 @@ public class Booking implements Serializable {
         this.service = service;
         this.price = price;
         this.imageServiceBooking = imageServiceBooking;
+        this.year = year;
     }
 
     public String getDateBook() {
@@ -53,5 +55,9 @@ public class Booking implements Serializable {
 
     public int getImageServiceBooking() {
         return imageServiceBooking;
+    }
+
+    public String getYear() {
+        return year;
     }
 }

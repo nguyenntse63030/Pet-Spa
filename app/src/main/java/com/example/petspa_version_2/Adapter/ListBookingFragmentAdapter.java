@@ -39,7 +39,8 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
         holder.getTxtDateOfBooking().setText(listBooking.get(position).getDateBook());
         holder.getTxtBookingDesciption().setText("Bạn đã hẹn lịch sử dụng dịch vụ vào lúc: \n " +
                 "_ " + listBooking.get(position).getHour() + " giờ " + listBooking.get(position).getMinute() + " phút. \n" +
-                "_ " + "Ngày " + listBooking.get(position).getDay() + " ,tháng " + listBooking.get(position).getMonth());
+                "_ " + "Ngày " + listBooking.get(position).getDay() + " ,tháng " + listBooking.get(position).getMonth() +
+                " năm " + listBooking.get(position).getYear());
     }
 
     @Override
