@@ -37,10 +37,11 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
         holder.getImageServiceBooking().setImageResource(listBooking.get(position).getImageServiceBooking());
         holder.getTxtBookingTitle().setText(listBooking.get(position).getService());
         holder.getTxtDateOfBooking().setText(listBooking.get(position).getDateBook());
-        holder.getTxtBookingDesciption().setText("Bạn đã hẹn lịch sử dụng dịch vụ vào lúc: \n " +
-                "_ " + listBooking.get(position).getHour() + " giờ " + listBooking.get(position).getMinute() + " phút. \n" +
-                "_ " + "Ngày " + listBooking.get(position).getDay() + " ,tháng " + listBooking.get(position).getMonth() +
-                " năm " + listBooking.get(position).getYear());
+        holder.getTxtBookingDesciption().setText("_Giờ hẹn sử dụng dịch vụ:\n"
+                + "+ " + listBooking.get(position).getHour() + " giờ " + listBooking.get(position).getMinute() + " phút. \n" +
+                "+ Ngày " + listBooking.get(position).getDay() + " ,tháng " + listBooking.get(position).getMonth() +
+                ",năm " + listBooking.get(position).getYear() + "\n" +
+                "+ Chi phí cho dịch vụ là: " + listBooking.get(position).getPrice());
     }
 
     @Override
