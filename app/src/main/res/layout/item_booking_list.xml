@@ -25,7 +25,7 @@
                 android:id="@+id/imageServiceBooking"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:src="@drawable/pet4"
+                android:src="@drawable/down_shower"
                 android:scaleType="centerCrop"
                 app:layout_widthPercent="35%"/>
 
