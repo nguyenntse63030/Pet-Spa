@@ -96,13 +96,13 @@ public class ListServicePetFragment extends Fragment implements List_Service_Ite
         listServicePet.add(new ServicePet("Làm sạch hơi thở (15' đến 20')",
                 "Một hơi thở sạch sẽ chẳng phải tốt hơn sao",
                 "Thú cưng của bạn có một hơi thở làm bạn thấy khó chịu do thức ăn, chúng tôi sẽ giải quyết vấn đề này giúp bạn không qua 30'.",
-                R.drawable.service_ve_sinh_mieng, "50,000"));
+                R.drawable.ve_sinh_mieng, "50,000"));
 
         listServicePet.add(new ServicePet("Tắm và sấy khô (1h30 đến 2h)",
                 "Không cần quá mất thời gian về việc vệ sinh, đã có Petspa.",
                 "Dịch vụ tắm và sấy khô bên chúng tôi bao gồm loại bỏ các bụi bẩn và lông bị rối, tắm rửa qua 2 lần dầu gọi," +
                         " sấy khô và giữ ấm cho thú cưng của bạn, đặc biệt còn được sử dụng nước hoa mùi hương sang trọng dễ chịu.",
-                R.drawable.service_tam_va_say, "200,000"));
+                R.drawable.tamsay, "200,000"));
     }
 
     private void inputData2(){
@@ -182,6 +182,6 @@ public class ListServicePetFragment extends Fragment implements List_Service_Ite
                 "Không cần quá mất thời gian về việc vệ sinh, đã có Petspa.",
                 "Dịch vụ tắm và sấy khô bên chúng tôi bao gồm loại bỏ các bụi bẩn và lông bị rối, tắm rửa qua 2 lần dầu gọi," +
                         " sấy khô và giữ ấm cho thú cưng của bạn, đặc biệt còn được sử dụng nước hoa mùi hương sang trọng dễ chịu.",
-                R.drawable.service_tam_va_say, "160,000"));
+                R.drawable.tamsay, "160,000"));
     }
 }
