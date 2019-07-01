@@ -24,6 +24,14 @@ public class ServicePet implements Serializable {
         this.rating = rating;
     }
 
+    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice) {
+        this.serviceTitle = serviceTitle;
+        this.serviceDescription = serviceDescription;
+        this.serviceContent = serviceContent;
+        this.serviceImage = serviceImage;
+        this.servicePrice = servicePrice;
+    }
+
     public String getServiceTitle() {
         return serviceTitle;
     }

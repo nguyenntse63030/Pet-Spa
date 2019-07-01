@@ -259,6 +259,8 @@ public class BookingActivity extends AppCompatActivity {
         String service = txtTitle.getText().toString();
         String price = txtPrice.getText().toString();
         int imageServiceBooking = servicePet.getServiceImage();
+        String serviceDescription = txtDescription.getText().toString();
+        String serviceContent = txtServicePetContent.getText().toString();
 
         SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
@@ -272,7 +274,7 @@ public class BookingActivity extends AppCompatActivity {
 
         if(listBooking == null){
             listBooking = new ArrayList<>();
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year));
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
             Gson gson2 = new Gson();
             String json2 = gson2.toJson(listBooking);
@@ -280,7 +282,7 @@ public class BookingActivity extends AppCompatActivity {
             editor.commit();
 
         }else {
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year));
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
             Gson gson2 = new Gson();
             String json2 = gson2.toJson(listBooking);

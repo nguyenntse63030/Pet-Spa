@@ -1,6 +1,7 @@
 package com.example.petspa_version_2.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -13,13 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.petspa_version_2.Activity.BookingDetail;
 import com.example.petspa_version_2.Adapter.ListBookingFragmentAdapter;
 import com.example.petspa_version_2.Listener.Booking_list_listener;
 import com.example.petspa_version_2.Model.Booking;
+import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
@@ -74,7 +78,11 @@ public class ListBookingFragment extends Fragment implements Booking_list_listen
         return result;
     }
     @Override
-    public void onClickBookingItem(Booking booking) {
-
+    public void onClickBookingItem(ServicePet servicePet) {
+        Intent intent = new Intent(getContext(), BookingDetail.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+        intent.putExtra("bookingDetail", (Serializable) servicePet);
+        startActivity(intent);
+        getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
     }
 }

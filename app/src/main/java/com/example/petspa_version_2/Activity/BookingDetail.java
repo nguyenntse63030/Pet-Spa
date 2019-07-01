@@ -1,24 +1,21 @@
 package com.example.petspa_version_2.Activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.example.petspa_version_2.Fragment.ListBookingFragment;
 import com.example.petspa_version_2.Model.Booking;
+import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.gson.Gson;
@@ -28,27 +25,44 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListBookingActivity extends AppCompatActivity {
-    private ListBookingFragment fragment;
-    private DrawerLayout menuLayoutDrawer = null;
-    private NavigationView menuBookingList = null;
+public class BookingDetail extends AppCompatActivity {
+    private ServicePet servicePet;
+    DrawerLayout menuLayoutDrawer = null;
+    NavigationView bookingDetailMenu = null;
+
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice;
+    ImageView imageService;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_booking);
+        setContentView(R.layout.activity_booking_detail);
 
-        menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
-        menuBookingList = findViewById(R.id.menuBookingList);
+        menuLayoutDrawer = findViewById(R.id.menuBookingDetailLayoutDrawer);
+        bookingDetailMenu = findViewById(R.id.bookingDetailMenu);
 
-        fragment = new ListBookingFragment();
-        loadFragment(fragment);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtTitle = findViewById(R.id.txtTitle);
+        txtServicePetContent = findViewById(R.id.txtServicePetContent);
+        txtPrice = findViewById(R.id.txtPrice);
+        imageService = findViewById(R.id.imageService);
+
+        Intent intent = BookingDetail.this.getIntent();
+        servicePet = (ServicePet) intent.getSerializableExtra("bookingDetail");
+
+        txtPrice.setText(servicePet.getServicePrice() + " VND");
+        txtTitle.setText(servicePet.getServiceTitle());
+        txtDescription.setText(servicePet.getServiceDescription());
+        txtServicePetContent.setText(servicePet.getServiceContent());
+        imageService.setImageResource(servicePet.getServiceImage());
+
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        menuBookingList.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+        bookingDetailMenu.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 if (item.getItemId() == R.id.item_home) {
@@ -68,6 +82,13 @@ public class ListBookingActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
+                if(item.getItemId() == R.id.item_booking_list){
+
+                    Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                    startActivity(intent);
+
+                }
 
                 if (item.getItemId() == R.id.item_user_logout) {
                     //Clear authentication key in SharedPreferences
@@ -76,12 +97,11 @@ public class ListBookingActivity extends AppCompatActivity {
                     editor.apply();
 
                     //Back to login page
-                    Intent intent = new Intent(ListBookingActivity.this, LoginActivity.class);
+                    Intent intent = new Intent(BookingDetail.this, LoginActivity.class);
                     //Remove back button
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                 }
-
                 menuLayoutDrawer.closeDrawers();
                 return true;
             }
@@ -94,13 +114,6 @@ public class ListBookingActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    private void loadFragment(Fragment fragment){
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fm.beginTransaction();
-        fragmentTransaction.replace(R.id.listBookingLayout, fragment);
-        fragmentTransaction.commit();
-    }
-
     public void clickToBack(View view) {
         finish();
     }
@@ -109,4 +122,10 @@ public class ListBookingActivity extends AppCompatActivity {
         menuLayoutDrawer.openDrawer(Gravity.RIGHT);
     }
 
+    public void clickToRating(View view) {
+        Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -1,7 +1,8 @@
 package com.example.petspa_version_2.Listener;
 
 import com.example.petspa_version_2.Model.Booking;
+import com.example.petspa_version_2.Model.ServicePet;
 
 public interface Booking_list_listener {
-    public void onClickBookingItem(Booking booking);
+    public void onClickBookingItem(ServicePet servicePet);
 }

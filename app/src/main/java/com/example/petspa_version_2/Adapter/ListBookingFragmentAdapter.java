@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.petspa_version_2.Listener.Booking_list_listener;
 import com.example.petspa_version_2.Model.Booking;
+import com.example.petspa_version_2.Model.ServicePet;
 import com.example.petspa_version_2.R;
 
 import java.util.List;
@@ -33,7 +34,7 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.getImageServiceBooking().setImageResource(listBooking.get(position).getImageServiceBooking());
         holder.getTxtBookingTitle().setText(listBooking.get(position).getService());
         holder.getTxtDateOfBooking().setText(listBooking.get(position).getDateBook());
@@ -42,6 +43,21 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
                 "+ Ngày " + listBooking.get(position).getDay() + " ,tháng " + listBooking.get(position).getMonth() +
                 ",năm " + listBooking.get(position).getYear() + "\n" +
                 "+ Chi phí cho dịch vụ là: " + listBooking.get(position).getPrice());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String service = listBooking.get(position).getService();
+                String price = listBooking.get(position).getPrice();
+                int imageServiceBooking = listBooking.get(position).getImageServiceBooking();
+                String serviceDescription = listBooking.get(position).getServiceDescription();
+                String serviceContent = listBooking.get(position).getServiceContent();
+
+                ServicePet servicePet = new ServicePet(service, serviceDescription, serviceContent,imageServiceBooking,price);
+                mCallback.onClickBookingItem(servicePet);
+            }
+        });
     }
 
     @Override

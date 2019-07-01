@@ -3,17 +3,35 @@ package com.example.petspa_version_2.Model;
 import java.io.Serializable;
 
 public class Booking implements Serializable {
-    String dateBook;
-    String day;
-    String month;
-    String hour;
-    String minute;
-    String service;
-    String price;
-    int imageServiceBooking;
-    String year;
+    private String dateBook;
+    private String day;
+    private String month;
+    private String hour;
+    private String minute;
+    private String service;
+    private String price;
+    private int imageServiceBooking;
+    private String year;
+    private String serviceDescription;
+    private String serviceContent;
 
-    public Booking( String dateBook, String day, String month, String hour, String minute, String service, String price, int imageServiceBooking, String year) {
+//    public Booking( String dateBook, String day, String month, String hour,
+//                    String minute, String service, String price,
+//                    int imageServiceBooking, String year) {
+//        this.dateBook = dateBook;
+//        this.day = day;
+//        this.month = month;
+//        this.hour = hour;
+//        this.minute = minute;
+//        this.service = service;
+//        this.price = price;
+//        this.imageServiceBooking = imageServiceBooking;
+//        this.year = year;
+//    }
+
+    public Booking(String dateBook, String day, String month, String hour, String minute,
+                   String service, String price, int imageServiceBooking, String year,
+                   String serviceDescription, String serviceContent) {
         this.dateBook = dateBook;
         this.day = day;
         this.month = month;
@@ -23,6 +41,16 @@ public class Booking implements Serializable {
         this.price = price;
         this.imageServiceBooking = imageServiceBooking;
         this.year = year;
+        this.serviceDescription = serviceDescription;
+        this.serviceContent = serviceContent;
+    }
+
+    public String getServiceDescription() {
+        return serviceDescription;
+    }
+
+    public String getServiceContent() {
+        return serviceContent;
     }
 
     public String getDateBook() {
