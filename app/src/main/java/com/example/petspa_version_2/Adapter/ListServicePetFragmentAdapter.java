@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,6 +44,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         holder.txtServicePetTitle.setText(listServicePet.get(position).getServiceTitle());
         holder.txtServicePetDescription.setText(listServicePet.get(position).getServiceDescription());
         holder.txtServicePetPrice.setText(listServicePet.get(position).getServicePrice() + " VND");
+        holder.ratingBar.setRating(listServicePet.get(position).getRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +54,9 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
                 String serviceContent = listServicePet.get(position).getServiceContent();
                 int serviceImage = listServicePet.get(position).getServiceImage();
                 String servicePrice = listServicePet.get(position).getServicePrice();
+                float rating = listServicePet.get(position).getRating();
 
-                ServicePet service = new ServicePet(serviceTitle, serviceDescription, serviceContent, serviceImage, servicePrice);
+                ServicePet service = new ServicePet(serviceTitle, serviceDescription, serviceContent, serviceImage, servicePrice, rating);
 
                 list_service_item_listener.openBookingScreen(service);
             }
@@ -70,6 +73,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         TextView txtServicePetTitle;
         TextView txtServicePetDescription;
         TextView txtServicePetPrice;
+        RatingBar ratingBar;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -78,6 +82,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
             txtServicePetDescription = itemView.findViewById(R.id.txtServicePetDescription);
             txtServicePetPrice = itemView.findViewById(R.id.txtServicePetPrice);
             txtServicePetTitle = itemView.findViewById(R.id.txtServicePetTitle);
+            ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
 }
