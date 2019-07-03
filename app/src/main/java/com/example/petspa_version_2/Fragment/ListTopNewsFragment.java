@@ -74,39 +74,40 @@ public class ListTopNewsFragment extends Fragment implements Top_News_Listener {
     }
 
     private void inputData(){
-        listNews.add(new News("Bảo Long",
-                "Có nhiều người lạ lắm, mặc dù họ chẳng hề có ý định dành cho bạn một phần nhỏ......",
-                R.drawable.album11, "08/06/2019",
-                "Có nhiều người lạ lắm, mặc dù họ chẳng hề có ý định dành cho bạn một phần nhỏ " +
-                        "xíu nào trong cuộc đời họ nhưng lúc nào cũng muốn là một phần rất quan trọng trong cuộc đời bạn."));
+        listNews.add(new News("Cùng chải chuốt cùng pet spa",
+                "Bạn muốn chải chuốt cho người bạn của mình hay đến với pet spa vào ......",
+                R.drawable.grooming, "08/06/2019",
+                "Bạn muốn chải chuốt cho người bạn của mình hay đến với pet spa vào thứ 2 đến thứ 5 để được giảm 10% "));
 
-        listNews.add(new News("Trung Nguyên",
-                "Thời gian một người bỏ ra cho bạn là tình yêu của người đó dành cho bạn. Không phải ai rảnh.....",
-                R.drawable.album10, "07/06/2019",
-                "Thời gian một người bỏ ra cho bạn là tình yêu của người đó dành cho bạn. Không phải ai rảnh" +
-                        " sẽ bỏ ra nhiều hơn mà là ai yêu nhiều hơn sẽ cố gắng ở bên bạn nhiều hơn."));
+        listNews.add(new News("Thú cưng cũng muốn đi chơi",
+                "Thời gian bạn dành cho thú cưng không có nhiều ? .....",
+                R.drawable.pet_play, "07/06/2019",
+                "Thời gian bạn dành cho thú cưng không có nhiều ? Hãy dến với pet spa để " +
+                        "thú cưng của bạn đc chơi đùa thoải mái cùng bạn bè ở khu vui chơi pet spa "));
 
-        listNews.add(new News("Hữu Lễ",
-                "Không phải vết thương nào chảy máu cũng đều đau. Có đôi khi vết thương không nhìn thấy.....",
-                R.drawable.album9, "06/06/2019",
-                "Không phải vết thương nào chảy máu cũng đều đau. Có đôi khi vết thương không nhìn thấy" +
-                        " máu mới thật sự là vết thương đau nhất."));
+        listNews.add(new News("Cuối tháng 2 vui vẻ ",
+                "Cuối tháng 2 vui vẻ event dành cho dịch vụ cắt tỉa long thú cưng giảm .....",
+                R.drawable.grooming_event, "06/06/2019",
+                "Cuối tháng 2 vui vẻ event dành cho dịch vụ cắt tỉa long thú cưng giảm giá 10%!" +
+                        " Nhanh chân đến với pet spa thú cưng của bạn đang rất háo hức ! "));
 
-        listNews.add(new News("Hoàng Nhân",
-                "Đừng lập gia đình sớm, dù bất cứ lý do nào đừng vội khi chưa sẵn sàng, chưa từng trải chưa......",
-                R.drawable.album8, "05/06/2019",
-                "Đừng lập gia đình sớm, dù bất cứ lý do nào đừng vội khi chưa sẵn sàng, chưa từng trải chưa" +
-                        " hiểu được chung sống là một thử thách to lớn thế nào."));
+        listNews.add(new News("Pet spa phong cách Hàn Quốc",
+                "Thú Cưng cũng muốn đi spa!!......",
+                R.drawable.pet_spa_with_petcity, "05/06/2019",
+                "Thú Cưng cũng muốn đi spa!! Pet spa phục vụ cho thú cưng bạn một môi trường thư giản tuyệt vời với nhiều loại tinh dầu " +
+                        "chất lượng nhập từ Hàn Quốc. Đến với pet spa để thú cưng bạn có những trãi nghiệm không thể quên!"));
 
-        listNews.add(new News("Duy Thắng",
-                "Không ai có quyền phán xét bạn vì họ không biết bạn đã trải qua những gì. Họ có thể đã nghe những.......",
-                R.drawable.album7, "04/06/2019",
-                "Không ai có quyền phán xét bạn vì họ không biết bạn đã trải qua những gì. Họ có thể đã nghe những " +
-                        "câu chuyện nhưng họ sẽ không bao giờ có cùng cảm giác với bạn."));
+        listNews.add(new News("Cùng khỏe mạnh cùng pet spa",
+                "Thú cưng của bạn đang lười vận động ?Sức khỏe thú cưng càng ngày càng kém?.......",
+                R.drawable.dog_walking, "04/06/2019",
+                "Thú cưng của bạn đang lười vận động ?Sức khỏe thú cưng càng ngày càng kém? Hãy đến với pet spa," +
+                        " chúng tôi sẽ dắt thú cưng của bạn đi khắp thế giới và dần sức khỏe của chú thú cưng của bạn sẽ tốt hơn."));
 
-        listNews.add(new News("Bình Minh",
-                "Đừng mơ trong cuộc sống mà hãy sống trong giấc mơ.",
-                R.drawable.album6, "03/06/2019", "aaaaa"));
+        listNews.add(new News("Pet sitter bạn có thể tin tưởng",
+                "Bạn có việc bận ? Bạn cần người chăm sóc thú cưng có thể tin tưởng? ....",
+                R.drawable.pet_sitter, "03/06/2019",
+                "Bạn có việc bận ? Bạn cần người chăm sóc thú cưng có thể tin tưởng? Hãy đến với pet spa, chúng tôi có một đội ngũ pet sitter chuyên nghiệp" +
+                        " chúng tôi sẽ hoàng tiến nếu thú cưng của bạn gặp vấn đề gì trong lúc chăm sóc"));
 
 //        listNews.add(new News("Đức Toàn",
 //                "Lời nói của bạn có sức mạnh làm tan vỡ trái tim, hàn gắn mối quan hệ, khai sáng.......",

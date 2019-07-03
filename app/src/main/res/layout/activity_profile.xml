@@ -71,7 +71,7 @@
                             android:layout_height="match_parent"
                             android:id="@+id/imageAvatar"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/album1"
+                            android:src="@drawable/grooming"
                             app:riv_border_color="#333333"
                             app:riv_oval="true"
                             app:riv_corner_radius="30dp"

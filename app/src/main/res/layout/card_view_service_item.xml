@@ -23,8 +23,8 @@
                 android:id="@+id/imageServiceCardView"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/album1" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/grooming" />
 
             <TextView
                 android:id="@+id/txtServiceCardContent"

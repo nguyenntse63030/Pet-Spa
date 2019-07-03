@@ -49,7 +49,7 @@ public class BookingDetail extends AppCompatActivity {
         Intent intent = BookingDetail.this.getIntent();
         servicePet = (ServicePet) intent.getSerializableExtra("bookingDetail");
 
-        txtPrice.setText(servicePet.getServicePrice() + " VND");
+        txtPrice.setText(servicePet.getServicePrice());
         txtTitle.setText(servicePet.getServiceTitle());
         txtDescription.setText(servicePet.getServiceDescription());
         txtServicePetContent.setText(servicePet.getServiceContent());

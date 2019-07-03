@@ -41,11 +41,10 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 <TextView
-                    android:id="@+id/txtNewsDetailTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
-                    android:text="List News Detail Title"
+                    android:text="News Detail"
                     android:textSize="25dp"
                     android:background="@color/backGroundTitleActivity"
                     android:textColor="@color/white"
@@ -63,7 +62,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/album1"/>
+                        android:src="@drawable/grooming"/>
 
                     <TextView
                         android:id="@+id/txtDateOfNews"
@@ -77,6 +76,13 @@
                         android:gravity="end"
                         android:text="25/06/2019"/>
 
+                    <TextView
+                        android:id="@+id/txtNewsDetailTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        android:text="title news detail"/>
                     <TextView
                         android:id="@+id/txtNewsDetailContent"
                         android:layout_width="match_parent"
