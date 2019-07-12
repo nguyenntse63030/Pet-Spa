@@ -199,4 +199,9 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
         AlertDialog showMess = mess.create();
         showMess.show();
     }
+
+    public void clickToOpenGGMap(View view) {
+        Intent intent = new Intent(HomeActivity.this, MapsActivity.class);
+        startActivity(intent);
+    }
 }
