@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.petspa_version_2.Adapter.ListHorizontalServiceFragmentAdapter;
 import com.example.petspa_version_2.Listener.List_Service_Card_Item_Listener;
@@ -35,6 +36,7 @@ public class ListHorizontalServiceFragment extends Fragment implements List_Serv
     private RecyclerView recyclerListServiceVesinh;
     private RecyclerView recyclerListServiceSpa;
     private RecyclerView recyclerListServiceSitter;
+    private Button btnSpa,btnKhuyenMai,btnVeSinh,btnSitter;
 
 
 
@@ -43,31 +45,48 @@ public class ListHorizontalServiceFragment extends Fragment implements List_Serv
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_horizontal, container, false);
-        recyclerListService = view.findViewById(R.id.recyclerListService);
+
+        btnKhuyenMai = view.findViewById(R.id.btnKhuyenMai);
+        btnVeSinh = view.findViewById(R.id.btnVeSinh);
+        btnSpa = view.findViewById(R.id.btnSpa);
+        btnSitter = view.findViewById(R.id.btnSitter);
         inputData4();
+        inputData3();
+        inputData();
+        inputData2();
+        recyclerListService = view.findViewById(R.id.recyclerListService);
         adapterKhuyenmai = new ListHorizontalServiceFragmentAdapter( listServicePet1, (List_Service_Card_Item_Listener) this);
         recyclerListService.setLayoutManager(new GridLayoutManager(getContext(), listServicePet1.size()));
         recyclerListService.setAdapter(adapterKhuyenmai);
 
         recyclerListServiceVesinh = view.findViewById(R.id.recyclerListServiceVesinh);
-        inputData();
         adapterVeSinh = new ListHorizontalServiceFragmentAdapter( listServicePet2, (List_Service_Card_Item_Listener) this);
         recyclerListServiceVesinh.setLayoutManager(new GridLayoutManager(getContext(), listServicePet2.size()));
         recyclerListServiceVesinh.setAdapter(adapterVeSinh);
 
         recyclerListServiceSpa = view.findViewById(R.id.recyclerListServiceSpa);
-        inputData2();
         adapterSpa = new ListHorizontalServiceFragmentAdapter( listServicePet3, (List_Service_Card_Item_Listener) this);
         recyclerListServiceSpa.setLayoutManager(new GridLayoutManager(getContext(), listServicePet3.size()));
         recyclerListServiceSpa.setAdapter(adapterSpa);
 
         recyclerListServiceSitter = view.findViewById(R.id.recyclerListServiceSitter);
-        inputData3();
         adapterSitter = new ListHorizontalServiceFragmentAdapter( listServicePet4, (List_Service_Card_Item_Listener) this);
         recyclerListServiceSitter.setLayoutManager(new GridLayoutManager(getContext(), listServicePet4.size()));
         recyclerListServiceSitter.setAdapter(adapterSitter);
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        btnKhuyenMai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
     private void inputData(){
         listServicePet2.add(new ServicePet("Vệ sinh tổng thể (2h đến 3h)",
                 "Cắt tỉa lông, tắm gội, sấy khố, tạo mẫu",
