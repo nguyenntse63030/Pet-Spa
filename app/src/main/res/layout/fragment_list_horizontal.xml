@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.ListHorizontalServiceFragment">
+
+
+    <!-- TODO: Update blank fragment layout -->
+    <Button
+        android:id="@+id/btnKhuyenMai"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dịch vụ khuyến Mãi"
+        android:gravity="left"
+        android:paddingStart="10dp"/>
+    <HorizontalScrollView
+        android:id="@+id/horizontalView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnKhuyenMai">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListService"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </HorizontalScrollView>
+    <Button
+        android:id="@+id/btnVeSinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dịch vụ Vệ Sinh"
+        android:gravity="left"
+        android:paddingStart="10dp"
+        android:layout_below="@id/horizontalView"/>
+    <HorizontalScrollView
+        android:id="@+id/horizontalViewVesinh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnVeSinh"
+        >
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListServiceVesinh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </HorizontalScrollView>
+    <Button
+        android:id="@+id/btnSpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dịch vụ Spa"
+        android:gravity="left"
+        android:paddingStart="10dp"
+        android:layout_below="@id/horizontalViewVesinh"/>
+    <HorizontalScrollView
+        android:id="@+id/horizontalViewSpa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSpa">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListServiceSpa"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </HorizontalScrollView>
+    <Button
+        android:id="@+id/btnSitter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dịch vụ Giữ thú"
+        android:gravity="left"
+        android:paddingStart="10dp"
+        android:layout_below="@id/horizontalViewSpa"/>
+    <HorizontalScrollView
+        android:id="@+id/horizontalViewSitter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnSitter">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerListServiceSitter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
+    </HorizontalScrollView>
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>
