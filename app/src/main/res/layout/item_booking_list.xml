@@ -54,6 +54,17 @@
                     android:textSize="15dp"
                     android:text="Booking Content"/>
 
+                <Button
+                    android:id="@+id/btMap"
+                    android:background="@android:color/transparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:drawableLeft="@drawable/ic_chiduong"
+                    android:padding="11dp"
+                    android:text="Location"
+                    android:layout_below="@id/txtBookingDesciption"
+                    android:textSize="15sp" />
+
                 <TextView
                     android:id="@+id/txtDateOfBooking"
                     android:layout_width="match_parent"

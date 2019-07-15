@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.petspa_version_2.Global.GlobalValue;
 import com.example.petspa_version_2.Model.Booking;
@@ -247,62 +248,83 @@ public class BookingActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    public void clickToBook(View view) {
-        Intent intent = BookingActivity.this.getIntent();
-        servicePet = (ServicePet) intent.getSerializableExtra("service");
+    public void clickToBook(final View view) {
 
-        String hour = spinnerTopLeft.getSelectedItem().toString();
-        String minute = spinnerTopRight.getSelectedItem().toString();
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which){
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent ggmap = new Intent(view.getContext(), MapsActivity.class);
+                        startActivity(ggmap);
+                        break;
 
-        String day = spinnerBottomLeft.getSelectedItem().toString();
-        String month = spinnerBottomRight.getSelectedItem().toString();
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        Intent intent = BookingActivity.this.getIntent();
+                        servicePet = (ServicePet) intent.getSerializableExtra("service");
 
-        String dateBook = "";
-        try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            dateBook = df.format(new Date()).toString();
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+                        String hour = spinnerTopLeft.getSelectedItem().toString();
+                        String minute = spinnerTopRight.getSelectedItem().toString();
 
-        String service = txtTitle.getText().toString();
-        String price = txtPrice.getText().toString();
-        int imageServiceBooking = servicePet.getServiceImage();
-        String serviceDescription = txtDescription.getText().toString();
-        String serviceContent = txtServicePetContent.getText().toString();
+                        String day = spinnerBottomLeft.getSelectedItem().toString();
+                        String month = spinnerBottomRight.getSelectedItem().toString();
 
-        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
+                        String dateBook = "";
+                        try {
+                            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                            dateBook = df.format(new Date()).toString();
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+
+                        String service = txtTitle.getText().toString();
+                        String price = txtPrice.getText().toString();
+                        int imageServiceBooking = servicePet.getServiceImage();
+                        String serviceDescription = txtDescription.getText().toString();
+                        String serviceContent = txtServicePetContent.getText().toString();
+
+                        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = pref.edit();
 
 
-        Gson gson = new Gson();
-        String json = pref.getString("DATA_BOOKING", "");
-        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+                        Gson gson = new Gson();
+                        String json = pref.getString("DATA_BOOKING", "");
+                        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
 
-        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
+                        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
 
-        if(listBooking == null){
-            listBooking = new ArrayList<>();
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+                        if(listBooking == null){
+                            listBooking = new ArrayList<>();
+                            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
-            Gson gson2 = new Gson();
-            String json2 = gson2.toJson(listBooking);
-            editor.putString("DATA_BOOKING", json2);
-            editor.commit();
+                            Gson gson2 = new Gson();
+                            String json2 = gson2.toJson(listBooking);
+                            editor.putString("DATA_BOOKING", json2);
+                            editor.commit();
 
-        }else {
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+                        }else {
+                            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
-            Gson gson2 = new Gson();
-            String json2 = gson2.toJson(listBooking);
-            editor.putString("DATA_BOOKING", json2);
-            editor.commit();
-        }
+                            Gson gson2 = new Gson();
+                            String json2 = gson2.toJson(listBooking);
+                            editor.putString("DATA_BOOKING", json2);
+                            editor.commit();
+                        }
 
-        Intent intent1 = new Intent(this, ListBookingActivity.class);
-        startActivity(intent1);
-        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        finish();
+                        Intent intent1 = new Intent(view.getContext(), ListBookingActivity.class);
+                        startActivity(intent1);
+                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                        finish();
+                        break;
+                }
+            }
+        };
+
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(view.getContext());
+        builder.setMessage("Lịch hẹn của bạn đã được đặt thành công. Bạn có muốn chỉ đường đến shop?"  +"").setPositiveButton("Ok", dialogClickListener)
+                .setNegativeButton("Đã biết đường", dialogClickListener).show();
+
+
     }
 
     private void dialogMessEmptyListBooking(){
