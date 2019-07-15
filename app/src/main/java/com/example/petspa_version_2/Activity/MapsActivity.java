@@ -62,16 +62,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions place2 = new MarkerOptions().position(SAIGON_OPERA_HOUSE);
 
         mMap.addMarker(place1);
-        mMap.addMarker(place2);
+        //mMap.addMarker(place2);
 
-        String str_origin = "origin=" + place1.getPosition().latitude + "," + place1.getPosition().longitude;
-        String str_dest = "destination=" + place2.getPosition().latitude + "," + place2.getPosition().longitude;
-        String mode = "mode=driving";
-        String parameters = str_origin + "&" + str_dest + "&" + mode;
-        String output = "json";
-        String urlStr = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.google_maps_key) + "&sensor=true";
+        //String str_origin = "origin=" + place1.getPosition().latitude + "," + place1.getPosition().longitude;
+        //String str_dest = "destination=" + place2.getPosition().latitude + "," + place2.getPosition().longitude;
+        //String mode = "mode=driving";
+        //String parameters = str_origin + "&" + str_dest + "&" + mode;
+        //String output = "json";
+        //String urlStr = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.google_maps_key) + "&sensor=true";
 
-        new FetchURL(MapsActivity.this).execute(urlStr, "driving");
+        //new FetchURL(MapsActivity.this).execute(urlStr, "driving");
     }
 
     private static final int REQUEST_CODE_GPS_PERMISSION = 100;
