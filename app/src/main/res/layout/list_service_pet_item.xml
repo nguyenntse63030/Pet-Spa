@@ -57,24 +57,34 @@
                 <TextView
                     android:id="@+id/txtServicePetDescription"
                     android:layout_width="match_parent"
-                    android:layout_height="59dp"
+                    android:layout_height="55dp"
                     android:layout_below="@+id/txtServicePetTitle"
                     android:text="Service Pet Content"
                     android:textSize="15dp" />
-
+                <TextView
+                    android:id="@+id/txtServicePetOldPrice"
+                    android:textColor="@color/colorAccent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="18dp"
+                    android:gravity="center"
+                    android:layout_marginStart="2dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_above="@+id/txtServicePetPrice"
+                    android:text="$1400"/>
                 <TextView
                     android:id="@+id/txtServicePetPrice"
                     android:textColor="@color/colorAccent"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="18dp"
                     android:gravity="center"
                     android:layout_marginStart="2dp"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentBottom="true"
-                    android:text="$1400"
-                    app:layout_widthPercent="35%"/>
+                    android:text="$1400"/>
 
                 <RatingBar
                     android:id="@+id/ratingBar"

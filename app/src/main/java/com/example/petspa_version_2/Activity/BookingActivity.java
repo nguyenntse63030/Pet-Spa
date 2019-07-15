@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -41,7 +42,7 @@ public class BookingActivity extends AppCompatActivity {
     NavigationView navigationView = null;
 
     private  Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
-    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice;
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice,txtOldPrice;
     private String year = "";
     ImageView imageService;
 
@@ -55,13 +56,21 @@ public class BookingActivity extends AppCompatActivity {
         txtDescription = findViewById(R.id.txtDescription);
         txtTitle = findViewById(R.id.txtTitle);
         txtServicePetContent = findViewById(R.id.txtServicePetContent);
+        txtOldPrice = findViewById(R.id.txtOldPrice);
         txtPrice = findViewById(R.id.txtPrice);
         imageService = findViewById(R.id.imageService);
 
         Intent intent = BookingActivity.this.getIntent();
         servicePet = (ServicePet) intent.getSerializableExtra("service");
+        if (servicePet.getServiceOldPrice()!=null){
+            txtOldPrice.setText(servicePet.getServiceOldPrice() + " đ");
+            txtOldPrice.setPaintFlags(txtOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-        txtPrice.setText(servicePet.getServicePrice() + " VND");
+        }else {
+            txtOldPrice.setText("");
+        }
+
+        txtPrice.setText(servicePet.getServicePrice() + " đ");
         txtTitle.setText(servicePet.getServiceTitle());
         txtDescription.setText(servicePet.getServiceDescription());
         txtServicePetContent.setText(servicePet.getServiceContent());

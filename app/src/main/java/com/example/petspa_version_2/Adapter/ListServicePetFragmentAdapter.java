@@ -1,6 +1,7 @@
 package com.example.petspa_version_2.Adapter;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,20 +44,21 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         holder.imageServicePet.setImageResource(listServicePet.get(position).getServiceImage());
         holder.txtServicePetTitle.setText(listServicePet.get(position).getServiceTitle());
         holder.txtServicePetDescription.setText(listServicePet.get(position).getServiceDescription());
-        holder.txtServicePetPrice.setText(listServicePet.get(position).getServicePrice() + " VND");
+        holder.txtServicePetPrice.setText(listServicePet.get(position).getServicePrice() + " đ");
+        if (listServicePet.get(position).getServiceOldPrice() != null){
+            holder.txtServicePetOldPrice.setText(listServicePet.get(position).getServiceOldPrice() + " đ");
+            holder.txtServicePetOldPrice.setPaintFlags(holder.txtServicePetOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
+        }else{
+            holder.txtServicePetOldPrice.setText("");
+        }
         holder.ratingBar.setRating(listServicePet.get(position).getRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String serviceTitle = listServicePet.get(position).getServiceTitle();
-                String serviceDescription = listServicePet.get(position).getServiceDescription();
-                String serviceContent = listServicePet.get(position).getServiceContent();
-                int serviceImage = listServicePet.get(position).getServiceImage();
-                String servicePrice = listServicePet.get(position).getServicePrice();
-                float rating = listServicePet.get(position).getRating();
 
-                ServicePet service = new ServicePet(serviceTitle, serviceDescription, serviceContent, serviceImage, servicePrice, rating);
+                ServicePet service = listServicePet.get(position);
 
                 list_service_item_listener.openBookingScreen(service);
             }
@@ -73,6 +75,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         TextView txtServicePetTitle;
         TextView txtServicePetDescription;
         TextView txtServicePetPrice;
+        TextView txtServicePetOldPrice;
         RatingBar ratingBar;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -81,6 +84,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
             imageServicePet = itemView.findViewById(R.id.imageServicePet);
             txtServicePetDescription = itemView.findViewById(R.id.txtServicePetDescription);
             txtServicePetPrice = itemView.findViewById(R.id.txtServicePetPrice);
+            txtServicePetOldPrice = itemView.findViewById(R.id.txtServicePetOldPrice);
             txtServicePetTitle = itemView.findViewById(R.id.txtServicePetTitle);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }

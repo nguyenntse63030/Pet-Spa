@@ -1,5 +1,6 @@
 package com.example.petspa_version_2.Adapter;
 
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +38,14 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         holder.imageServiceCardView.setImageResource(list.get(position).getServiceImage());
         holder.txtServiceCardContent.setText(list.get(position).getServiceTitle());
-        holder.txtServiceCardPrice.setText(list.get(position).getServicePrice());
+        holder.txtServiceCardPrice.setText(list.get(position).getServicePrice()+" đ");
+        if (list.get(position).getServiceOldPrice() != null  ){
+            holder.txtServiceCardOldPrice.setText(list.get(position).getServiceOldPrice()+" đ");
+            holder.txtServiceCardOldPrice.setPaintFlags(holder.txtServiceCardPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }else {
+            holder.txtServiceCardOldPrice.setText("");
+
+        }
         holder.ratingBar.setRating(list.get(position).getRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +56,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
                 ServicePet service =list.get(position);
 
                 listener.viewService(service);
+
             }
         });
     }
@@ -61,6 +70,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
         ImageView imageServiceCardView;
         TextView txtServiceCardContent;
         TextView txtServiceCardPrice;
+        TextView txtServiceCardOldPrice;
         RatingBar ratingBar;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -68,6 +78,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
             imageServiceCardView = itemView.findViewById(R.id.imageServiceCardView);
             txtServiceCardContent = itemView.findViewById(R.id.txtServiceCardContent);
             txtServiceCardPrice = itemView.findViewById(R.id.txtServiceCardPrice);
+            txtServiceCardOldPrice = itemView.findViewById(R.id.txtServiceCardOldPrice);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
