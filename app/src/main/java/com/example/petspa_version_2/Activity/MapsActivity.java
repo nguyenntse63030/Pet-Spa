@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.example.petspa_version_2.R;
+import com.example.petspa_version_2.Utils.FetchURL;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -24,6 +25,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private static final LatLng BEN_THANH_MARKET = new LatLng(10.7731, 106.6983);
+    private static final LatLng SAIGON_OPERA_HOUSE = new LatLng(10.7767, 106.7032);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
     }
 
 
@@ -50,9 +54,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.addMarker(new MarkerOptions().position(BEN_THANH_MARKET).title("Marker in FPTU"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(BEN_THANH_MARKET));
+
+
+        MarkerOptions place1 = new MarkerOptions().position(BEN_THANH_MARKET);
+        MarkerOptions place2 = new MarkerOptions().position(SAIGON_OPERA_HOUSE);
+
+        mMap.addMarker(place1);
+        mMap.addMarker(place2);
+
+        String str_origin = "origin=" + place1.getPosition().latitude + "," + place1.getPosition().longitude;
+        String str_dest = "destination=" + place2.getPosition().latitude + "," + place2.getPosition().longitude;
+        String mode = "mode=driving";
+        String parameters = str_origin + "&" + str_dest + "&" + mode;
+        String output = "json";
+        String urlStr = "https://maps.googleapis.com/maps/api/directions/" + output + "?" + parameters + "&key=" + getString(R.string.google_maps_key) + "&sensor=true";
+
+        new FetchURL(MapsActivity.this).execute(urlStr, "driving");
     }
 
     private static final int REQUEST_CODE_GPS_PERMISSION = 100;
@@ -90,8 +109,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (location == null) {
                     return;
                 }
-                LatLng currentLocation =
-                        new LatLng(location.getLatitude(), location.getLongitude());
+                LatLng currentLocation = BEN_THANH_MARKET;
                 mMap.addMarker(new MarkerOptions().position(currentLocation).title("Marker in current location"));
                 mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
             }
