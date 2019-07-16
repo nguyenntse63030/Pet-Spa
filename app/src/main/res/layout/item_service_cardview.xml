@@ -35,12 +35,25 @@
                 android:layout_below="@id/imageServiceCardView"/>
             <TextView
                 android:id="@+id/txtServiceCardOldPrice"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="right"
-                android:text=""
+                android:text="20000 d"
+                android:layout_alignParentRight="true"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/grey"
+                android:layout_above="@id/txtServiceCardPrice"
+                />
+            <TextView
+                android:id="@+id/txtDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="-20%"
+                android:layout_marginStart="5dp"
+                android:textSize="16sp"
+                android:textColor="@color/red"
                 android:layout_above="@id/txtServiceCardPrice"
                 />
             <TextView
@@ -51,6 +64,7 @@
                 android:text="16000d"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                android:textColor="@color/blue"
                 android:layout_above="@id/ratingBar"
                 />
                 <RatingBar

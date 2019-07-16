@@ -62,8 +62,20 @@
                     android:text="Service Pet Content"
                     android:textSize="15dp" />
                 <TextView
+                    android:id="@+id/txtDiscountPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:text="-20%"
+                    android:layout_marginStart="5dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/red"
+                    android:layout_toLeftOf="@+id/txtServicePetOldPrice"
+                    android:layout_above="@id/txtServicePetPrice"
+                    />
+                <TextView
                     android:id="@+id/txtServicePetOldPrice"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/grey"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -75,11 +87,12 @@
                     android:text="$1400"/>
                 <TextView
                     android:id="@+id/txtServicePetPrice"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@color/blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textSize="18dp"
+
                     android:gravity="center"
                     android:layout_marginStart="2dp"
                     android:layout_alignParentRight="true"

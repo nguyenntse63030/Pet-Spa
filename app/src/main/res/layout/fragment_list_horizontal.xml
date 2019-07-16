@@ -15,6 +15,7 @@
         android:gravity="center_vertical"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:textColor="@color/white"
         android:layout_marginTop="10dp"
         android:background="@drawable/border_radius_button"/>
     <HorizontalScrollView
@@ -38,6 +39,7 @@
         android:layout_below="@id/horizontalView"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
+        android:textColor="@color/white"
         android:paddingEnd="10dp"
         android:background="@drawable/border_radius_button"/>
     <HorizontalScrollView
@@ -61,6 +63,7 @@
         android:text="Dịch vụ Spa"
         android:gravity="center_vertical"
         android:paddingStart="10dp"
+        android:textColor="@color/white"
         android:paddingEnd="10dp"
         android:background="@drawable/border_radius_button"
         android:layout_below="@id/horizontalViewVesinh"/>
@@ -77,29 +80,7 @@
 
         </androidx.recyclerview.widget.RecyclerView>
     </HorizontalScrollView>
-    <Button
-        android:id="@+id/btnSitter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dịch vụ Giữ thú"
-        android:gravity="center_vertical"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:background="@drawable/border_radius_button"
-        android:layout_below="@id/horizontalViewSpa"/>
-    <HorizontalScrollView
-        android:id="@+id/horizontalViewSitter"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSitter">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerListServiceSitter"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </HorizontalScrollView>
 
 
 </androidx.percentlayout.widget.PercentRelativeLayout>
