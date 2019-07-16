@@ -128,4 +128,11 @@ public class BookingDetail extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
+    public void clickToGGM(View view){
+        Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(intent);
+        finish();
+    }
 }
