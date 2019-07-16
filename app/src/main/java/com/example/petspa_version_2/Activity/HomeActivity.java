@@ -43,7 +43,7 @@ import java.util.List;
 public class HomeActivity extends AppCompatActivity implements Service_Card_View_Fragment_Listener, Top_News_Listener {
     DrawerLayout menuLayoutDrawer;
     NavigationView menuHome;
-    Button btnMenu;
+    Button btnMenu,btnSearch;
 //    ServiceCardViewFragment serviceCardViewFragment;
     ListTopNewsFragment listTopNewsFragment;
     ListHorizontalServiceFragment listHorizontalServiceFragment;
@@ -57,6 +57,7 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
 
         menuLayoutDrawer = findViewById(R.id.menuLayoutDrawer);
         btnMenu = findViewById(R.id.btnMenu);
+        btnSearch = findViewById(R.id.btnSearch);
         menuHome = findViewById(R.id.menuHome);
 //        serviceCardViewFragment = new ServiceCardViewFragment();
 //        loadFragment(serviceCardViewFragment);
@@ -76,6 +77,17 @@ public class HomeActivity extends AppCompatActivity implements Service_Card_View
             @Override
             public void onClick(View v) {
                 menuLayoutDrawer.openDrawer(Gravity.RIGHT);
+            }
+        });
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ListServicePetActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtra("serviceType", "");
+                startActivity(intent);
+
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
             }
         });
 

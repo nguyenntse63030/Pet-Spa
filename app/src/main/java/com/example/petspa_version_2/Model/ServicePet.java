@@ -12,6 +12,7 @@ public class ServicePet implements Serializable {
     int serviceImage;
     String servicePrice;
     String serviceOldPrice;
+    String discountPercent;
     float rating;
 
 
@@ -24,7 +25,7 @@ public class ServicePet implements Serializable {
         this.servicePrice = servicePrice;
         this.rating = rating;
     }
-    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice, float rating,String serviceOldPrice) {
+    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice, float rating,String serviceOldPrice,String discountPercent) {
         this.serviceTitle = serviceTitle;
         this.serviceDescription = serviceDescription;
         this.serviceContent = serviceContent;
@@ -32,6 +33,7 @@ public class ServicePet implements Serializable {
         this.servicePrice = servicePrice;
         this.rating = rating;
         this.serviceOldPrice = serviceOldPrice;
+        this.discountPercent = discountPercent;
     }
 
     public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice) {
@@ -40,6 +42,10 @@ public class ServicePet implements Serializable {
         this.serviceContent = serviceContent;
         this.serviceImage = serviceImage;
         this.servicePrice = servicePrice;
+    }
+
+    public String getDiscountPercent() {
+        return discountPercent;
     }
 
     public String getServiceOldPrice() {

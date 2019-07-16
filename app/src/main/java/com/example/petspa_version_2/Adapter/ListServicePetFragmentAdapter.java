@@ -25,6 +25,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
     private Context context;
     private List_Service_Item_Listener list_service_item_listener;
 
+
     public ListServicePetFragmentAdapter(List<ServicePet> listServicePet, Context context, List_Service_Item_Listener list_service_item_listener) {
         this.listServicePet = listServicePet;
         this.context = context;
@@ -52,6 +53,12 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         }else{
             holder.txtServicePetOldPrice.setText("");
         }
+        if (listServicePet.get(position).getDiscountPercent() != null){
+            holder.txtDiscountPercent.setText(listServicePet.get(position).getDiscountPercent());
+
+        }else{
+            holder.txtDiscountPercent.setText("");
+        }
         holder.ratingBar.setRating(listServicePet.get(position).getRating());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +70,10 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
                 list_service_item_listener.openBookingScreen(service);
             }
         });
+    }
+    public void filterList(List<ServicePet> filterList){
+        listServicePet = filterList;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -76,6 +87,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
         TextView txtServicePetDescription;
         TextView txtServicePetPrice;
         TextView txtServicePetOldPrice;
+        TextView txtDiscountPercent;
         RatingBar ratingBar;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -86,6 +98,7 @@ public class ListServicePetFragmentAdapter extends RecyclerView.Adapter<ListServ
             txtServicePetPrice = itemView.findViewById(R.id.txtServicePetPrice);
             txtServicePetOldPrice = itemView.findViewById(R.id.txtServicePetOldPrice);
             txtServicePetTitle = itemView.findViewById(R.id.txtServicePetTitle);
+            txtDiscountPercent = itemView.findViewById(R.id.txtDiscountPercent);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }
