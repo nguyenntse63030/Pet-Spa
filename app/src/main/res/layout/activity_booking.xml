@@ -75,7 +75,7 @@
                                 android:id="@+id/imageService"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:scaleType="fitXY"
+                                android:scaleType="centerCrop"
                                 android:src="@drawable/dog_bath"
                                 app:riv_border_color="#333333"
                                 app:riv_corner_radius="30dp"
