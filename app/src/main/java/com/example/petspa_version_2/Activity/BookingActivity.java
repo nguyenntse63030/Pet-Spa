@@ -248,6 +248,56 @@ public class BookingActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
+    public void saveOrder(){
+        String hour = spinnerTopLeft.getSelectedItem().toString();
+        String minute = spinnerTopRight.getSelectedItem().toString();
+
+        String day = spinnerBottomLeft.getSelectedItem().toString();
+        String month = spinnerBottomRight.getSelectedItem().toString();
+
+        String dateBook = "";
+        try {
+            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+            dateBook = df.format(new Date()).toString();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        String service = txtTitle.getText().toString();
+        String price = txtPrice.getText().toString();
+        int imageServiceBooking = servicePet.getServiceImage();
+        String serviceDescription = txtDescription.getText().toString();
+        String serviceContent = txtServicePetContent.getText().toString();
+
+        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+
+
+        Gson gson = new Gson();
+        String json = pref.getString("DATA_BOOKING", "");
+        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+
+        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
+
+        if(listBooking == null){
+            listBooking = new ArrayList<>();
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+
+            Gson gson2 = new Gson();
+            String json2 = gson2.toJson(listBooking);
+            editor.putString("DATA_BOOKING", json2);
+            editor.commit();
+
+        }else {
+            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+
+            Gson gson2 = new Gson();
+            String json2 = gson2.toJson(listBooking);
+            editor.putString("DATA_BOOKING", json2);
+            editor.commit();
+        }
+    }
+
     public void clickToBook(final View view) {
 
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
@@ -255,62 +305,13 @@ public class BookingActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which){
                     case DialogInterface.BUTTON_POSITIVE:
-                        Intent ggmap = new Intent(view.getContext(), MapsActivity.class);
-                        startActivity(ggmap);
+                        saveOrder();
+                        Intent gMaps = new Intent(view.getContext(), MapsActivity.class);
+                        startActivity(gMaps);
                         break;
 
                     case DialogInterface.BUTTON_NEGATIVE:
-                        Intent intent = BookingActivity.this.getIntent();
-                        servicePet = (ServicePet) intent.getSerializableExtra("service");
-
-                        String hour = spinnerTopLeft.getSelectedItem().toString();
-                        String minute = spinnerTopRight.getSelectedItem().toString();
-
-                        String day = spinnerBottomLeft.getSelectedItem().toString();
-                        String month = spinnerBottomRight.getSelectedItem().toString();
-
-                        String dateBook = "";
-                        try {
-                            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-                            dateBook = df.format(new Date()).toString();
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-
-                        String service = txtTitle.getText().toString();
-                        String price = txtPrice.getText().toString();
-                        int imageServiceBooking = servicePet.getServiceImage();
-                        String serviceDescription = txtDescription.getText().toString();
-                        String serviceContent = txtServicePetContent.getText().toString();
-
-                        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
-                        SharedPreferences.Editor editor = pref.edit();
-
-
-                        Gson gson = new Gson();
-                        String json = pref.getString("DATA_BOOKING", "");
-                        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
-
-                        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
-
-                        if(listBooking == null){
-                            listBooking = new ArrayList<>();
-                            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
-
-                            Gson gson2 = new Gson();
-                            String json2 = gson2.toJson(listBooking);
-                            editor.putString("DATA_BOOKING", json2);
-                            editor.commit();
-
-                        }else {
-                            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
-
-                            Gson gson2 = new Gson();
-                            String json2 = gson2.toJson(listBooking);
-                            editor.putString("DATA_BOOKING", json2);
-                            editor.commit();
-                        }
-
+                        saveOrder();
                         Intent intent1 = new Intent(view.getContext(), ListBookingActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
