@@ -43,7 +43,7 @@ public class BookingActivity extends AppCompatActivity {
     NavigationView navigationView = null;
 
     private  Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
-    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice,txtOldPrice;
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice,txtOldPrice,txtDiscountInBooking;
     private String year = "";
     ImageView imageService;
 
@@ -59,6 +59,7 @@ public class BookingActivity extends AppCompatActivity {
         txtServicePetContent = findViewById(R.id.txtServicePetContent);
         txtOldPrice = findViewById(R.id.txtOldPrice);
         txtPrice = findViewById(R.id.txtPrice);
+        txtDiscountInBooking = findViewById(R.id.txtDiscountInBooking);
         imageService = findViewById(R.id.imageService);
 
         Intent intent = BookingActivity.this.getIntent();
@@ -76,6 +77,7 @@ public class BookingActivity extends AppCompatActivity {
         txtDescription.setText(servicePet.getServiceDescription());
         txtServicePetContent.setText(servicePet.getServiceContent());
         imageService.setImageResource(servicePet.getServiceImage());
+        txtDiscountInBooking.setText(servicePet.getDiscountPercent());
 
         spinnerTopLeft = findViewById(R.id.spinnerTopLeft);
 
