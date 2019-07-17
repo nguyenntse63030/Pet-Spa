@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
     android:layout_marginStart="5dp"
-    android:layout_marginEnd="5dp"
     android:layout_marginTop="5dp"
+    android:layout_marginEnd="5dp"
     app:layout_widthPercent="100%">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="148dp"
-        android:orientation="vertical"
-        android:foreground="?android:attr/selectableItemBackground"
         android:layout_margin="7dp"
-        cardview:cardElevation="5dp"
-        cardview:cardCornerRadius="20dp">
+        android:foreground="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        cardview:cardCornerRadius="20dp"
+        cardview:cardElevation="5dp">
 
         <androidx.percentlayout.widget.PercentRelativeLayout
             android:layout_width="match_parent"
@@ -26,33 +26,33 @@
                 android:id="@+id/imageServicePet"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/grooming"
                 android:layout_gravity="center"
                 android:scaleType="centerCrop"
-                app:layout_widthPercent="35%"
-                app:layout_heightPercent="100%"/>
+                android:src="@drawable/grooming"
+                app:layout_heightPercent="100%"
+                app:layout_widthPercent="35%" />
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
                 android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:orientation="vertical"
                 app:layout_widthPercent="60%">
 
-                    <TextView
-                        android:id="@+id/txtServicePetTitle"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:text="Tẩy lông và hồi phục màu lông
+                <TextView
+                    android:id="@+id/txtServicePetTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:gravity="center_vertical"
+                    android:text="Tẩy lông và hồi phục màu lông
                         (15' đến 20')"
-                        android:textSize="17dp"
-                        android:gravity="center_vertical"
-                        android:textStyle="bold"
-                        app:layout_widthPercent="65%"
-                        app:layout_heightPercent="30%"
-                        android:textColor="@color/blueTitleItem"
-                        />
+                    android:textColor="@color/blueTitleItem"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    app:layout_heightPercent="30%"
+                    app:layout_widthPercent="65%" />
 
                 <TextView
                     android:id="@+id/txtServicePetDescription"
@@ -61,57 +61,61 @@
                     android:layout_below="@+id/txtServicePetTitle"
                     android:text="Service Pet Content"
                     android:textSize="15dp" />
+
                 <TextView
                     android:id="@+id/txtDiscountPercent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtServicePetDescription"
+                    android:layout_marginEnd="5dp"
+                    android:layout_toLeftOf="@+id/txtServicePetPrice"
                     android:gravity="right"
                     android:text="-20%"
-                    android:layout_marginStart="5dp"
                     android:textSize="16sp"
-                    android:textColor="@color/red"
-                    android:layout_toLeftOf="@+id/txtServicePetOldPrice"
-                    android:layout_above="@id/txtServicePetPrice"
+
                     />
-                <TextView
-                    android:id="@+id/txtServicePetOldPrice"
-                    android:textColor="@color/grey"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="18dp"
-                    android:gravity="center"
-                    android:layout_marginStart="2dp"
-                    android:layout_alignParentRight="true"
-                    android:layout_above="@+id/txtServicePetPrice"
-                    android:text="$1400"/>
+
                 <TextView
                     android:id="@+id/txtServicePetPrice"
-                    android:textColor="@color/blue"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:textSize="18dp"
-
-                    android:gravity="center"
-                    android:layout_marginStart="2dp"
+                    android:layout_below="@+id/txtServicePetDescription"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentBottom="true"
-                    android:text="$1400"/>
+                    android:layout_gravity="center"
+                    android:layout_marginStart="2dp"
+                    android:gravity="center"
+                    android:text="$1400"
+                    android:textColor="@color/red"
+
+                    android:textSize="18dp" />
+
+                <TextView
+                android:id="@+id/txtServicePetOldPrice"
+                android:textColor="@color/grey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:layout_below="@+id/txtServicePetPrice"
+                android:layout_alignParentRight="true"
+
+                android:text="$1400"/>
+
 
                 <RatingBar
                     android:id="@+id/ratingBar"
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:isIndicator="true"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginTop="120dp"
                     android:gravity="center"
+                    android:isIndicator="true"
                     android:numStars="5"
                     android:stepSize="0.1"
-                    app:layout_marginTopPercent="55%"
                     app:layout_marginLeftPercent="28%"
-                    android:layout_marginTop="120dp"
-                    android:layout_marginLeft="0dp" />
+                    app:layout_marginTopPercent="55%" />
             </RelativeLayout>
 
 
