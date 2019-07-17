@@ -10,8 +10,8 @@
         android:layout_height="160dp"
         android:foreground="?android:attr/selectableItemBackground"
         android:orientation="vertical"
-        cardview:cardElevation="5dp"
-        cardview:cardCornerRadius="20dp">
+        cardview:cardCornerRadius="20dp"
+        cardview:cardElevation="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,57 +28,59 @@
                 android:id="@+id/txtServiceCardContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/imageServiceCardView"
                 android:gravity="center"
                 android:text="Service 1"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_below="@id/imageServiceCardView"/>
-            <TextView
-                android:id="@+id/txtServiceCardOldPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="20000 d"
-                android:layout_alignParentRight="true"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/grey"
-                android:layout_above="@id/txtServiceCardPrice"
-                />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txtDiscount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/txtServiceCardContent"
+                android:layout_marginEnd="5dp"
                 android:gravity="right"
                 android:text="-20%"
-                android:layout_marginStart="5dp"
+                android:layout_toLeftOf="@+id/txtServiceCardPrice"
                 android:textSize="16sp"
-                android:textColor="@color/red"
-                android:layout_above="@id/txtServiceCardPrice"
-                />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/txtServiceCardPrice"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="right"
+
+                android:layout_below="@+id/txtServiceCardContent"
+                android:layout_alignParentRight="true"
                 android:text="16000d"
+                android:textColor="@color/red"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/blue"
-                android:layout_above="@id/ratingBar"
-                />
-                <RatingBar
-                    android:id="@+id/ratingBar"
-                    style="?android:attr/ratingBarStyleSmall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:isIndicator="true"
-                    android:gravity="center"
-                    android:layout_centerHorizontal="true"
-                    android:numStars="5"
-                    android:stepSize="0.1"
-                    android:layout_alignParentBottom="true"
-                    />
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtServiceCardOldPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtServiceCardPrice"
+                android:layout_alignParentRight="true"
+                android:gravity="right"
+                android:text="20000 d"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1" />
 
 
         </RelativeLayout>
