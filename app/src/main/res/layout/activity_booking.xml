@@ -115,22 +115,20 @@
                                 android:layout_alignParentEnd="true"
                                 android:text="120,000 VND"
                                 android:textAlignment="center"
-                                android:textColor="@color/grey"
+                                android:textColor="@color/red"
                                 android:textSize="20dp"
-                                android:paddingEnd="10dp"/>
+                                android:layout_marginEnd="10dp"/>
                             <TextView
                                 android:id="@+id/txtDiscountInBooking"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:gravity="right"
                                 android:text="-20%"
-                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="5dp"
                                 android:textSize="20dp"
-                                android:textColor="@color/red"
-                                android:layout_toLeftOf="@id/txtOldPrice"
+                                android:layout_toLeftOf="@id/txtPrice"
                                 android:layout_above="@id/txtServiceCardPrice"
                                 />
-                                app:layout_widthPercent="50%" />
                             <TextView
                                 android:id="@+id/txtOldPrice"
                                 android:layout_width="wrap_content"
@@ -140,11 +138,9 @@
                                 android:layout_alignParentEnd="true"
                                 android:text="150,000"
                                 android:textAlignment="center"
-                                android:textColor="@color/red"
+                                android:textColor="@color/grey"
                                 android:textSize="20dp"
-                                app:layout_widthPercent="40%" />
-                                android:textSize="20dp"
-                                app:layout_widthPercent="50%" />
+                                android:layout_marginEnd="10dp"/>
 
                             <TextView
                                 android:id="@+id/txtDescription"
