@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.PetInformationActivity">
+
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/profile_image"
+        app:layout_marginTopPercent="4%"
+        app:layout_marginLeftPercent="40%"
+        app:layout_heightPercent="20%"
+        app:layout_widthPercent="20%"
+        android:src="@drawable/dog_avatar"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#00000000"/>
+
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:layout_marginTopPercent="19%"-->
+        <!--app:layout_marginLeftPercent="35%"-->
+        <!--android:textSize="18dp"-->
+        <!--android:text="Tap to change"/>-->
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_marginTopPercent="21%"
+        app:layout_marginLeftPercent="8%"
+        android:textSize="18dp"
+        android:text="Thông tin cơ bản"
+        android:textColor="@color/blue"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_marginTopPercent="24%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_heightPercent="70%"
+        app:layout_widthPercent="90%"
+        android:background="@drawable/box_shadow">
+            <TextView
+                android:id="@+id/petName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tên"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="6dp"/>
+            <EditText
+                android:id="@+id/txtPetName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/petName"
+                android:text=""
+                app:hintEnabled="true"
+                android:backgroundTint="@color/grey"
+                android:textSize="16dp"/>
+
+
+        <TextView
+            android:id="@+id/birthDay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ngày sinh"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtPetBirthDay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/birthDay"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chủng loài"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="140dp"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtType"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/type"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/breed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giống"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="200dp"
+            android:backgroundTint="@color/grey"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtBreed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/breed"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Màu lông"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="260dp"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/color"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/sex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Giới tính"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="320dp"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtSex"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sex"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/weight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cân nặng"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            android:layout_marginTop="380dp"
+            android:layout_marginLeft="6dp"/>
+        <EditText
+            android:id="@+id/txtWeight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/weight"
+            android:text=""
+            app:hintEnabled="true"
+            android:backgroundTint="@color/grey"
+            android:textSize="16dp"/>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Thú cưng"
+        android:textSize="25dp"
+        android:background="@drawable/gradient_background"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textStyle="bold"/>
+
+    <!--<Button-->
+        <!--android:id="@+id/btnSearch"-->
+        <!--android:layout_width="35dp"-->
+        <!--android:layout_height="35dp"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_marginTop="0dp"-->
+        <!--android:layout_marginEnd="0dp"-->
+        <!--android:background="@drawable/icons8_hand_drawn_24" />-->
+    <Button
+        android:id="@+id/btnUpdatePet"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/border_radius_button"
+        app:layout_marginTopPercent="94%"
+        app:layout_marginLeftPercent="5%"
+        app:layout_heightPercent="5%"
+        app:layout_widthPercent="90%"
+        android:onClick="clickToEditPetInformation"
+        android:text="Cập nhật"/>
+
+
+</androidx.percentlayout.widget.PercentRelativeLayout>

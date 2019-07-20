@@ -22,6 +22,11 @@
         android:title="Cá nhân"/>
 
     <item
+        android:id="@+id/item_pet_information"
+        android:icon="@drawable/icon_pet"
+        android:title="Thú cưng"/>
+
+    <item
         android:id="@+id/item_user_logout"
         android:icon="@drawable/ic_logout"
         android:title="Đăng xuất"/>
