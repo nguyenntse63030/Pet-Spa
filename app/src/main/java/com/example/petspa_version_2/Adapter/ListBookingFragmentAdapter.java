@@ -16,7 +16,7 @@ import com.example.petspa_version_2.R;
 
 import java.util.List;
 
-public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBookingFragmentAdapter.MyViewHolder>{
+public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBookingFragmentAdapter.MyViewHolder> {
     private List<Booking> listBooking;
     private Booking_list_listener mCallback;
 
@@ -54,8 +54,17 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
                 String serviceDescription = listBooking.get(position).getServiceDescription();
                 String serviceContent = listBooking.get(position).getServiceContent();
 
-                ServicePet servicePet = new ServicePet(service, serviceDescription, serviceContent,imageServiceBooking,price);
-                mCallback.onClickBookingItem(servicePet);
+                ServicePet servicePet = new ServicePet(service, serviceDescription, serviceContent, imageServiceBooking, price);
+
+                String day = listBooking.get(position).getDay();
+                String month = listBooking.get(position).getMonth();
+                String hour = listBooking.get(position).getHour();
+                String minute = listBooking.get(position).getMinute();
+                String year = listBooking.get(position).getYear();
+
+                String oldBooking = listBooking.get(position).getOldBooking();
+                int bookID = listBooking.get(position).getBookID();
+                mCallback.onClickBookingItem(servicePet, day, month, year, hour, minute, oldBooking, bookID);
             }
         });
     }
@@ -65,7 +74,7 @@ public class ListBookingFragmentAdapter extends RecyclerView.Adapter<ListBooking
         return listBooking.size();
     }
 
-    public static class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         private ImageView imageServiceBooking;
         private TextView txtBookingTitle, txtBookingDesciption, txtDateOfBooking;

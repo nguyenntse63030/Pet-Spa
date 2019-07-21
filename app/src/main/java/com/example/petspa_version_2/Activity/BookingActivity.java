@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class BookingActivity extends AppCompatActivity {
     private ServicePet servicePet;
@@ -58,6 +59,14 @@ public class BookingActivity extends AppCompatActivity {
     private ArrayList<Button> listTimeButton = new ArrayList<>();
     private ArrayList<Button> listDateButton = new ArrayList<>();
     ImageView imageService;
+
+    /////
+    String hour2;
+    String minute2;
+
+    String day2;
+    String month2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -163,6 +172,10 @@ public class BookingActivity extends AppCompatActivity {
                     // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
                     // Tao không biết code khúc ShareReferences ở dưới của mày.
 
+                    String getTimes[] = buttonName.split("h");
+                    hour2 = getTimes[0];
+                    minute2 = getTimes[1];
+
                 }
             });
             listTimeButton.add(timeButton);
@@ -202,6 +215,9 @@ public class BookingActivity extends AppCompatActivity {
                     resetColorDateButton(buttonName);
                     // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
                     // Tao không biết code khúc ShareReferences ở dưới của mày.
+                    String getTimes[] = buttonName.split("/");
+                    day2 = getTimes[0];
+                    month2 = getTimes[1];
 
                 }
             });
@@ -357,82 +373,119 @@ public class BookingActivity extends AppCompatActivity {
     }
 
     public void saveOrder() {
-        String hour = spinnerTopLeft.getSelectedItem().toString();
-        String minute = spinnerTopRight.getSelectedItem().toString();
 
-        String day = spinnerBottomLeft.getSelectedItem().toString();
-        String month = spinnerBottomRight.getSelectedItem().toString();
+//            String hour = spinnerTopLeft.getSelectedItem().toString();
+//            String minute = spinnerTopRight.getSelectedItem().toString();
+//
+//            String day = spinnerBottomLeft.getSelectedItem().toString();
+//            String month = spinnerBottomRight.getSelectedItem().toString();
+            String hour = hour2;
+            String minute = minute2;
 
-        String dateBook = "";
-        try {
-            DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
-            dateBook = df.format(new Date()).toString();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            String day = day2;
+            String month = month2;
 
-        String service = txtTitle.getText().toString();
-        String price = txtPrice.getText().toString();
-        int imageServiceBooking = servicePet.getServiceImage();
-        String serviceDescription = txtDescription.getText().toString();
-        String serviceContent = txtServicePetContent.getText().toString();
+            String dateBook = "";
+            try {
+                DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+                dateBook = df.format(new Date()).toString();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
 
-        SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
-        SharedPreferences.Editor editor = pref.edit();
+            String service = txtTitle.getText().toString();
+            String price = txtPrice.getText().toString();
+            int imageServiceBooking = servicePet.getServiceImage();
+            String serviceDescription = txtDescription.getText().toString();
+            String serviceContent = txtServicePetContent.getText().toString();
+
+            SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
+            SharedPreferences.Editor editor = pref.edit();
 
 
-        Gson gson = new Gson();
-        String json = pref.getString("DATA_BOOKING", "");
-        Type type = new TypeToken<ArrayList<Booking>>() {
-        }.getType();
+            Gson gson = new Gson();
+            String json = pref.getString("DATA_BOOKING", "");
+            Type type = new TypeToken<ArrayList<Booking>>() {
+            }.getType();
 
-        ArrayList<Booking> listBooking = gson.fromJson(json, type);
+            ArrayList<Booking> listBooking = gson.fromJson(json, type);
 
-        if (listBooking == null) {
-            listBooking = new ArrayList<>();
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+            Random rand = new Random();
+            int bookID = rand.nextInt(100);
 
-            Gson gson2 = new Gson();
-            String json2 = gson2.toJson(listBooking);
-            editor.putString("DATA_BOOKING", json2);
-            editor.commit();
+            if (listBooking == null) {
+                listBooking = new ArrayList<>();
+                listBooking.add(new Booking(bookID, dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
-        } else {
-            listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+                Gson gson2 = new Gson();
+                String json2 = gson2.toJson(listBooking);
+                editor.putString("DATA_BOOKING", json2);
+                editor.commit();
 
-            Gson gson2 = new Gson();
-            String json2 = gson2.toJson(listBooking);
-            editor.putString("DATA_BOOKING", json2);
-            editor.commit();
-        }
+            } else {
+                boolean flag = false;
+                do {
+                    flag = true;
+                    for (int i = 0; i < listBooking.size(); i++) {
+                        if (listBooking.get(i).getBookID() == bookID) {
+                            bookID = rand.nextInt(100);
+                            flag = false;
+                        }
+                    }
+                } while (flag != true);
+
+                listBooking.add(new Booking(bookID, dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
+
+                Gson gson2 = new Gson();
+                String json2 = gson2.toJson(listBooking);
+                editor.putString("DATA_BOOKING", json2);
+                editor.commit();
+            }
+
+
     }
 
     public void clickToBook(final View view) {
+        if (hour2 != null && minute2 != null && day2 != null && month2 != null) {
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which) {
+                        case DialogInterface.BUTTON_POSITIVE:
+                            saveOrder();
+                            Intent gMaps = new Intent(view.getContext(), MapsActivity.class);
+                            startActivity(gMaps);
+                            break;
 
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        saveOrder();
-                        Intent gMaps = new Intent(view.getContext(), MapsActivity.class);
-                        startActivity(gMaps);
-                        break;
-
-                    case DialogInterface.BUTTON_NEGATIVE:
-                        saveOrder();
-                        Intent intent1 = new Intent(view.getContext(), ListBookingActivity.class);
-                        startActivity(intent1);
-                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                        finish();
-                        break;
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            saveOrder();
+                            Intent intent1 = new Intent(view.getContext(), ListBookingActivity.class);
+                            startActivity(intent1);
+                            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                            finish();
+                            break;
+                    }
                 }
-            }
-        };
+            };
 
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(view.getContext());
-        builder.setMessage("Lịch hẹn của bạn đã được đặt thành công. Bạn có muốn chỉ đường đến shop?" + "").setPositiveButton("Ok", dialogClickListener)
-                .setNegativeButton("Đã biết đường", dialogClickListener).show();
+            android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(view.getContext());
+            builder.setMessage("Lịch hẹn của bạn đã được đặt thành công. Bạn có muốn chỉ đường đến shop?" + "").setPositiveButton("Ok", dialogClickListener)
+                    .setNegativeButton("Đã biết đường", dialogClickListener).show();
+        } else {
+            AlertDialog.Builder mess = new AlertDialog.Builder(this);
+            mess.setTitle("Ngày hẹn vẫn chưa chọn");
+
+            mess.setMessage("Bạn vẫn chưa chọn ngày hẹn, hãy chọn ngày hẹn để có thể đặt lịch")
+                    .setCancelable(false).setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            AlertDialog showMess = mess.create();
+            showMess.show();
+        }
 
 
     }

@@ -11,7 +11,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.petspa_version_2.Model.Booking;
@@ -30,8 +32,14 @@ public class BookingDetail extends AppCompatActivity {
     DrawerLayout menuLayoutDrawer = null;
     NavigationView bookingDetailMenu = null;
 
-    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice;
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice, timerBooking;
     ImageView imageService;
+
+    private String oldBooking;
+    private int bookID;
+    LinearLayout layoutRating;
+    Button btnRating;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +53,10 @@ public class BookingDetail extends AppCompatActivity {
         txtServicePetContent = findViewById(R.id.txtServicePetContent);
         txtPrice = findViewById(R.id.txtPrice);
         imageService = findViewById(R.id.imageService);
-
+        ///
+        layoutRating = findViewById(R.id.layoutRating);
+        timerBooking = findViewById(R.id.timerBooking);
+        ///
         Intent intent = BookingDetail.this.getIntent();
         servicePet = (ServicePet) intent.getSerializableExtra("bookingDetail");
 
@@ -54,7 +65,27 @@ public class BookingDetail extends AppCompatActivity {
         txtDescription.setText(servicePet.getServiceDescription());
         txtServicePetContent.setText(servicePet.getServiceContent());
         imageService.setImageResource(servicePet.getServiceImage());
+        btnRating = findViewById(R.id.btnRating);
+        ///
 
+
+        String day = intent.getStringExtra("day");
+        String month = intent.getStringExtra("month");
+        String hour = intent.getStringExtra("hour");
+        String minute = intent.getStringExtra("minute");
+        String year = intent.getStringExtra("year");
+        oldBooking = intent.getStringExtra("oldBooking");
+        bookID = intent.getIntExtra("bookID", 0);
+        if (oldBooking == null) {
+            //if (!oldBooking.equals("true")) {
+                layoutRating.setVisibility(LinearLayout.GONE);
+                btnRating.setText("Hủy lịch hẹn");
+            //}
+        }
+        timerBooking.setText("_Giờ hẹn sử dụng dịch vụ:\n"
+                + "+ " + hour + " giờ " + minute + " phút. \n" +
+                "+ Ngày " + day + " ,tháng " + month +
+                ",năm " + year);
 
     }
 
@@ -82,7 +113,7 @@ public class BookingDetail extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                if(item.getItemId() == R.id.item_booking_list){
+                if (item.getItemId() == R.id.item_booking_list) {
 
                     Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
@@ -123,13 +154,40 @@ public class BookingDetail extends AppCompatActivity {
     }
 
     public void clickToRating(View view) {
+
+        if (oldBooking == null) {
+            //if (!oldBooking.equals("true")) {
+                SharedPreferences pref = getSharedPreferences("listBooking", MODE_PRIVATE);
+                SharedPreferences.Editor editor = pref.edit();
+
+
+                Gson gson = new Gson();
+                String json = pref.getString("DATA_BOOKING", "");
+                Type type = new TypeToken<ArrayList<Booking>>() {}.getType();
+
+                ArrayList<Booking> listBooking = gson.fromJson(json, type);
+
+                for (int i = 0; i < listBooking.size(); i++) {
+                    if(listBooking.get(i).getBookID() == bookID){
+                        listBooking.remove(i);
+                    }
+                }
+
+                Gson gson2 = new Gson();
+                String json2 = gson2.toJson(listBooking);
+                editor.putString("DATA_BOOKING", json2);
+                editor.commit();
+            //}
+        }
+
+
         Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
-        finish();
+
     }
 
-    public void clickToGGM(View view){
+    public void clickToGGM(View view) {
         Intent intent = new Intent(getApplicationContext(), MapsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         startActivity(intent);

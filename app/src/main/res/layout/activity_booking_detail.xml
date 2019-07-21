@@ -22,7 +22,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="3dp"
                 android:background="@drawable/ic_keyboard_arrow_left_white_24dp"
-                android:onClick="clickToBack"/>
+                android:onClick="clickToBack" />
 
             <Button
                 android:layout_width="40dp"
@@ -31,7 +31,7 @@
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="3dp"
                 android:background="@drawable/ic_menu_white_24dp"
-                android:onClick="clickToOpenMenu"/>
+                android:onClick="clickToOpenMenu" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -121,11 +121,11 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:drawableLeft="@drawable/ic_chiduong"
+                                android:onClick="clickToGGM"
                                 android:padding="11dp"
                                 android:textSize="15sp"
-                                android:onClick="clickToGGM"
                                 app:layout_marginLeftPercent="63%"
-                                app:layout_marginTopPercent="60%"/>
+                                app:layout_marginTopPercent="60%" />
 
                             <TextView
                                 android:id="@+id/txtPrice"
@@ -178,58 +178,72 @@ Bà Mẫn nói, việc nghỉ lễ vào 27/7 hàng năm là hợp lý để ngư
 Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó trưởng đoàn đại biểu tỉnh Phú Thọ cho rằng, việc tri ân các anh hùng, liệt sĩ và người có công đã được Việt Nam thực hiện thường xuyên trong nhiều năm."
                                             android:textSize="15dp" />
 
-                                        <TextView
+                                       <TextView
+                                           android:id="@+id/timerBooking"
+                                           android:layout_width="match_parent"
+                                           android:layout_height="wrap_content"
+                                           />
+
+                                        <LinearLayout
+                                            android:id="@+id/layoutRating"
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
-                                            android:text="KHÁCH HÀNG NHẬN XÉT"
-                                            android:textSize="20dp"
-                                            android:textStyle="bold" />
+                                            android:orientation="vertical">
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="1. Đánh giá của bạn về dịch vụ này:"
-                                            android:textStyle="bold" />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="KHÁCH HÀNG NHẬN XÉT"
+                                                android:textSize="20dp"
+                                                android:textStyle="bold" />
 
-                                        <RatingBar
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_gravity="center"
-                                            android:layout_marginTop="10dp"
-                                            android:gravity="center"
-                                            android:numStars="5"
-                                            android:stepSize="1"
-                                            />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="1. Đánh giá của bạn về dịch vụ này:"
+                                                android:textStyle="bold" />
 
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:text="2. Viết nhận xét của bạn vào bên dưới:"
-                                            android:textStyle="bold" />
+                                            <RatingBar
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:layout_gravity="center"
+                                                android:layout_marginTop="10dp"
+                                                android:gravity="center"
+                                                android:numStars="5"
+                                                android:stepSize="1" />
 
-                                        <EditText
-                                            android:layout_width="match_parent"
-                                            android:layout_height="100dp"
-                                            android:gravity="top"
-                                            android:imeOptions="actionDone"
-                                            android:inputType="text"
-                                            android:hint="Nhận xét của bạn về dịch vụ này" />
+                                            <TextView
+                                                android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+                                                android:text="2. Viết nhận xét của bạn vào bên dưới:"
+                                                android:textStyle="bold" />
+
+                                            <EditText
+                                                android:layout_width="match_parent"
+                                                android:layout_height="100dp"
+                                                android:gravity="top"
+                                                android:hint="Nhận xét của bạn về dịch vụ này"
+                                                android:imeOptions="actionDone"
+                                                android:inputType="text" />
+                                        </LinearLayout>
+
 
                                     </LinearLayout>
                                 </ScrollView>
 
                                 <Button
+                                    android:id="@+id/btnRating"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    app:layout_widthPercent="99%"
-                                    android:layout_centerHorizontal="true"
                                     android:layout_alignParentBottom="true"
+                                    android:layout_centerHorizontal="true"
                                     android:layout_marginBottom="5dp"
                                     android:background="@drawable/border_radius_button"
+                                    android:onClick="clickToRating"
                                     android:text="Rating"
                                     android:textColor="@color/white"
                                     android:textSize="25dp"
-                                    android:onClick="clickToRating"/>
+                                    app:layout_widthPercent="99%" />
 
                             </androidx.percentlayout.widget.PercentRelativeLayout>
 
