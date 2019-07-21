@@ -11,6 +11,8 @@
     <color name="serviceCardBackgroubd">#C2C2C2</color>
     <color name="grey">#d3d3d3</color>
     <color name="blue">#00bfff</color>
+    <color name="startBlue">#049af7</color>
+    <color name="endBlue">#02c2f9 </color>
     <color name="red">#ff0000</color>
     <color name="backGroundTitleActivity">#00FFFFFF</color>
     <color name="backGroundTextNewsTop">#AA000000</color>

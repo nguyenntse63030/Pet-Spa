@@ -4,19 +4,27 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,9 +50,13 @@ public class BookingActivity extends AppCompatActivity {
     DrawerLayout drawerLayout = null;
     NavigationView navigationView = null;
 
-    private  Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
-    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice,txtOldPrice,txtDiscountInBooking;
+    private Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
+    private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice, txtOldPrice, txtDiscountInBooking;
     private String year = "";
+    private HorizontalScrollView timeButtonView;
+    private HorizontalScrollView dateButtonView;
+    private ArrayList<Button> listTimeButton = new ArrayList<>();
+    private ArrayList<Button> listDateButton = new ArrayList<>();
     ImageView imageService;
 
     @Override
@@ -64,11 +76,11 @@ public class BookingActivity extends AppCompatActivity {
 
         Intent intent = BookingActivity.this.getIntent();
         servicePet = (ServicePet) intent.getSerializableExtra("service");
-        if (servicePet.getServiceOldPrice()!=null){
+        if (servicePet.getServiceOldPrice() != null) {
             txtOldPrice.setText(servicePet.getServiceOldPrice() + " đ");
             txtOldPrice.setPaintFlags(txtOldPrice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
-        }else {
+        } else {
             txtOldPrice.setText("");
         }
 
@@ -104,7 +116,7 @@ public class BookingActivity extends AppCompatActivity {
             sblItems.add("" + c.getTime().getDate());
         }
 
-            ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
         spinnerTopLeft.setAdapter(adapter1);
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.spinner_item, strItems);
@@ -119,8 +131,100 @@ public class BookingActivity extends AppCompatActivity {
         setCurrentDate(spinnerBottomRight);
 
         ////////
+        loadListTimeButton();
+        loadListDateButton();
+    }
 
+    private void loadListTimeButton() {
+        timeButtonView = findViewById(R.id.timeButtonView);
+        String[] times = new String[]{"8h30", "9h30", "10h30", "11h30", "13h30", "14h30", "15h30", "16h30", "17h30", "18h30", "19h30"};
 
+        LinearLayout linearLayout = new LinearLayout(this);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(10, 0, 0, 0);
+        for (String time : times) {
+            Button timeButton = new Button(this);
+            timeButton.setText(time + "");
+            timeButton.setTextSize(18);
+            timeButton.setLayoutParams(params);
+            timeButton.setBackgroundColor(Color.parseColor("#02c2f9"));
+            timeButton.setTextColor(Color.parseColor("#ffffff"));
+            timeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button clickedTimeButton = (Button) v;
+                    String buttonName = clickedTimeButton.getText().toString();
+                    clickedTimeButton.setBackgroundColor(Color.parseColor("#049af7"));
+                    resetColorTimeButton(buttonName);
+                    // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
+                    // Tao không biết code khúc ShareReferences ở dưới của mày.
+
+                }
+            });
+            listTimeButton.add(timeButton);
+            linearLayout.addView(timeButton);
+        }
+        timeButtonView.addView(linearLayout);
+    }
+
+    private void loadListDateButton() {
+        dateButtonView = findViewById(R.id.dateButtonView);
+        LinearLayout linearLayout = new LinearLayout(this);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+        );
+        params.setMargins(10, 0, 0, 0);
+
+        Date date = new Date();
+        Calendar c = Calendar.getInstance();
+        c.setTime(date); // Now use today date.
+
+        for (int i = 1; i <= 7; i++) {
+            c.add(Calendar.DATE, 1);
+            String dateMonth = c.getTime().getDate() + "/" + c.getTime().getMonth();
+            Button dateButton = new Button(this);
+            dateButton.setText(dateMonth);
+            dateButton.setTextSize(18);
+            dateButton.setLayoutParams(params);
+            dateButton.setBackgroundColor(Color.parseColor("#02c2f9"));
+            dateButton.setTextColor(Color.parseColor("#ffffff"));
+            dateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Button clickedDateButton = (Button) v;
+                    String buttonName = clickedDateButton.getText().toString();
+                    clickedDateButton.setBackgroundColor(Color.parseColor("#049af7"));
+                    resetColorDateButton(buttonName);
+                    // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
+                    // Tao không biết code khúc ShareReferences ở dưới của mày.
+
+                }
+            });
+            listDateButton.add(dateButton);
+            linearLayout.addView(dateButton);
+        }
+        dateButtonView.addView(linearLayout);
+    }
+
+    private void resetColorTimeButton(String buttonName) {
+        for (Button timeButton : listTimeButton) {
+            if (!timeButton.getText().toString().equals(buttonName)) {
+                timeButton.setBackgroundColor(Color.parseColor("#02c2f9"));
+            }
+        }
+    }
+
+    private void resetColorDateButton(String buttonName) {
+        for (Button dateButton : listDateButton) {
+            if (!dateButton.getText().toString().equals(buttonName)) {
+                dateButton.setBackgroundColor(Color.parseColor("#02c2f9"));
+            }
+        }
     }
 
     private void setCurrentDate(Spinner spinnerMonth) {
@@ -141,45 +245,47 @@ public class BookingActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-    spinnerBottomLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-        @Override
-        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            Date dateCheckSpiner = new Date();
-            Calendar calendarCheckSpiner = Calendar.getInstance();
-            calendarCheckSpiner.setTime(dateCheckSpiner);
-            calendarCheckSpiner.add(Calendar.DATE, 1);
+        spinnerBottomLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                Date dateCheckSpiner = new Date();
+                Calendar calendarCheckSpiner = Calendar.getInstance();
+                calendarCheckSpiner.setTime(dateCheckSpiner);
+                calendarCheckSpiner.add(Calendar.DATE, 1);
 
-            int dateSelectCheck = Integer.parseInt(spinnerBottomLeft.getSelectedItem().toString());
-            String checkSpinerNow = calendarCheckSpiner.getTime().getDate() + "";
-            int dateConvertCheck = Integer.parseInt(checkSpinerNow);
+                int dateSelectCheck = Integer.parseInt(spinnerBottomLeft.getSelectedItem().toString());
+                String checkSpinerNow = calendarCheckSpiner.getTime().getDate() + "";
+                int dateConvertCheck = Integer.parseInt(checkSpinerNow);
 
-            if(dateSelectCheck < dateConvertCheck){
-                int monthCurrent = calendarCheckSpiner.getTime().getMonth();
+                if (dateSelectCheck < dateConvertCheck) {
+                    int monthCurrent = calendarCheckSpiner.getTime().getMonth();
 
-                calendarCheckSpiner.add(Calendar.MONTH, 1);
+                    calendarCheckSpiner.add(Calendar.MONTH, 1);
 
-                int month = calendarCheckSpiner.getTime().getMonth();
+                    int month = calendarCheckSpiner.getTime().getMonth();
 
-                spinnerBottomRight.setSelection(month);
+                    spinnerBottomRight.setSelection(month);
 
-                if(monthCurrent == 11){
-                    year = "" + (Calendar.getInstance().get(Calendar.YEAR) + 1);;
+                    if (monthCurrent == 11) {
+                        year = "" + (Calendar.getInstance().get(Calendar.YEAR) + 1);
+                        ;
+                    }
+
+
+                } else {
+                    int month = calendarCheckSpiner.getTime().getMonth();
+                    spinnerBottomRight.setSelection(month);
+
+                    year = "" + Calendar.getInstance().get(Calendar.YEAR);
+                    ;
                 }
-
-
-            }else {
-                int month = calendarCheckSpiner.getTime().getMonth();
-                spinnerBottomRight.setSelection(month);
-
-                year = "" + Calendar.getInstance().get(Calendar.YEAR);;
             }
-        }
 
-        @Override
-        public void onNothingSelected(AdapterView<?> parent) {
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-        }
-    });
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -201,22 +307,22 @@ public class BookingActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
 
-                if(item.getItemId() == R.id.item_booking_list){
+                if (item.getItemId() == R.id.item_booking_list) {
                     List<Booking> listBooking = new ArrayList<>();
                     SharedPreferences pref = getSharedPreferences("listBooking", Context.MODE_PRIVATE);
 
                     Gson gson = new Gson();
                     String json = pref.getString("DATA_BOOKING", "");
-                    Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+                    Type type = new TypeToken<ArrayList<Booking>>() {
+                    }.getType();
 
                     listBooking = gson.fromJson(json, type);
 
-                    if(listBooking == null){
+                    if (listBooking == null) {
                         dialogMessEmptyListBooking();
-                    }
-                    else if(listBooking.isEmpty()){
+                    } else if (listBooking.isEmpty()) {
                         dialogMessEmptyListBooking();
-                    }else {
+                    } else {
                         Intent intent = new Intent(getApplicationContext(), ListBookingActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
@@ -250,7 +356,7 @@ public class BookingActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
-    public void saveOrder(){
+    public void saveOrder() {
         String hour = spinnerTopLeft.getSelectedItem().toString();
         String minute = spinnerTopRight.getSelectedItem().toString();
 
@@ -261,7 +367,7 @@ public class BookingActivity extends AppCompatActivity {
         try {
             DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
             dateBook = df.format(new Date()).toString();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -277,11 +383,12 @@ public class BookingActivity extends AppCompatActivity {
 
         Gson gson = new Gson();
         String json = pref.getString("DATA_BOOKING", "");
-        Type type = new TypeToken<ArrayList<Booking>>(){}.getType();
+        Type type = new TypeToken<ArrayList<Booking>>() {
+        }.getType();
 
-        ArrayList<Booking> listBooking =  gson.fromJson(json, type);
+        ArrayList<Booking> listBooking = gson.fromJson(json, type);
 
-        if(listBooking == null){
+        if (listBooking == null) {
             listBooking = new ArrayList<>();
             listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
@@ -290,7 +397,7 @@ public class BookingActivity extends AppCompatActivity {
             editor.putString("DATA_BOOKING", json2);
             editor.commit();
 
-        }else {
+        } else {
             listBooking.add(new Booking(dateBook, day, month, hour, minute, service, price, imageServiceBooking, year, serviceDescription, serviceContent));
 
             Gson gson2 = new Gson();
@@ -305,7 +412,7 @@ public class BookingActivity extends AppCompatActivity {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                switch (which){
+                switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         saveOrder();
                         Intent gMaps = new Intent(view.getContext(), MapsActivity.class);
@@ -324,13 +431,13 @@ public class BookingActivity extends AppCompatActivity {
         };
 
         android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(view.getContext());
-        builder.setMessage("Lịch hẹn của bạn đã được đặt thành công. Bạn có muốn chỉ đường đến shop?"  +"").setPositiveButton("Ok", dialogClickListener)
+        builder.setMessage("Lịch hẹn của bạn đã được đặt thành công. Bạn có muốn chỉ đường đến shop?" + "").setPositiveButton("Ok", dialogClickListener)
                 .setNegativeButton("Đã biết đường", dialogClickListener).show();
 
 
     }
 
-    private void dialogMessEmptyListBooking(){
+    private void dialogMessEmptyListBooking() {
         AlertDialog.Builder mess = new AlertDialog.Builder(this);
         mess.setTitle(GlobalValue.MESS_TITLE);
 

@@ -106,29 +106,29 @@
                                 app:layout_widthPercent="45%" />
 
 
-
                             <TextView
                                 android:id="@+id/txtPrice"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignRight="@+id/txtTitle"
                                 android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
                                 android:text="120,000 VND"
                                 android:textAlignment="center"
                                 android:textColor="@color/red"
-                                android:textSize="20dp"
-                                android:layout_marginEnd="10dp"/>
+                                android:textSize="20dp" />
+
                             <TextView
                                 android:id="@+id/txtDiscountInBooking"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_above="@id/txtServiceCardPrice"
+                                android:layout_marginEnd="5dp"
+                                android:layout_toLeftOf="@id/txtPrice"
                                 android:gravity="right"
                                 android:text="-20%"
-                                android:layout_marginEnd="5dp"
-                                android:textSize="20dp"
-                                android:layout_toLeftOf="@id/txtPrice"
-                                android:layout_above="@id/txtServiceCardPrice"
-                                />
+                                android:textSize="20dp" />
+
                             <TextView
                                 android:id="@+id/txtOldPrice"
                                 android:layout_width="wrap_content"
@@ -136,11 +136,11 @@
                                 android:layout_below="@+id/txtPrice"
                                 android:layout_alignRight="@+id/txtTitle"
                                 android:layout_alignParentEnd="true"
+                                android:layout_marginEnd="10dp"
                                 android:text="150,000"
                                 android:textAlignment="center"
                                 android:textColor="@color/grey"
-                                android:textSize="20dp"
-                                android:layout_marginEnd="10dp"/>
+                                android:textSize="20dp" />
 
                             <TextView
                                 android:id="@+id/txtDescription"
@@ -231,11 +231,21 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                                 android:layout_width="100dp"
                                                 android:layout_height="100dp"
                                                 android:layout_alignParentRight="true"
-                                                android:layout_marginTop="15dp"
-
-                                                ></Spinner>
+                                                android:layout_marginTop="15dp"></Spinner>
 
                                         </RelativeLayout>
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/timeButtonView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:scrollbars="none"
+                                            android:paddingLeft="5dp">
+
+
+
+                                        </HorizontalScrollView>
 
                                         <TextView
                                             android:layout_width="wrap_content"
@@ -278,6 +288,18 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                                 android:dropDownWidth="100dp"></Spinner>
 
                                         </RelativeLayout>
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/dateButtonView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:scrollbars="none"
+                                            android:paddingLeft="5dp">
+
+
+
+                                        </HorizontalScrollView>
 
                                     </LinearLayout>
                                 </ScrollView>
