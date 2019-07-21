@@ -14,6 +14,7 @@ public class ServicePet implements Serializable {
     String serviceOldPrice;
     String discountPercent;
     float rating;
+    String distance;
 
 
 
@@ -25,6 +26,15 @@ public class ServicePet implements Serializable {
         this.servicePrice = servicePrice;
         this.rating = rating;
     }
+    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice, float rating,String distance) {
+        this.serviceTitle = serviceTitle;
+        this.serviceDescription = serviceDescription;
+        this.serviceContent = serviceContent;
+        this.serviceImage = serviceImage;
+        this.servicePrice = servicePrice;
+        this.rating = rating;
+        this.distance = distance;
+    }
     public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice, float rating,String serviceOldPrice,String discountPercent) {
         this.serviceTitle = serviceTitle;
         this.serviceDescription = serviceDescription;
@@ -34,6 +44,17 @@ public class ServicePet implements Serializable {
         this.rating = rating;
         this.serviceOldPrice = serviceOldPrice;
         this.discountPercent = discountPercent;
+    }
+    public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice, float rating,String serviceOldPrice,String discountPercent,String distance) {
+        this.serviceTitle = serviceTitle;
+        this.serviceDescription = serviceDescription;
+        this.serviceContent = serviceContent;
+        this.serviceImage = serviceImage;
+        this.servicePrice = servicePrice;
+        this.rating = rating;
+        this.serviceOldPrice = serviceOldPrice;
+        this.discountPercent = discountPercent;
+        this.distance = distance;
     }
 
     public ServicePet(String serviceTitle, String serviceDescription, String serviceContent, int serviceImage, String servicePrice) {
@@ -75,5 +96,9 @@ public class ServicePet implements Serializable {
 
     public float getRating() {
         return rating;
+    }
+
+    public String getDistance() {
+        return distance;
     }
 }

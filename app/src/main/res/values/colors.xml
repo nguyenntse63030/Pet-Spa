@@ -14,5 +14,6 @@
     <color name="red">#ff0000</color>
     <color name="backGroundTitleActivity">#00FFFFFF</color>
     <color name="backGroundTextNewsTop">#AA000000</color>
+    <color name="backGroundDistance">#70FF0000</color>
     <color name="blueTitleItem">#049af7</color>
 </resources>

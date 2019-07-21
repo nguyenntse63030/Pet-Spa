@@ -1,85 +1,181 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.percentlayout.widget.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="10dp"
     tools:context=".Fragment.ListHorizontalServiceFragment">
 
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/btnKhuyenMai"
+    <LinearLayout
+        android:id="@+id/layoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dịch vụ khuyến Mãi"
-        android:gravity="center_vertical"
-        android:paddingStart="10dp"
-        android:paddingEnd="10dp"
-        android:textColor="@color/white"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/border_radius_button"/>
+        android:orientation="vertical">
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnKhuyenMai"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginStart="75dp"
+                android:layout_marginEnd="20dp"
+                android:gravity="center"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/sale_white"
+                android:background="@drawable/border_radius_button"/>
+
+            <Button
+                android:id="@+id/btnVeSinh"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_toRightOf="@id/btnKhuyenMai"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="20dp"
+                android:paddingStart="10dp"
+                android:textColor="@color/white"
+                android:drawableStart="@drawable/hair_brush_white"
+                android:paddingEnd="10dp"
+                android:background="@drawable/border_radius_button"/>
+            <Button
+                android:id="@+id/btnSpa"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:drawableStart="@drawable/flower_white"
+                android:textColor="@color/white"
+                android:paddingEnd="10dp"
+                android:background="@drawable/border_radius_button"
+                android:layout_toRightOf="@id/btnVeSinh"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="5dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginEnd="20dp"
+                android:textSize="16dp"
+                android:text="Khuyến mãi"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="5dp"
+                android:textSize="16dp"
+                android:text="Vệ sinh"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:layout_marginStart="25dp"
+                android:text="Spa"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--<HorizontalScrollView-->
+        <!--android:id="@+id/horizontalViewVesinh"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/btnVeSinh"-->
+        <!--&gt;-->
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--android:id="@+id/recyclerListServiceVesinh"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal">-->
+
+        <!--</androidx.recyclerview.widget.RecyclerView>-->
+    <!--</HorizontalScrollView>-->
+
+    <!--<HorizontalScrollView-->
+        <!--android:id="@+id/horizontalViewSpa"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@id/btnSpa">-->
+        <!--<androidx.recyclerview.widget.RecyclerView-->
+            <!--android:id="@+id/recyclerListServiceSpa"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal">-->
+
+        <!--</androidx.recyclerview.widget.RecyclerView>-->
+    <!--</HorizontalScrollView>-->
+    <TextView
+        android:id="@+id/txtNearby"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutButton"
+        android:text="Gần bạn nhất"
+        android:textSize="24dp"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:layout_marginStart="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtNearby"
+        android:background="@color/blue"
+        app:layout_widthPercent="90%"/>
     <HorizontalScrollView
         android:id="@+id/horizontalView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnKhuyenMai">
+        android:layout_below="@id/txtNearby">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerListService"
+            android:id="@+id/recyclerListServiceNearby"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>
     </HorizontalScrollView>
-    <Button
-        android:id="@+id/btnVeSinh"
+    <TextView
+        android:id="@+id/txtMostUsed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Dịch vụ Vệ Sinh"
-        android:layout_below="@id/horizontalView"
-        android:gravity="center_vertical"
-        android:paddingStart="10dp"
-        android:textColor="@color/white"
-        android:paddingEnd="10dp"
-        android:background="@drawable/border_radius_button"/>
+        android:layout_below="@+id/horizontalView"
+        android:text="Sử dụng nhiều nhất"
+        android:layout_marginTop="10dp"
+        android:textSize="24dp"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+
+        android:layout_marginStart="10dp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/txtMostUsed"
+        android:background="@color/blue"
+        app:layout_widthPercent="90%"/>
     <HorizontalScrollView
-        android:id="@+id/horizontalViewVesinh"
+        android:id="@+id/horizontalViewMostUsed"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/btnVeSinh"
-        >
+        android:layout_below="@id/txtMostUsed">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerListServiceVesinh"
+            android:id="@+id/recyclerListServiceMostUsed"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>
     </HorizontalScrollView>
-    <Button
-        android:id="@+id/btnSpa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Dịch vụ Spa"
-        android:gravity="center_vertical"
-        android:paddingStart="10dp"
-        android:textColor="@color/white"
-        android:paddingEnd="10dp"
-        android:background="@drawable/border_radius_button"
-        android:layout_below="@id/horizontalViewVesinh"/>
-    <HorizontalScrollView
-        android:id="@+id/horizontalViewSpa"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnSpa">
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerListServiceSpa"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </HorizontalScrollView>
 
 
 
