@@ -53,6 +53,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
 
         }
         holder.ratingBar.setRating(list.get(position).getRating());
+        holder.txtDistance.setText(list.get(position).getDistance());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +79,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
         TextView txtServiceCardPrice;
         TextView txtServiceCardOldPrice;
         TextView txtDiscount;
+        TextView txtDistance;
         RatingBar ratingBar;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -87,6 +89,7 @@ public class ListHorizontalServiceFragmentAdapter extends RecyclerView.Adapter<L
             txtServiceCardPrice = itemView.findViewById(R.id.txtServiceCardPrice);
             txtServiceCardOldPrice = itemView.findViewById(R.id.txtServiceCardOldPrice);
             txtDiscount = itemView.findViewById(R.id.txtDiscount);
+            txtDistance = itemView.findViewById(R.id.txtDistance);
             ratingBar = itemView.findViewById(R.id.ratingBar);
         }
     }

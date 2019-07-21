@@ -63,20 +63,20 @@ public class ListHorizontalServiceFragment extends Fragment implements List_Serv
         inputData4();
         inputData();
         inputData2();
-        recyclerListService = view.findViewById(R.id.recyclerListService);
+        recyclerListService = view.findViewById(R.id.recyclerListServiceNearby);
         adapterKhuyenmai = new ListHorizontalServiceFragmentAdapter(listServicePet1, (List_Service_Card_Item_Listener) this);
         recyclerListService.setLayoutManager(new GridLayoutManager(getContext(), listServicePet1.size()));
         recyclerListService.setAdapter(adapterKhuyenmai);
-
-        recyclerListServiceVesinh = view.findViewById(R.id.recyclerListServiceVesinh);
+//
+        recyclerListServiceVesinh = view.findViewById(R.id.recyclerListServiceMostUsed);
         adapterVeSinh = new ListHorizontalServiceFragmentAdapter(listServicePet2, (List_Service_Card_Item_Listener) this);
         recyclerListServiceVesinh.setLayoutManager(new GridLayoutManager(getContext(), listServicePet2.size()));
         recyclerListServiceVesinh.setAdapter(adapterVeSinh);
-
-        recyclerListServiceSpa = view.findViewById(R.id.recyclerListServiceSpa);
-        adapterSpa = new ListHorizontalServiceFragmentAdapter(listServicePet3, (List_Service_Card_Item_Listener) this);
-        recyclerListServiceSpa.setLayoutManager(new GridLayoutManager(getContext(), listServicePet3.size()));
-        recyclerListServiceSpa.setAdapter(adapterSpa);
+//
+//        recyclerListServiceSpa = view.findViewById(R.id.recyclerListServiceSpa);
+//        adapterSpa = new ListHorizontalServiceFragmentAdapter(listServicePet3, (List_Service_Card_Item_Listener) this);
+//        recyclerListServiceSpa.setLayoutManager(new GridLayoutManager(getContext(), listServicePet3.size()));
+//        recyclerListServiceSpa.setAdapter(adapterSpa);
         return view;
     }
 
@@ -126,31 +126,31 @@ public class ListHorizontalServiceFragment extends Fragment implements List_Serv
                 "Cắt tỉa lông, tắm gội, sấy khố, tạo mẫu",
                 "Dịch vụ vệ sinh tổng thể của chúng tôi sẽ cung cấp đầy đủ những thứ mà thú cưng và bạn cần, bao gồm tỉa lông, cắt móng chân, " +
                         "tỉa lông cân, vệ sinh tai, 2 lần tắm gội bằng xà bông chuyên dùng cho chó và mèo, sấy khô và giữ ấm, tạo mẫu cho tóc và đuôi.",
-                R.drawable.down_shower, "240,000", 4, "300,000", "-20%"));
+                R.drawable.down_shower, "240,000", 4, "300,000", "-20%","0.4 km"));
 
         listServicePet2.add(new ServicePet("Gỡ rối lông",
                 "Lông rối thì không có gì phải lo.",
                 "Đối với những thú cưng nghịch ngợm, thích chạy nhảy và đôi khi lông của chúng bị rối và khô," +
                         " chúng tôi cung cấp dịch vụ gỡ rối lông và làm mượt lông làm cho thú cưng của bạn dễ chịu " +
                         "và bạn cũng bớt lo lắng khi đi chơi cùng thú cưng của mình.",
-                R.drawable.service_go_roi_long, "50,000", (float) (4.5)));
+                R.drawable.service_go_roi_long, "50,000", (float) (4.5),"2 km"));
 
         listServicePet2.add(new ServicePet("Loại bỏ vết ố ở mắt",
                 "Vết ố ở mắt có làm thú cưng của bạn khó chịu",
                 "Thú cưng của bạn đôi khi bị bẩn ở khóe mắt và bạn không thể làm sạch được, đến với dịch vụ của chúng tôi, " +
                         "chúng tôi sử dụng dung dịch vệ sinh chuyên dụng để làm sạch khóe mắt cho thú cưng của bạn, đảm bảo vô hại với thú cưng.",
-                R.drawable.service_ve_sinh_mat, "50,000", (float) (3.3)));
+                R.drawable.service_ve_sinh_mat, "50,000", (float) (3.3),"3 km"));
 
         listServicePet2.add(new ServicePet("Làm sạch hơi thở",
                 "Một hơi thở sạch sẽ chẳng phải tốt hơn sao",
                 "Thú cưng của bạn có một hơi thở làm bạn thấy khó chịu do thức ăn, chúng tôi sẽ giải quyết vấn đề này giúp bạn không qua 30'.",
-                R.drawable.ve_sinh_mieng, "50,000", (float) (5)));
+                R.drawable.ve_sinh_mieng, "50,000", (float) (5),"4 km"));
 
         listServicePet2.add(new ServicePet("Tắm và sấy khô",
                 "Không cần quá mất thời gian về việc vệ sinh, đã có Petspa.",
                 "Dịch vụ tắm và sấy khô bên chúng tôi bao gồm loại bỏ các bụi bẩn và lông bị rối, tắm rửa qua 2 lần dầu gọi," +
                         " sấy khô và giữ ấm cho thú cưng của bạn, đặc biệt còn được sử dụng nước hoa mùi hương sang trọng dễ chịu.",
-                R.drawable.tamsay, "160,000", (float) (4.7), "200,000", "-20%"));
+                R.drawable.tamsay, "160,000", (float) (4.7), "200,000", "-20%","5 km"));
     }
 
     private void inputData2() {
@@ -195,33 +195,33 @@ public class ListHorizontalServiceFragment extends Fragment implements List_Serv
                 "Vết ố ở mắt có làm thú cưng của bạn khó chịu",
                 "Thú cưng của bạn đôi khi bị bẩn ở khóe mắt và bạn không thể làm sạch được, đến với dịch vụ của chúng tôi, " +
                         "chúng tôi sử dụng dung dịch vệ sinh chuyên dụng để làm sạch khóe mắt cho thú cưng của bạn, đảm bảo vô hại với thú cưng.",
-                R.drawable.service_ve_sinh_mat, "40,200", (float) (4.6), "60,000", "-33%"));
+                R.drawable.service_ve_sinh_mat, "40,200", (float) (4.6), "60,000", "-33%","0.2 km"));
 
         listServicePet1.add(new ServicePet("Điều trị giảm béo",
                 "Béo ư, hãy đến với Petspa",
                 "Lại là vấn đề về cân nặng, thú cưng của bạn quá ham ăn, ăn quá nhiều " +
                         "và phát phì vì điều này, trở nên lười biếng, ít vận động." +
                         " Hãy đến với dịch vụ của chúng tôi, chúng tôi cung cấp các phương pháp điều trị giảm béo cho thú cưng của bạn.",
-                R.drawable.spa_excercise, "40,200", (float) (4.5), "60,000", "-33%"));
+                R.drawable.spa_excercise, "40,200", (float) (4.5), "60,000", "-33%","0.3 km"));
         listServicePet1.add(new ServicePet("Vệ sinh tổng thể",
                 "Cắt tỉa lông, tắm gội, sấy khố, tạo mẫu",
                 "Dịch vụ vệ sinh tổng thể của chúng tôi sẽ cung cấp đầy đủ những thứ mà thú cưng và bạn cần, bao gồm tỉa lông, cắt móng chân, " +
                         "tỉa lông cân, vệ sinh tai, 2 lần tắm gội bằng xà bông chuyên dùng cho chó và mèo, sấy khô và giữ ấm, tạo mẫu cho tóc và đuôi.",
-                R.drawable.down_shower, "240,000", 4, "300,000", "-20%"));
+                R.drawable.down_shower, "240,000", 4, "300,000", "-20%","0.4 km"));
 
         listServicePet1.add(new ServicePet("Tạo mẫu tóc",
                 "Đôi khi thú cưng của bạn cần một sự khác biệt.",
                 "Những nhà tạo mẫu bên chúng tôi sẽ cung cấp những mẫu tóc bắt kịp xu hướng cho thú cưng của bạn," +
                         " đảm bảo không bị rối và làm hài thú cưng của bạn trở nên tuyệt vời hơn," +
                         " được miễn phí một lần chụp hình tạo mẫu chuyên nghiệp.",
-                R.drawable.spa_hair, "64,000", (float) (3.9), "80,000", "-20%"));
+                R.drawable.spa_hair, "64,000", (float) (3.9), "80,000", "-20%","0.5 km"));
 
 
         listServicePet1.add(new ServicePet("Tắm và sấy khô",
                 "Không cần quá mất thời gian về việc vệ sinh, đã có Petspa.",
                 "Dịch vụ tắm và sấy khô bên chúng tôi bao gồm loại bỏ các bụi bẩn và lông bị rối, tắm rửa qua 2 lần dầu gọi," +
                         " sấy khô và giữ ấm cho thú cưng của bạn, đặc biệt còn được sử dụng nước hoa mùi hương sang trọng dễ chịu.",
-                R.drawable.tamsay, "160,000", (float) (4.7), "200,000", "-20%"));
+                R.drawable.tamsay, "160,000", (float) (4.7), "200,000", "-20%","0.6 km"));
     }
 
     @Override
