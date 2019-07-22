@@ -51,7 +51,7 @@ public class BookingActivity extends AppCompatActivity {
     DrawerLayout drawerLayout = null;
     NavigationView navigationView = null;
 
-    private Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
+    //private Spinner spinnerTopLeft, spinnerTopRight, spinnerBottomLeft, spinnerBottomRight;
     private TextView txtTitle, txtDescription, txtServicePetContent, txtPrice, txtOldPrice, txtDiscountInBooking;
     private String year = "";
     private HorizontalScrollView timeButtonView;
@@ -100,20 +100,20 @@ public class BookingActivity extends AppCompatActivity {
         imageService.setImageResource(servicePet.getServiceImage());
         txtDiscountInBooking.setText(servicePet.getDiscountPercent());
 
-        spinnerTopLeft = findViewById(R.id.spinnerTopLeft);
+//        spinnerTopLeft = findViewById(R.id.spinnerTopLeft);
+//
+//        spinnerTopRight = findViewById(R.id.spinnerTopRight);
+//
+//        spinnerBottomLeft = findViewById(R.id.spinnerBottomLeft);
+//
+//        spinnerBottomRight = findViewById(R.id.spinnerBottomRight);
+//
+//        spinnerBottomRight.setEnabled(false);
 
-        spinnerTopRight = findViewById(R.id.spinnerTopRight);
-
-        spinnerBottomLeft = findViewById(R.id.spinnerBottomLeft);
-
-        spinnerBottomRight = findViewById(R.id.spinnerBottomRight);
-
-        spinnerBottomRight.setEnabled(false);
-
-        String[] stlItems = new String[]{"08", "09", "10", "11", "13", "14", "15", "16", "17"};
-        String[] strItems = new String[]{"00", "30"};
-
-        String[] sbrItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "11", "10", "12"};
+//        String[] stlItems = new String[]{"08", "09", "10", "11", "13", "14", "15", "16", "17"};
+//        String[] strItems = new String[]{"00", "30"};
+//
+//        String[] sbrItems = new String[]{"01", "02", "03", "04", "05", "06", "07", "08", "09", "11", "10", "12"};
 
         Date date = new Date();
         Calendar c = Calendar.getInstance();
@@ -125,19 +125,19 @@ public class BookingActivity extends AppCompatActivity {
             sblItems.add("" + c.getTime().getDate());
         }
 
-        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
-        spinnerTopLeft.setAdapter(adapter1);
-
-        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.spinner_item, strItems);
-        spinnerTopRight.setAdapter(adapter2);
-
-
-        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.spinner_item, sblItems);
-        spinnerBottomLeft.setAdapter(adapter3);
-
-        ArrayAdapter<String> adapter4 = new ArrayAdapter<>(this, R.layout.spinner_item, sbrItems);
-        spinnerBottomRight.setAdapter(adapter4);
-        setCurrentDate(spinnerBottomRight);
+//        ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, R.layout.spinner_item, stlItems);
+//        spinnerTopLeft.setAdapter(adapter1);
+//
+//        ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, R.layout.spinner_item, strItems);
+//        spinnerTopRight.setAdapter(adapter2);
+//
+//
+//        ArrayAdapter<String> adapter3 = new ArrayAdapter<>(this, R.layout.spinner_item, sblItems);
+//        spinnerBottomLeft.setAdapter(adapter3);
+//
+//        ArrayAdapter<String> adapter4 = new ArrayAdapter<>(this, R.layout.spinner_item, sbrItems);
+//        spinnerBottomRight.setAdapter(adapter4);
+//        setCurrentDate(spinnerBottomRight);
 
         ////////
         loadListTimeButton();
@@ -261,47 +261,47 @@ public class BookingActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        spinnerBottomLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Date dateCheckSpiner = new Date();
-                Calendar calendarCheckSpiner = Calendar.getInstance();
-                calendarCheckSpiner.setTime(dateCheckSpiner);
-                calendarCheckSpiner.add(Calendar.DATE, 1);
-
-                int dateSelectCheck = Integer.parseInt(spinnerBottomLeft.getSelectedItem().toString());
-                String checkSpinerNow = calendarCheckSpiner.getTime().getDate() + "";
-                int dateConvertCheck = Integer.parseInt(checkSpinerNow);
-
-                if (dateSelectCheck < dateConvertCheck) {
-                    int monthCurrent = calendarCheckSpiner.getTime().getMonth();
-
-                    calendarCheckSpiner.add(Calendar.MONTH, 1);
-
-                    int month = calendarCheckSpiner.getTime().getMonth();
-
-                    spinnerBottomRight.setSelection(month);
-
-                    if (monthCurrent == 11) {
-                        year = "" + (Calendar.getInstance().get(Calendar.YEAR) + 1);
-                        ;
-                    }
-
-
-                } else {
-                    int month = calendarCheckSpiner.getTime().getMonth();
-                    spinnerBottomRight.setSelection(month);
-
-                    year = "" + Calendar.getInstance().get(Calendar.YEAR);
-                    ;
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
+//        spinnerBottomLeft.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                Date dateCheckSpiner = new Date();
+//                Calendar calendarCheckSpiner = Calendar.getInstance();
+//                calendarCheckSpiner.setTime(dateCheckSpiner);
+//                calendarCheckSpiner.add(Calendar.DATE, 1);
+//
+//                int dateSelectCheck = Integer.parseInt(spinnerBottomLeft.getSelectedItem().toString());
+//                String checkSpinerNow = calendarCheckSpiner.getTime().getDate() + "";
+//                int dateConvertCheck = Integer.parseInt(checkSpinerNow);
+//
+//                if (dateSelectCheck < dateConvertCheck) {
+//                    int monthCurrent = calendarCheckSpiner.getTime().getMonth();
+//
+//                    calendarCheckSpiner.add(Calendar.MONTH, 1);
+//
+//                    int month = calendarCheckSpiner.getTime().getMonth();
+//
+//                    spinnerBottomRight.setSelection(month);
+//
+//                    if (monthCurrent == 11) {
+//                        year = "" + (Calendar.getInstance().get(Calendar.YEAR) + 1);
+//                        ;
+//                    }
+//
+//
+//                } else {
+//                    int month = calendarCheckSpiner.getTime().getMonth();
+//                    spinnerBottomRight.setSelection(month);
+//
+//                    year = "" + Calendar.getInstance().get(Calendar.YEAR);
+//                    ;
+//                }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
