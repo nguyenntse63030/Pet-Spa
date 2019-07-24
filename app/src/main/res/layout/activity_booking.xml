@@ -194,6 +194,61 @@ Bà Mẫn nói, việc nghỉ lễ vào 27/7 hàng năm là hợp lý để ngư
 Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó trưởng đoàn đại biểu tỉnh Phú Thọ cho rằng, việc tri ân các anh hùng, liệt sĩ và người có công đã được Việt Nam thực hiện thường xuyên trong nhiều năm."
                                             android:textSize="15dp" />
 
+
+                                        <TextView
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginBottom="-10dp"
+                                            android:layout_marginTop="5dp"
+                                            android:text="Ngày đặt lịch:"
+                                            android:textColor="#049af7"
+                                            android:textSize="20dp" />
+
+                                        <!--<RelativeLayout-->
+                                        <!--android:layout_width="250dp"-->
+                                        <!--android:layout_height="match_parent"-->
+                                        <!--android:layout_gravity="center">-->
+
+                                        <!--<Spinner-->
+                                        <!--android:id="@+id/spinnerBottomLeft"-->
+                                        <!--style="@style/SpinnerwithNoArrow"-->
+                                        <!--android:layout_width="100dp"-->
+                                        <!--android:layout_height="100dp"-->
+                                        <!--android:layout_alignParentLeft="true"-->
+                                        <!--android:layout_marginTop="15dp" />-->
+
+                                        <!--<TextView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:layout_alignParentTop="true"-->
+                                        <!--android:layout_centerInParent="true"-->
+                                        <!--android:gravity="center"-->
+                                        <!--android:text="-"-->
+                                        <!--android:textColor="#049af7"-->
+                                        <!--android:textSize="80dp" />-->
+
+                                        <!--<Spinner-->
+                                        <!--android:id="@+id/spinnerBottomRight"-->
+                                        <!--style="@style/SpinnerwithNoArrow"-->
+                                        <!--android:layout_width="100dp"-->
+                                        <!--android:layout_height="100dp"-->
+                                        <!--android:layout_alignParentRight="true"-->
+                                        <!--android:layout_marginTop="15dp"-->
+                                        <!--android:dropDownWidth="100dp"></Spinner>-->
+
+                                        <!--</RelativeLayout>-->
+
+                                        <HorizontalScrollView
+                                            android:id="@+id/dateButtonView"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginTop="20dp"
+                                            android:paddingLeft="5dp"
+                                            android:scrollbars="none">
+
+
+                                        </HorizontalScrollView>
+
                                         <TextView
                                             android:layout_width="wrap_content"
                                             android:layout_height="wrap_content"
@@ -203,35 +258,35 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                             android:textSize="20dp" />
 
                                         <!--<RelativeLayout-->
-                                            <!--android:layout_width="250dp"-->
-                                            <!--android:layout_height="match_parent"-->
-                                            <!--android:layout_gravity="center">-->
+                                        <!--android:layout_width="250dp"-->
+                                        <!--android:layout_height="match_parent"-->
+                                        <!--android:layout_gravity="center">-->
 
-                                            <!--<Spinner-->
-                                                <!--android:id="@+id/spinnerTopLeft"-->
-                                                <!--style="@style/SpinnerwithNoArrow"-->
-                                                <!--android:layout_width="100dp"-->
-                                                <!--android:layout_height="100dp"-->
-                                                <!--android:layout_alignParentLeft="true"-->
-                                                <!--android:layout_marginTop="15dp"></Spinner>-->
+                                        <!--<Spinner-->
+                                        <!--android:id="@+id/spinnerTopLeft"-->
+                                        <!--style="@style/SpinnerwithNoArrow"-->
+                                        <!--android:layout_width="100dp"-->
+                                        <!--android:layout_height="100dp"-->
+                                        <!--android:layout_alignParentLeft="true"-->
+                                        <!--android:layout_marginTop="15dp"></Spinner>-->
 
-                                            <!--<TextView-->
-                                                <!--android:layout_width="wrap_content"-->
-                                                <!--android:layout_height="wrap_content"-->
-                                                <!--android:layout_alignParentTop="true"-->
-                                                <!--android:layout_centerInParent="true"-->
-                                                <!--android:gravity="center"-->
-                                                <!--android:text=":"-->
-                                                <!--android:textColor="#049af7"-->
-                                                <!--android:textSize="80dp" />-->
+                                        <!--<TextView-->
+                                        <!--android:layout_width="wrap_content"-->
+                                        <!--android:layout_height="wrap_content"-->
+                                        <!--android:layout_alignParentTop="true"-->
+                                        <!--android:layout_centerInParent="true"-->
+                                        <!--android:gravity="center"-->
+                                        <!--android:text=":"-->
+                                        <!--android:textColor="#049af7"-->
+                                        <!--android:textSize="80dp" />-->
 
-                                            <!--<Spinner-->
-                                                <!--android:id="@+id/spinnerTopRight"-->
-                                                <!--style="@style/SpinnerwithNoArrow"-->
-                                                <!--android:layout_width="100dp"-->
-                                                <!--android:layout_height="100dp"-->
-                                                <!--android:layout_alignParentRight="true"-->
-                                                <!--android:layout_marginTop="15dp"></Spinner>-->
+                                        <!--<Spinner-->
+                                        <!--android:id="@+id/spinnerTopRight"-->
+                                        <!--style="@style/SpinnerwithNoArrow"-->
+                                        <!--android:layout_width="100dp"-->
+                                        <!--android:layout_height="100dp"-->
+                                        <!--android:layout_alignParentRight="true"-->
+                                        <!--android:layout_marginTop="15dp"></Spinner>-->
 
                                         <!--</RelativeLayout>-->
 
@@ -240,67 +295,11 @@ Tuy nhiên, giơ biển tranh luận sau đó, ông Cao Đình Thưởng - Phó 
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_marginTop="20dp"
-                                            android:scrollbars="none"
-                                            android:paddingLeft="5dp">
-
-
-
-                                        </HorizontalScrollView>
-
-                                        <TextView
-                                            android:layout_width="wrap_content"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginBottom="-10dp"
-                                            android:text="Ngày đặt lịch:"
-                                            android:textColor="#049af7"
-                                            android:textSize="20dp" />
-
-                                        <!--<RelativeLayout-->
-                                            <!--android:layout_width="250dp"-->
-                                            <!--android:layout_height="match_parent"-->
-                                            <!--android:layout_gravity="center">-->
-
-                                            <!--<Spinner-->
-                                                <!--android:id="@+id/spinnerBottomLeft"-->
-                                                <!--style="@style/SpinnerwithNoArrow"-->
-                                                <!--android:layout_width="100dp"-->
-                                                <!--android:layout_height="100dp"-->
-                                                <!--android:layout_alignParentLeft="true"-->
-                                                <!--android:layout_marginTop="15dp" />-->
-
-                                            <!--<TextView-->
-                                                <!--android:layout_width="wrap_content"-->
-                                                <!--android:layout_height="wrap_content"-->
-                                                <!--android:layout_alignParentTop="true"-->
-                                                <!--android:layout_centerInParent="true"-->
-                                                <!--android:gravity="center"-->
-                                                <!--android:text="-"-->
-                                                <!--android:textColor="#049af7"-->
-                                                <!--android:textSize="80dp" />-->
-
-                                            <!--<Spinner-->
-                                                <!--android:id="@+id/spinnerBottomRight"-->
-                                                <!--style="@style/SpinnerwithNoArrow"-->
-                                                <!--android:layout_width="100dp"-->
-                                                <!--android:layout_height="100dp"-->
-                                                <!--android:layout_alignParentRight="true"-->
-                                                <!--android:layout_marginTop="15dp"-->
-                                                <!--android:dropDownWidth="100dp"></Spinner>-->
-
-                                        <!--</RelativeLayout>-->
-
-                                        <HorizontalScrollView
-                                            android:id="@+id/dateButtonView"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginTop="20dp"
-                                            android:scrollbars="none"
-                                            android:paddingLeft="5dp">
-
+                                            android:paddingLeft="5dp"
+                                            android:scrollbars="none">
 
 
                                         </HorizontalScrollView>
-
                                     </LinearLayout>
                                 </ScrollView>
 

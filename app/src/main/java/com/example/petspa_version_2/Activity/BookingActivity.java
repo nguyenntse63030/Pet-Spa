@@ -167,7 +167,7 @@ public class BookingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Button clickedTimeButton = (Button) v;
                     String buttonName = clickedTimeButton.getText().toString();
-                    clickedTimeButton.setBackgroundColor(Color.parseColor("#049af7"));
+                    clickedTimeButton.setBackgroundColor(Color.parseColor("#10DF16"));
                     resetColorTimeButton(buttonName);
                     // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
                     // Tao không biết code khúc ShareReferences ở dưới của mày.
@@ -211,7 +211,7 @@ public class BookingActivity extends AppCompatActivity {
                 public void onClick(View v) {
                     Button clickedDateButton = (Button) v;
                     String buttonName = clickedDateButton.getText().toString();
-                    clickedDateButton.setBackgroundColor(Color.parseColor("#049af7"));
+                    clickedDateButton.setBackgroundColor(Color.parseColor("#10DF16"));
                     resetColorDateButton(buttonName);
                     // Chỗ này Long code dùm tao lấy thời gian trong button để lưu vô ShareReferences.
                     // Tao không biết code khúc ShareReferences ở dưới của mày.

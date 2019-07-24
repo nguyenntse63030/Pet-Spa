@@ -18,4 +18,5 @@
     <color name="backGroundTextNewsTop">#AA000000</color>
     <color name="backGroundDistance">#70FF0000</color>
     <color name="blueTitleItem">#049af7</color>
+    <color name="colorGreen">#10DF16</color>
 </resources>
